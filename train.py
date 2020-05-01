@@ -34,11 +34,7 @@ parser.add_argument('--batch-size', type=int, default=16)
 parser.add_argument('--num-epochs', type=int, default=200)
 parser.add_argument('--num-workers', type=int, default=8)
 parser.add_argument('--seed', type=int, default=123)
-args = parser.parse_args([
-    '--train-file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train/t91.h5',
-    '--eval-file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14.h5',
-    '--outputs-dir', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/outputs'
-])
+args = parser.parse_args()
 
 args.outputs_dir = os.path.join(args.outputs_dir, 'x{}'.format(args.scale))
 
@@ -54,24 +50,19 @@ torch.manual_seed(args.seed)
 
 model = ESPCN(scale_factor=args.scale).to(device)
 criterion = nn.MSELoss()
-optimizer = optim.Adam([
-    {'params': model.first_part.parameters()},
-    {'params': model.last_part.parameters(), 'lr': args.lr * 0.1}
-], lr=args.lr)
+optimizer = optim.Adam(model.parameters(), lr=args.lr)
 
 train_dataset = TrainDataset(args.train_file)
-logging.info(f'No.patches: {len(train_dataset)}')
+logging.info(f'No.train patches: {len(train_dataset)}')
 train_dataloader = DataLoader(dataset=train_dataset,
                                 batch_size=args.batch_size,
                                 shuffle=True,
                                 num_workers=args.num_workers,
                                 pin_memory=True)
-eval_dataset = EvalDataset(args.eval_file)
-eval_dataloader = DataLoader(dataset=eval_dataset, batch_size=1)
 
-best_weights = copy.deepcopy(model.state_dict())
-# best_epoch = 0
-# best_psnr = 0.0
+eval_dataset = EvalDataset(args.eval_file)
+logging.info(f'No.valid images: {len(eval_dataset)}')
+eval_dataloader = DataLoader(dataset=eval_dataset, batch_size=1)
 
 for epoch in range(args.num_epochs):
     for param_group in optimizer.param_groups:
@@ -102,7 +93,7 @@ for epoch in range(args.num_epochs):
             t.set_postfix(loss='{:.6f}'.format(epoch_losses.avg))
             t.update(len(inputs))
 
-    torch.save(model.state_dict(), os.path.join(args.outputs_dir, 'epoch_{}.pth'.format(epoch)))
+    torch.save({'state_dict': model.state_dict()}, os.path.join(args.outputs_dir, f'epoch_{epoch}.pth'))
 
     model.eval()
     epoch_psnr = AverageMeter()
@@ -121,11 +112,3 @@ for epoch in range(args.num_epochs):
         epoch_ssim.update(calc_ssim(preds, labels), len(inputs))
 
     logging.info(f'\33[91meval psnr: {epoch_psnr.avg} - eval ssim: {epoch_ssim.avg}\33[0m')
-
-    # if epoch_psnr.avg > best_psnr:
-    #     best_epoch = epoch
-    #     best_psnr = epoch_psnr.avg
-    #     best_weights = copy.deepcopy(model.state_dict())
-
-# logging.info('best epoch: {}, psnr: {:.4f}'.format(best_epoch, best_psnr))
-# torch.save(best_weights, os.path.join(args.outputs_dir, 'best.pth'))
