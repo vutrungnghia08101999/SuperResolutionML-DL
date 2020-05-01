@@ -29,8 +29,7 @@ class ESPCN(nn.Module):
                     nn.init.zeros_(m.bias.data)
 
     def forward(self, x):
+        # print(x.shape)
         x = self.first_part(x)
         x = self.last_part(x)
         return x
-
-

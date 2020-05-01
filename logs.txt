@@ -105,3 +105,27 @@
 20-05-01 12:32:55, INFO: [91meval psnr: 25.81100082397461 - eval ssim: 0.751505977444929[0m
 20-05-01 12:33:00, INFO: [91meval psnr: 26.927244186401367 - eval ssim: 0.782929118400098[0m
 20-05-01 12:33:06, INFO: [91meval psnr: 27.247072219848633 - eval ssim: 0.803926066605137[0m
+20-05-01 14:40:44, INFO: [('batch_size', 16), ('eval_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14.h5'), ('lr', 0.001), ('num_epochs', 20), ('num_workers', 8), ('outputs_dir', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/outputs/x3'), ('scale', 3), ('seed', 123), ('train_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train/t91.h5'), ('weights_file', None)]
+20-05-01 14:40:45, INFO: No.patches: 2701
+20-05-01 14:40:52, INFO: [91meval psnr: 24.94856834411621 - eval ssim: 0.6908550814255608[0m
+20-05-01 14:40:55, INFO: [91meval psnr: 25.81100082397461 - eval ssim: 0.751505977444929[0m
+20-05-01 14:40:59, INFO: [91meval psnr: 26.927244186401367 - eval ssim: 0.782929118400098[0m
+20-05-01 14:41:03, INFO: [91meval psnr: 27.247072219848633 - eval ssim: 0.803926066605137[0m
+20-05-01 14:41:08, INFO: [91meval psnr: 27.7482852935791 - eval ssim: 0.8158882904770132[0m
+20-05-01 14:41:13, INFO: [91meval psnr: 27.523462295532227 - eval ssim: 0.8229725135176226[0m
+20-05-01 14:41:18, INFO: [91meval psnr: 27.963653564453125 - eval ssim: 0.8287334218335322[0m
+20-05-01 14:41:23, INFO: [91meval psnr: 28.20780372619629 - eval ssim: 0.8325935967132503[0m
+20-05-01 14:41:28, INFO: [91meval psnr: 28.26085090637207 - eval ssim: 0.8354433445125293[0m
+20-05-01 14:41:33, INFO: [91meval psnr: 28.431230545043945 - eval ssim: 0.8360191497704677[0m
+20-05-01 14:41:38, INFO: [91meval psnr: 28.445600509643555 - eval ssim: 0.8367922616544741[0m
+20-05-01 14:41:43, INFO: [91meval psnr: 28.562362670898438 - eval ssim: 0.8375433144206658[0m
+20-05-01 14:41:48, INFO: [91meval psnr: 28.436689376831055 - eval ssim: 0.8379472354230645[0m
+20-05-01 14:41:53, INFO: [91meval psnr: 28.615873336791992 - eval ssim: 0.8378919314073857[0m
+20-05-01 14:41:59, INFO: [91meval psnr: 28.473703384399414 - eval ssim: 0.8377919078706574[0m
+20-05-01 14:42:03, INFO: [91meval psnr: 28.607563018798828 - eval ssim: 0.8384744678583107[0m
+20-05-01 14:42:08, INFO: [91meval psnr: 28.64728355407715 - eval ssim: 0.8385375258906329[0m
+20-05-01 14:42:14, INFO: [91meval psnr: 28.645444869995117 - eval ssim: 0.8384608149095898[0m
+20-05-01 14:42:20, INFO: [91meval psnr: 28.649219512939453 - eval ssim: 0.8385574268781811[0m
+20-05-01 14:42:25, INFO: [91meval psnr: 28.64084243774414 - eval ssim: 0.8384226983925301[0m
+20-05-01 14:45:55, INFO: [('batch_size', 16), ('eval_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14.h5'), ('lr', 0.001), ('num_epochs', 20), ('num_workers', 8), ('outputs_dir', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/outputs/x3'), ('scale', 3), ('seed', 123), ('train_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train/t91.h5'), ('weights_file', None)]
+20-05-01 14:45:55, INFO: No.patches: 2701
