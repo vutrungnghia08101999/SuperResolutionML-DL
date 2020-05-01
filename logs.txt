@@ -1,0 +1,16 @@
+20-05-01 15:09:54, INFO: [('eval', False), ('images_dir', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train/t91'), ('output_path', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train/t91.h5'), ('patch_size', 17), ('scale', 3), ('stride', 13)]
+20-05-01 15:09:54, INFO: No.images: 91
+20-05-01 15:09:56, INFO: No.patches: 2701
+20-05-01 15:09:56, INFO: Completed
+
+
+20-05-01 15:10:07, INFO: [('eval', True), ('images_dir', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14'), ('output_path', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14.h5'), ('patch_size', 17), ('scale', 3), ('stride', 13)]
+20-05-01 15:10:07, INFO: No.images: 14
+20-05-01 15:10:08, INFO: Completed
+
+
+20-05-01 15:10:13, INFO: [('eval', True), ('images_dir', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/test/BSDS100'), ('output_path', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/test/BSDS100.h5'), ('patch_size', 17), ('scale', 3), ('stride', 13)]
+20-05-01 15:10:13, INFO: No.images: 100
+20-05-01 15:10:17, INFO: Completed
+
+
