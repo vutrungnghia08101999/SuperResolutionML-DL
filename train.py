@@ -34,11 +34,7 @@ parser.add_argument('--batch-size', type=int, default=16)
 parser.add_argument('--num-epochs', type=int, default=200)
 parser.add_argument('--num-workers', type=int, default=8)
 parser.add_argument('--seed', type=int, default=123)
-args = parser.parse_args([
-    '--train-file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train/t91.h5',
-    '--eval-file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14.h5',
-    '--outputs-dir', "/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/outputs",
-])
+args = parser.parse_args()
 
 args.outputs_dir = os.path.join(args.outputs_dir, 'x{}'.format(args.scale))
 

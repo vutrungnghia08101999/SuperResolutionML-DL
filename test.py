@@ -11,7 +11,7 @@ import torch.backends.cudnn as cudnn
 from torch.utils.data.dataloader import DataLoader
 from tqdm import tqdm
 
-from models import ESPCN
+from models import SRCNN
 from datasets import TrainDataset, EvalDataset
 from utils import AverageMeter, calc_psnr, calc_ssim
 
@@ -39,7 +39,7 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 torch.manual_seed(args.seed)
 
-model = ESPCN(scale_factor=args.scale).to(device)
+model = SRCNN(scale_factor=args.scale).to(device)
 checkpoint = torch.load(args.weights_file)
 model.load_state_dict(checkpoint['state_dict'])
 
