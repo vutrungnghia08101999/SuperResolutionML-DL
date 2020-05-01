@@ -10,7 +10,7 @@ import torch.backends.cudnn as cudnn
 from torch.utils.data.dataloader import DataLoader
 from tqdm import tqdm
 
-from models import ESPCN
+from models import SRCNN
 from datasets import TrainDataset, EvalDataset
 from utils import AverageMeter, calc_psnr, calc_ssim
 
@@ -34,7 +34,11 @@ parser.add_argument('--batch-size', type=int, default=16)
 parser.add_argument('--num-epochs', type=int, default=200)
 parser.add_argument('--num-workers', type=int, default=8)
 parser.add_argument('--seed', type=int, default=123)
-args = parser.parse_args()
+args = parser.parse_args([
+    '--train-file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train/t91.h5',
+    '--eval-file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14.h5',
+    '--outputs-dir', "/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/outputs",
+])
 
 args.outputs_dir = os.path.join(args.outputs_dir, 'x{}'.format(args.scale))
 
@@ -43,14 +47,15 @@ logging.info(args._get_kwargs())
 if not os.path.exists(args.outputs_dir):
     os.makedirs(args.outputs_dir)
 
-cudnn.benchmark = True
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 torch.manual_seed(args.seed)
 
-model = ESPCN(scale_factor=args.scale).to(device)
+model = SRCNN(scale_factor=args.scale).to(device)
 criterion = nn.MSELoss()
-optimizer = optim.Adam(model.parameters(), lr=args.lr)
+optimizer = optim.Adam(model.parameters(),
+                       lr=args.lr,
+                       betas=(0.99, 0.999))
 
 train_dataset = TrainDataset(args.train_file)
 logging.info(f'No.train patches: {len(train_dataset)}')
@@ -75,7 +80,7 @@ for epoch in range(args.num_epochs):
         t.set_description('epoch: {}/{}'.format(epoch, args.num_epochs - 1))
 
         for data in train_dataloader:
-            inputs, labels = data
+            inputs, labels = data  # batch_size x 1 x 51 x 51 and batch_size x 1 x 51 x 51, in range (0, 1)
 
             inputs = inputs.to(device)
             labels = labels.to(device)

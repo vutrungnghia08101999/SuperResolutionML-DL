@@ -1,35 +1,18 @@
 import math
 from torch import nn
+import torch.nn.functional as F
+from PIL import Image
 
 
-class ESPCN(nn.Module):
+class SRCNN(nn.Module):
     def __init__(self, scale_factor, num_channels=1):
-        super(ESPCN, self).__init__()
-        self.first_part = nn.Sequential(
-            nn.Conv2d(num_channels, 64, kernel_size=5, padding=5//2),
-            nn.Tanh(),
-            nn.Conv2d(64, 32, kernel_size=3, padding=3//2),
-            nn.Tanh(),
-        )
-        self.last_part = nn.Sequential(
-            nn.Conv2d(32, num_channels * (scale_factor ** 2), kernel_size=3, padding=3 // 2),
-            nn.PixelShuffle(scale_factor)
-        )
-
-        self._initialize_weights()
-
-    def _initialize_weights(self):
-        for m in self.modules():
-            if isinstance(m, nn.Conv2d):
-                if m.in_channels == 32:
-                    nn.init.normal_(m.weight.data, mean=0.0, std=0.001)
-                    nn.init.zeros_(m.bias.data)
-                else:
-                    nn.init.normal_(m.weight.data, mean=0.0, std=math.sqrt(2/(m.out_channels*m.weight.data[0][0].numel())))
-                    nn.init.zeros_(m.bias.data)
-
+        super(SRCNN, self).__init__()
+        self.conv1 = nn.Conv2d(num_channels, 64, kernel_size=(9, 9), padding=4)
+        self.conv2 = nn.Conv2d(64, 32, kernel_size=(1, 1), padding=0)
+        self.conv3 = nn.Conv2d(32, 1, kernel_size=(5, 5), padding=2)
+    
     def forward(self, x):
-        # print(x.shape)
-        x = self.first_part(x)
-        x = self.last_part(x)
+        x = F.relu(self.conv1(x))
+        x = F.relu(self.conv2(x))
+        x = self.conv3(x)
         return x
