@@ -84,6 +84,7 @@ def get_features(vgg16, imgs: torch.tensor, vgg_depth=8):
 vgg16 = torchvision.models.vgg16(pretrained=True)
 for i in range(args.vgg_depth):
     vgg16.features[i].requires_grad_(False)
+vgg16 = vgg16.to(device=device)
 
 for epoch in range(args.num_epochs):
     for param_group in optimizer.param_groups:
