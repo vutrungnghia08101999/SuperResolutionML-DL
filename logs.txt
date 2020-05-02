@@ -204,3 +204,20 @@
 20-05-01 17:35:06, INFO: [('num_workers', 1), ('scale', 3), ('seed', 123), ('test_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/test/BSDS100.h5'), ('weights_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/ESPCN/x3/epoch_199.pth')]
 20-05-01 17:35:06, INFO: No.test images: 100
 20-05-01 17:35:09, INFO: [91meval psnr: 28.61471939086914 - eval ssim: 0.8127366826268825[0m
+20-05-03 00:05:36, INFO: [('image_folder', 'data'), ('scale', 3), ('weights_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/ESPCN/x3/epoch_199.pth')]
+20-05-03 00:05:36, INFO: 101087.png
+20-05-03 00:05:37, INFO: pnsr: 29.351652145385742 - ssim: 0.864453891262986
+20-05-03 00:05:37, INFO: Save at: data/101087_x3.png
+20-05-03 00:05:37, INFO: 145086.png
+20-05-03 00:05:37, INFO: pnsr: 26.97007942199707 - ssim: 0.7844585584598944
+20-05-03 00:05:37, INFO: Save at: data/145086_x3.png
+20-05-03 00:05:37, INFO: 197017.png
+20-05-03 00:05:37, INFO: pnsr: 29.12240219116211 - ssim: 0.7812182634048978
+20-05-03 00:05:37, INFO: Save at: data/197017_x3.png
+20-05-03 00:05:37, INFO: 260058.png
+20-05-03 00:05:37, INFO: pnsr: 33.6343879699707 - ssim: 0.8536847689190517
+20-05-03 00:05:37, INFO: Save at: data/260058_x3.png
+20-05-03 00:05:37, INFO: 295087.png
+20-05-03 00:05:37, INFO: pnsr: 28.76772117614746 - ssim: 0.8023695413679817
+20-05-03 00:05:37, INFO: Save at: data/295087_x3.png
+20-05-03 00:05:37, INFO: Completed
