@@ -40,7 +40,7 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 torch.manual_seed(args.seed)
 
 model = ESPCN(scale_factor=args.scale).to(device)
-checkpoint = torch.load(args.weights_file)
+checkpoint = torch.load(args.weights_file, map_location=torch.device('cpu'))
 model.load_state_dict(checkpoint['state_dict'])
 
 test_dataset = EvalDataset(args.test_file)

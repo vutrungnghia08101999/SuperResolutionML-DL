@@ -204,3 +204,8 @@
 20-05-02 11:45:41, INFO: [91meval psnr: 27.07331657409668 - eval ssim: 0.7798117897343289[0m
 20-05-02 11:45:47, INFO: [91meval psnr: 27.049814224243164 - eval ssim: 0.7803111877856695[0m
 20-05-02 11:45:53, INFO: [91meval psnr: 27.130290985107422 - eval ssim: 0.7801042937710666[0m
+20-05-02 18:51:05, INFO: [('num_workers', 1), ('scale', 3), ('seed', 123), ('test_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/test/BSDS100.h5'), ('weights_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/ESPCN+PerceptualLoss/x3/epoch_199.pth')]
+20-05-02 18:51:37, INFO: [('num_workers', 1), ('scale', 3), ('seed', 123), ('test_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/test/BSDS100.h5'), ('weights_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/ESPCN+PerceptualLoss/x3/epoch_199.pth')]
+20-05-02 18:52:09, INFO: [('num_workers', 1), ('scale', 3), ('seed', 123), ('test_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/test/BSDS100.h5'), ('weights_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/ESPCN+PerceptualLoss/x3/epoch_199.pth')]
+20-05-02 18:52:09, INFO: No.test images: 100
+20-05-02 18:52:12, INFO: [91meval psnr: 26.691364288330078 - eval ssim: 0.7427544150582058[0m
