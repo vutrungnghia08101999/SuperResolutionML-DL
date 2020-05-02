@@ -19,3 +19,9 @@ python test.py --weights-file "/media/vutrungnghia/New Volume/MachineLearningAnd
                --test-file "/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/test/BSDS100.h5" \
                --scale 3
 ```
+Inference
+===
+```bash
+python inference.py --weights-file '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/ESPCN+PerceptualLoss/x3/epoch_199.pth' \
+                    --image-folder 'data'
+```
