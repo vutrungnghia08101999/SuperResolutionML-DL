@@ -1,0 +1,136 @@
+20-05-06 01:45:58, INFO: 
+
+=========== DATA PROCESSING ============
+
+
+20-05-06 01:45:58, INFO: eval: False
+20-05-06 01:45:58, INFO: images_dir: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train/t91
+20-05-06 01:45:58, INFO: output_path: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train/t91_x2.h5
+20-05-06 01:45:58, INFO: patch_size: 17
+20-05-06 01:45:58, INFO: scale: 2
+20-05-06 01:45:58, INFO: stride: 13
+20-05-06 01:45:58, INFO: No.images: 91
+20-05-06 01:45:58, INFO: No.patches: 6669
+20-05-06 01:45:58, INFO: Completed
+
+
+20-05-06 01:46:15, INFO: 
+
+=========== DATA PROCESSING ============
+
+
+20-05-06 01:46:15, INFO: eval: True
+20-05-06 01:46:15, INFO: images_dir: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14
+20-05-06 01:46:15, INFO: output_path: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14_x2.h5
+20-05-06 01:46:15, INFO: patch_size: 17
+20-05-06 01:46:15, INFO: scale: 2
+20-05-06 01:46:15, INFO: stride: 13
+20-05-06 01:46:15, INFO: No.images: 14
+20-05-06 01:46:15, INFO: Completed
+
+
+20-05-06 01:46:20, INFO: 
+
+=========== DATA PROCESSING ============
+
+
+20-05-06 01:46:20, INFO: eval: True
+20-05-06 01:46:20, INFO: images_dir: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/test/BSDS100
+20-05-06 01:46:20, INFO: output_path: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/test/BSDS100_x2.h5
+20-05-06 01:46:20, INFO: patch_size: 17
+20-05-06 01:46:20, INFO: scale: 2
+20-05-06 01:46:20, INFO: stride: 13
+20-05-06 01:46:20, INFO: No.images: 100
+20-05-06 01:46:21, INFO: Completed
+
+
+20-05-06 01:47:08, INFO: 
+
+=========== DATA PROCESSING ============
+
+
+20-05-06 01:47:08, INFO: eval: False
+20-05-06 01:47:08, INFO: images_dir: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train/t91
+20-05-06 01:47:08, INFO: output_path: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train/t91_x3.h5
+20-05-06 01:47:08, INFO: patch_size: 17
+20-05-06 01:47:08, INFO: scale: 3
+20-05-06 01:47:08, INFO: stride: 13
+20-05-06 01:47:08, INFO: No.images: 91
+20-05-06 01:47:08, INFO: No.patches: 2701
+20-05-06 01:47:08, INFO: Completed
+
+
+20-05-06 01:47:11, INFO: 
+
+=========== DATA PROCESSING ============
+
+
+20-05-06 01:47:11, INFO: eval: False
+20-05-06 01:47:11, INFO: images_dir: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train/t91
+20-05-06 01:47:11, INFO: output_path: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train/t91_x4.h5
+20-05-06 01:47:11, INFO: patch_size: 17
+20-05-06 01:47:11, INFO: scale: 4
+20-05-06 01:47:11, INFO: stride: 13
+20-05-06 01:47:11, INFO: No.images: 91
+20-05-06 01:47:11, INFO: No.patches: 1415
+20-05-06 01:47:11, INFO: Completed
+
+
+20-05-06 01:47:23, INFO: 
+
+=========== DATA PROCESSING ============
+
+
+20-05-06 01:47:23, INFO: eval: True
+20-05-06 01:47:23, INFO: images_dir: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/test/BSDS100
+20-05-06 01:47:23, INFO: output_path: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/test/BSDS100_x3.h5
+20-05-06 01:47:23, INFO: patch_size: 17
+20-05-06 01:47:23, INFO: scale: 3
+20-05-06 01:47:23, INFO: stride: 13
+20-05-06 01:47:23, INFO: No.images: 100
+20-05-06 01:47:24, INFO: Completed
+
+
+20-05-06 01:47:28, INFO: 
+
+=========== DATA PROCESSING ============
+
+
+20-05-06 01:47:28, INFO: eval: True
+20-05-06 01:47:28, INFO: images_dir: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/test/BSDS100
+20-05-06 01:47:28, INFO: output_path: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/test/BSDS100_x4.h5
+20-05-06 01:47:28, INFO: patch_size: 17
+20-05-06 01:47:28, INFO: scale: 4
+20-05-06 01:47:28, INFO: stride: 13
+20-05-06 01:47:28, INFO: No.images: 100
+20-05-06 01:47:30, INFO: Completed
+
+
+20-05-06 01:47:53, INFO: 
+
+=========== DATA PROCESSING ============
+
+
+20-05-06 01:47:53, INFO: eval: True
+20-05-06 01:47:53, INFO: images_dir: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14
+20-05-06 01:47:53, INFO: output_path: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14_x3.h5
+20-05-06 01:47:53, INFO: patch_size: 17
+20-05-06 01:47:53, INFO: scale: 3
+20-05-06 01:47:53, INFO: stride: 13
+20-05-06 01:47:53, INFO: No.images: 14
+20-05-06 01:47:53, INFO: Completed
+
+
+20-05-06 01:47:55, INFO: 
+
+=========== DATA PROCESSING ============
+
+
+20-05-06 01:47:55, INFO: eval: True
+20-05-06 01:47:55, INFO: images_dir: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14
+20-05-06 01:47:55, INFO: output_path: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14_x4.h5
+20-05-06 01:47:55, INFO: patch_size: 17
+20-05-06 01:47:55, INFO: scale: 4
+20-05-06 01:47:55, INFO: stride: 13
+20-05-06 01:47:55, INFO: No.images: 14
+20-05-06 01:47:55, INFO: Completed
