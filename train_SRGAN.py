@@ -74,7 +74,6 @@ def train(train_dataset,
         sr_probs_target = torch.rand(sr.shape[0], 1)*0.3 + 1e-4
         hr_probs_target = torch.rand(sr.shape[0], 1)*0.3 + 0.7 - 1e-4
         
-        
         discriminator_loss = adversarial_loss(discriminator(sr), sr_probs_target) + adversarial_loss(discriminator(hr), hr_probs_target)
         epoch_D_losses.update(discriminator_loss.item(), lr.shape[0])
 
@@ -99,8 +98,8 @@ def train(train_dataset,
         optim_generator.step()
 
     logging.info(f'discriminator_loss: {epoch_D_losses.avg} - generator_loss: {epoch_G_losses.avg}')
-    logging.info(f'Average sr: {sr_probs.mean().item()}')
-    logging.info(f'Average hr: {hr_probs.mean().item()}')
+    # logging.info(f'Average sr: {sr_probs.mean().item()}')
+    # logging.info(f'Average hr: {hr_probs.mean().item()}')
 
     torch.save({'state_dict': discriminator.state_dict()}, os.path.join(OUTPUT, f'epoch_D_{epoch}.pth'))
     torch.save({'state_dict': generator.state_dict()}, os.path.join(OUTPUT, f'epoch_G_{epoch}.pth'))
