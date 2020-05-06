@@ -68,15 +68,13 @@ def train(train_dataset,
         lr = lr.to(device)
         hr = hr.to(device)
 
+        # train discrimintor
         sr = generator(lr)  # batch_size x 1 x 34 x 34
-        
-        # sr_probs =   # batch_size x 1
-        # hr_probs = discriminator(hr)  # batch_size x 1
 
         sr_probs_target = torch.rand(sr.shape[0], 1)*0.3 + 1e-4
         hr_probs_target = torch.rand(sr.shape[0], 1)*0.3 + 0.7 - 1e-4
         
-        # train discrimintor
+        
         discriminator_loss = adversarial_loss(discriminator(sr), sr_probs_target) + adversarial_loss(discriminator(hr), hr_probs_target)
         epoch_D_losses.update(discriminator_loss.item(), lr.shape[0])
 
@@ -85,6 +83,8 @@ def train(train_dataset,
         optim_discriminator.step()
 
         # train generator
+        sr = generator(lr)
+
         sr_features = get_features(vgg=vgg19,imgs=sr, vgg_depth=11)
         hr_features = get_features(vgg=vgg19,imgs=hr, vgg_depth=11)
         l1 = content_loss(sr, hr) + 0.006 * content_loss(sr_features, hr_features)
