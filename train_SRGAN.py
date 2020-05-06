@@ -79,11 +79,11 @@ def train(train_dataset,
         epoch_D_losses.update(discriminator_loss.item(), lr.shape[0])
 
         optim_discriminator.zero_grad()
-        discriminator_loss.backward(retain_graph=True)
+        discriminator_loss.backward()
         optim_discriminator.step()
 
         # train generator
-        sr = generator(lr)
+        sr = generator(lr)  # batch_size x 1 x 34 x 34
 
         sr_features = get_features(vgg=vgg19,imgs=sr, vgg_depth=11)
         hr_features = get_features(vgg=vgg19,imgs=hr, vgg_depth=11)
