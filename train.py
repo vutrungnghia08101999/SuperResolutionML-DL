@@ -6,7 +6,7 @@ import pandas as pd
 import torch.optim as optim
 import torch.utils.data
 import torchvision.utils as utils
-from torch.autograd import Variable
+# from torch.autograd import Variable
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
@@ -66,10 +66,10 @@ for epoch in range(1, NUM_EPOCHS + 1):
         ############################
         # (1) Update D network: maximize D(x)-1-D(G(z))
         ###########################
-        real_img = Variable(target)
+        real_img = target
         if torch.cuda.is_available():
             real_img = real_img.cuda()
-        z = Variable(data)
+        z = data
         if torch.cuda.is_available():
             z = z.cuda()
         fake_img = netG(z)
@@ -78,19 +78,18 @@ for epoch in range(1, NUM_EPOCHS + 1):
         real_out = netD(real_img).mean()
         fake_out = netD(fake_img).mean()
         d_loss = 1 - real_out + fake_out
-        d_loss.backward(retain_graph=True)
+        d_loss.backward()
         optimizerD.step()
 
         ############################
         # (2) Update G network: minimize 1-D(G(z)) + Perception Loss + Image Loss + TV Loss
         ###########################
         netG.zero_grad()
-        g_loss = generator_criterion(fake_out, fake_img, real_img)
-        g_loss.backward()
         
         fake_img = netG(z)
         fake_out = netD(fake_img).mean()
-        
+        g_loss = generator_criterion(fake_out, fake_img, real_img)
+        g_loss.backward()        
         
         optimizerG.step()
 
