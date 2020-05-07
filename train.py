@@ -1,169 +1,176 @@
 import argparse
-import logging
-import copy
 import os
+from math import log10
 
-import torch
-from torch import nn
+import pandas as pd
 import torch.optim as optim
-import torch.backends.cudnn as cudnn
-from torch.utils.data.dataloader import DataLoader
+import torch.utils.data
+import torchvision.utils as utils
+from torch.autograd import Variable
+from torch.utils.data import DataLoader
 from tqdm import tqdm
-import torchvision
 
-from models import SRCNN, ESPCN, Generator
-from datasets import TrainDataset, EvalDataset, SRCNNTrainDataset, SRCNNEvalDataset
-from utils import AverageMeter, calc_psnr, calc_ssim
-from losses import MSELoss, perceptual_loss
+import pytorch_ssim
+from data_utils import TrainDatasetFromFolder, ValDatasetFromFolder, display_transform
+from loss import GeneratorLoss
+from model import Generator, Discriminator
 
-logging.basicConfig(filename='logs.txt',
-                    filemode='a',
-                    format='%(asctime)s, %(levelname)s: %(message)s',
-                    datefmt='%y-%m-%d %H:%M:%S',
-                    level=logging.INFO)
-console = logging.StreamHandler()
-console.setLevel(logging.INFO)
-logging.getLogger().addHandler(console)
+parser = argparse.ArgumentParser(description='Train Super Resolution Models')
+parser.add_argument('--crop_size', default=88, type=int, help='training images crop size')
+parser.add_argument('--upscale_factor', default=4, type=int, choices=[2, 4, 8], help='super resolution upscale factor')
+parser.add_argument('--num_epochs', default=100, type=int, help='train epoch number')
+parser.add_argument('--train_folder', default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train-toy')
+parser.add_argument('--valid_folder', default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid-toy')
+parser.add_argument('--output', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/experiments/SRGAN')
+opt = parser.parse_args()
 
-logging.info('\n\n=========== TRAIN AND EVALUATE ============\n\n')
+CROP_SIZE = opt.crop_size
+UPSCALE_FACTOR = opt.upscale_factor
+NUM_EPOCHS = opt.num_epochs
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--model', type=str, required=True)
-parser.add_argument('--loss', type=str, required=True)
+os.makedirs(opt.output, exist_ok=True)
 
-parser.add_argument('--train-dir', type=str, required=True)
-parser.add_argument('--eval-dir', type=str, required=True)
-parser.add_argument('--outputs-dir', type=str, required=True)
-parser.add_argument('--scale', type=int, default=2)
-parser.add_argument('--lr', type=float, default=1e-3)
-parser.add_argument('--batch-size', type=int, default=16)
-parser.add_argument('--num-epochs', type=int, default=200)
-parser.add_argument('--num-workers', type=int, default=4)
-parser.add_argument('--seed', type=int, default=123)
-args = parser.parse_args()
-args.train_file = args.train_dir + f'_x{args.scale}.h5'
-args.eval_file = args.eval_dir + f'_x{args.scale}.h5'
+train_set = TrainDatasetFromFolder(opt.train_folder, crop_size=CROP_SIZE, upscale_factor=UPSCALE_FACTOR)
+val_set = ValDatasetFromFolder(opt.valid_folder, upscale_factor=UPSCALE_FACTOR)
+train_loader = DataLoader(dataset=train_set, num_workers=4, batch_size=64, shuffle=True)
+val_loader = DataLoader(dataset=val_set, num_workers=4, batch_size=1, shuffle=False)
 
-for k, v in args._get_kwargs():
-    logging.info(f'{k}: {v}')
+netG = Generator(UPSCALE_FACTOR)
+print('# generator parameters:', sum(param.numel() for param in netG.parameters()))
+netD = Discriminator()
+print('# discriminator parameters:', sum(param.numel() for param in netD.parameters()))
 
-# ************* Set up environment ***************
-device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-torch.manual_seed(args.seed)
-OUTPUT = os.path.join(args.outputs_dir, args.model + '_' + args.loss, f'x{args.scale}')
-# if os.path.exists(OUTPUT):
-#     raise RuntimeError(f'{OUTPUT} already exist!')
-os.makedirs(OUTPUT, exist_ok=True)
-logging.info(f'OUTPUT: {OUTPUT}')
-# ************* Choose dataset, model and loss function ************
-# choose dataset
-if args.model == 'SRCNN':
-    train_dataset = SRCNNTrainDataset(args.train_file, args.scale)
-    eval_dataset = SRCNNEvalDataset(args.eval_file, args.scale)
-else:
-    train_dataset = TrainDataset(args.train_file)
-    eval_dataset = EvalDataset(args.eval_file)
+generator_criterion = GeneratorLoss()
 
-# choose model and loss function
-if args.model == 'SRCNN' and args.loss == 'mse':
-    model = SRCNN(args.scale).to(device)
-    criterion = MSELoss
-elif args.model == 'ESPCN' and args.loss == 'mse':
-    model = ESPCN(args.scale).to(device)
-    criterion = MSELoss
-elif args.model == 'ESPCN' and args.loss == 'vgg16_8':
-    model = ESPCN(args.scale).to(device)
-    criterion = perceptual_loss
-    vgg16 = torchvision.models.vgg16(pretrained=True)
-    for i in range(len(vgg16.features)):
-        # print(len(vgg16.features))
-        vgg16.features[i].requires_grad_(False)
-    vgg16 = vgg16.to(device=device)
-elif args.model == 'SRResNet' and args.loss == 'mse':
-    model = Generator(args.scale).to(device)
-    criterion = MSELoss
-else:
-    raise RuntimeError(f'{args.model} and {args.loss} are invalid')
+if torch.cuda.is_available():
+    netG.cuda()
+    netD.cuda()
+    generator_criterion.cuda()
 
-# ************ create optimizer and dataloader *************
-optimizer = optim.Adam(model.parameters(),
-                       lr=args.lr,
-                       betas=(0.99, 0.999))
+optimizerG = optim.Adam(netG.parameters())
+optimizerD = optim.Adam(netD.parameters())
 
-logging.info(f'No.train patches: {len(train_dataset)}')
-train_dataloader = DataLoader(dataset=train_dataset,
-                                batch_size=args.batch_size,
-                                shuffle=True,
-                                num_workers=args.num_workers,
-                                pin_memory=True)
-logging.info(f'No.eval images: {len(eval_dataset)}')
-eval_dataloader = DataLoader(dataset=eval_dataset, batch_size=1)
+results = {'d_loss': [], 'g_loss': [], 'd_score': [], 'g_score': [], 'psnr': [], 'ssim': []}
 
-# *************** train and evaluate ******************
-def train(train_dataset, train_dataloader, model, loss_type: str) -> None:
-    model.train()
-    epoch_losses = AverageMeter()
-    with tqdm(total=(len(train_dataset) - len(train_dataset) % args.batch_size), ncols=80) as t:
-        t.set_description('epoch: {}/{}'.format(epoch, args.num_epochs - 1))
+for epoch in range(1, NUM_EPOCHS + 1):
+    train_bar = tqdm(train_loader)
+    running_results = {'batch_sizes': 0, 'd_loss': 0, 'g_loss': 0, 'd_score': 0, 'g_score': 0}
 
-        for data in train_dataloader:
-            inputs, labels = data  # batch_size x 1 x 51 x 51 and batch_size x 1 x 51 x 51, in range (0, 1)
+    netG.train()
+    netD.train()
+    for data, target in train_bar:
+        g_update_first = True
+        batch_size = data.size(0)
+        running_results['batch_sizes'] += batch_size
 
-            inputs = inputs.to(device)
-            labels = labels.to(device)
+        ############################
+        # (1) Update D network: maximize D(x)-1-D(G(z))
+        ###########################
+        real_img = Variable(target)
+        if torch.cuda.is_available():
+            real_img = real_img.cuda()
+        z = Variable(data)
+        if torch.cuda.is_available():
+            z = z.cuda()
+        fake_img = netG(z)
 
-            preds = model(inputs)
+        netD.zero_grad()
+        real_out = netD(real_img).mean()
+        fake_out = netD(fake_img).mean()
+        d_loss = 1 - real_out + fake_out
+        d_loss.backward(retain_graph=True)
+        optimizerD.step()
 
-            # print(preds.shape, labels.shape)
-            if loss_type == 'mse':
-                loss = criterion(preds, labels)
-            elif loss_type == 'vgg16_8':
-                # print(vgg16)
-                loss = criterion(vgg=vgg16, preds=preds, labels=labels)
-            else:
-                raise RuntimeError(f'{loss_type} is invalid')
-            epoch_losses.update(loss.item(), len(inputs))
+        ############################
+        # (2) Update G network: minimize 1-D(G(z)) + Perception Loss + Image Loss + TV Loss
+        ###########################
+        netG.zero_grad()
+        g_loss = generator_criterion(fake_out, fake_img, real_img)
+        g_loss.backward()
+        
+        fake_img = netG(z)
+        fake_out = netD(fake_img).mean()
+        
+        
+        optimizerG.step()
 
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
+        # loss for current batch before optimization 
+        running_results['g_loss'] += g_loss.item() * batch_size
+        running_results['d_loss'] += d_loss.item() * batch_size
+        running_results['d_score'] += real_out.item() * batch_size
+        running_results['g_score'] += fake_out.item() * batch_size
 
-            t.set_postfix(loss='{:.6f}'.format(epoch_losses.avg))
-            t.update(len(inputs))
+        train_bar.set_description(desc='[%d/%d] Loss_D: %.4f Loss_G: %.4f D(x): %.4f D(G(z)): %.4f' % (
+            epoch, NUM_EPOCHS, running_results['d_loss'] / running_results['batch_sizes'],
+            running_results['g_loss'] / running_results['batch_sizes'],
+            running_results['d_score'] / running_results['batch_sizes'],
+            running_results['g_score'] / running_results['batch_sizes']))
 
-    torch.save({'state_dict': model.state_dict()}, os.path.join(OUTPUT, f'epoch_{epoch}.pth'))
+    netG.eval()
+    # save images
+    out_imgs_path = os.path.join(opt.output, f'training_results/SRF_{UPSCALE_FACTOR}')
+    if not os.path.exists(out_imgs_path):
+        os.makedirs(out_imgs_path)
+    
     with torch.no_grad():
-        logging.info(f'Loss: {epoch_losses.avg}')
+        val_bar = tqdm(val_loader)
+        valing_results = {'mse': 0, 'ssims': 0, 'psnr': 0, 'ssim': 0, 'batch_sizes': 0}
+        val_images = []
+        for val_lr, val_hr_restore, val_hr in val_bar:
+            batch_size = val_lr.size(0)
+            valing_results['batch_sizes'] += batch_size
+            lr = val_lr
+            hr = val_hr
+            if torch.cuda.is_available():
+                lr = lr.cuda()
+                hr = hr.cuda()
+            sr = netG(lr)
+    
+            batch_mse = ((sr - hr) ** 2).data.mean()
+            valing_results['mse'] += batch_mse * batch_size
+            batch_ssim = pytorch_ssim.ssim(sr, hr).item()
+            valing_results['ssims'] += batch_ssim * batch_size
+            valing_results['psnr'] = 10 * log10(1 / (valing_results['mse'] / valing_results['batch_sizes']))
+            valing_results['ssim'] = valing_results['ssims'] / valing_results['batch_sizes']
+            val_bar.set_description(
+                desc='[converting LR images to SR images] PSNR: %.4f dB SSIM: %.4f' % (
+                    valing_results['psnr'], valing_results['ssim']))
+    
+            val_images.extend(
+                [display_transform()(val_hr_restore.squeeze(0)), display_transform()(hr.data.cpu().squeeze(0)),
+                    display_transform()(sr.data.cpu().squeeze(0))])
+        val_images = torch.stack(val_images)
+        val_images = torch.chunk(val_images, val_images.size(0) // 15)
+        val_save_bar = tqdm(val_images, desc='[saving training results]')
+        index = 1
+        for image in val_save_bar:
+            image = utils.make_grid(image, nrow=3, padding=5)
+            utils.save_image(image, os.path.join(out_imgs_path, f'epoch_{epoch}_index_{index}.png'), padding=5)
+            index += 1
 
+    # save model parameters
+    models_path = os.path.join(opt.output, 'models')
+    os.makedirs(models_path, exist_ok=True)
+    torch.save(netG.state_dict(), os.path.join(models_path, f'netG_epoch_{UPSCALE_FACTOR}_{epoch}.pth'))
+    torch.save(netD.state_dict(), os.path.join(models_path, f'netD_epoch_{UPSCALE_FACTOR}_{epoch}.pth'))
+    # save loss\scores\psnr\ssim
+    results['d_loss'].append(running_results['d_loss'] / running_results['batch_sizes'])
+    results['g_loss'].append(running_results['g_loss'] / running_results['batch_sizes'])
+    results['d_score'].append(running_results['d_score'] / running_results['batch_sizes'])
+    results['g_score'].append(running_results['g_score'] / running_results['batch_sizes'])
+    results['psnr'].append(valing_results['psnr'])
+    results['ssim'].append(valing_results['ssim'])
 
-def eval(eval_dataloader, model) -> None:
-    model.eval()
-    epoch_psnr = AverageMeter()
-    epoch_ssim = AverageMeter()
-
-    for data in eval_dataloader:
-        inputs, labels = data
-
-        inputs = inputs.to(device)
-        labels = labels.to(device)
-
-        with torch.no_grad():
-            preds = model(inputs).clamp(0.0, 1.0)
-
-        epoch_psnr.update(calc_psnr(preds, labels), len(inputs))
-        epoch_ssim.update(calc_ssim(preds, labels), len(inputs))
-
-    logging.info(f'\33[91meval psnr: {epoch_psnr.avg} - eval ssim: {epoch_ssim.avg}\33[0m')
-
-
-for epoch in range(args.num_epochs):
-    for param_group in optimizer.param_groups:
-        param_group['lr'] = args.lr * (0.1 ** (epoch // int(args.num_epochs * 0.8)))
-
-    train(train_dataset=train_dataset,
-          train_dataloader=train_dataloader,
-          model=model,
-          loss_type=args.loss)
-    eval(eval_dataloader=eval_dataloader, model=model)    
-
-logging.info('Completed\n\n')
+    statistics_path = os.path.join(opt.output, 'statistics')
+    os.makedirs(statistics_path, exist_ok=True)
+    if epoch % 10 == 0 and epoch != 0:
+        data_frame = pd.DataFrame(
+            data={
+                'Loss_D': results['d_loss'],
+                'Loss_G': results['g_loss'],
+                'Score_D': results['d_score'],
+                'Score_G': results['g_score'],
+                'PSNR': results['psnr'],
+                'SSIM': results['ssim']},
+            index=range(1, epoch + 1))
+        data_frame.to_csv(os.path.join(statistics_path, f'srf_{UPSCALE_FACTOR}_train_results.csv'), index='Epoch')
