@@ -1,6 +1,7 @@
 import argparse
 import os
 from math import log10
+import time
 
 import pandas as pd
 import torch.optim as optim
@@ -11,7 +12,7 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 
 import pytorch_ssim
-from data_utils import TrainDatasetFromFolder, ValDatasetFromFolder, display_transform
+from data_utils import TrainDatasetFromFolder, ValDatasetFromFolder, display_transform, TrainDatasetFromCompressFile, ValDatasetFromCompressFile
 from loss import GeneratorLoss
 from model import Generator, Discriminator
 
@@ -19,8 +20,10 @@ parser = argparse.ArgumentParser(description='Train Super Resolution Models')
 parser.add_argument('--crop_size', default=88, type=int, help='training images crop size')
 parser.add_argument('--upscale_factor', default=4, type=int, choices=[2, 4, 8], help='super resolution upscale factor')
 parser.add_argument('--num_epochs', default=100, type=int, help='train epoch number')
-parser.add_argument('--train_folder', default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train-toy')
-parser.add_argument('--valid_folder', default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid-toy')
+# parser.add_argument('--train_folder', default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/VOC-2012-train')
+# parser.add_argument('--valid_folder', default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/VOC-2012-valid')
+parser.add_argument('--train_file', default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train-toy_4_88.pkl')
+parser.add_argument('--valid_file', default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid-toy_4.pkl')
 parser.add_argument('--output', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/experiments/SRGAN')
 opt = parser.parse_args()
 
@@ -30,8 +33,13 @@ NUM_EPOCHS = opt.num_epochs
 
 os.makedirs(opt.output, exist_ok=True)
 
-train_set = TrainDatasetFromFolder(opt.train_folder, crop_size=CROP_SIZE, upscale_factor=UPSCALE_FACTOR)
-val_set = ValDatasetFromFolder(opt.valid_folder, upscale_factor=UPSCALE_FACTOR)
+# train_set = TrainDatasetFromFolder(opt.train_folder, crop_size=CROP_SIZE, upscale_factor=UPSCALE_FACTOR)
+# val_set = ValDatasetFromFolder(opt.valid_folder, upscale_factor=UPSCALE_FACTOR)
+# train_set = TrainDatasetFromFolder(opt.train_folder, crop_size=CROP_SIZE, upscale_factor=UPSCALE_FACTOR)
+# val_set = ValDatasetFromFolder(opt.valid_folder, upscale_factor=UPSCALE_FACTOR)
+
+train_set = TrainDatasetFromCompressFile(opt.train_file)
+val_set = ValDatasetFromCompressFile(opt.valid_file)
 train_loader = DataLoader(dataset=train_set, num_workers=4, batch_size=64, shuffle=True)
 val_loader = DataLoader(dataset=val_set, num_workers=4, batch_size=1, shuffle=False)
 
@@ -58,7 +66,10 @@ for epoch in range(1, NUM_EPOCHS + 1):
 
     netG.train()
     netD.train()
+    s = time.time() * 1000
     for data, target in train_bar:
+        e = time.time() * 1000
+        print(f'Load data: {e - s}')
         g_update_first = True
         batch_size = data.size(0)
         running_results['batch_sizes'] += batch_size
@@ -85,15 +96,15 @@ for epoch in range(1, NUM_EPOCHS + 1):
         # (2) Update G network: minimize 1-D(G(z)) + Perception Loss + Image Loss + TV Loss
         ###########################
         netG.zero_grad()
+        fake_img = netG(z)
+        fake_out = netD(fake_img).mean()
         g_loss = generator_criterion(fake_out, fake_img, real_img)
         g_loss.backward()
         
-        fake_img = netG(z)
-        fake_out = netD(fake_img).mean()
-        
-        
         optimizerG.step()
 
+        s = time.time() * 1000
+        print(f'Training time: {s - e}')
         # loss for current batch before optimization 
         running_results['g_loss'] += g_loss.item() * batch_size
         running_results['d_loss'] += d_loss.item() * batch_size

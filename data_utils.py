@@ -2,6 +2,7 @@ import os
 from os import listdir
 from os.path import join
 from tqdm import tqdm
+import pickle
 
 from PIL import Image
 from torch.utils.data.dataset import Dataset
@@ -77,6 +78,33 @@ class ValDatasetFromFolder(Dataset):
     def __len__(self):
         return len(self.image_filenames)
 
+class TrainDatasetFromCompressFile(Dataset):
+    def __init__(self, compress_file_path: str):
+        super(TrainDatasetFromCompressFile, self).__init__()
+        with open(compress_file_path, 'rb') as f:
+            self.images_storage = pickle.load(f)
+
+    def __getitem__(self, index):
+        lr_image, hr_image = self.images_storage[index]
+        return lr_image, hr_image
+
+    def __len__(self):
+        return len(self.images_storage)
+
+
+class ValDatasetFromCompressFile(Dataset):
+    def __init__(self, compress_file_path: str):
+        super(ValDatasetFromCompressFile, self).__init__()
+        with open(compress_file_path, 'rb') as f:
+            self.images_storage = pickle.load(f)
+
+    def __getitem__(self, index):
+        lr_image, hr_restore_img, hr_image = self.images_storage[index]
+        return lr_image, hr_restore_img, hr_image
+
+    def __len__(self):
+        return len(self.images_storage)
+
 
 class TestDatasetFromFolder(Dataset):
     def __init__(self, dataset_dir, upscale_factor):
@@ -98,6 +126,7 @@ class TestDatasetFromFolder(Dataset):
 
     def __len__(self):
         return len(self.lr_filenames)
+
 
 # generate test_dataset
 # PATH = '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/BSDS100/original'
