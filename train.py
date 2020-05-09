@@ -28,8 +28,10 @@ parser.add_argument('--kernel_size', type=int, default=3)
 parser.add_argument('--crop_size', type=int, default=88)
 parser.add_argument('--upscale_factor', type=int, default=4,  choices=[2, 4, 8])
 parser.add_argument('--num_epochs', type=int, default=50)
-parser.add_argument('--train_file', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning/train-toy.pkl')
-parser.add_argument('--valid_file', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning/valid-toy_4.pkl')
+# parser.add_argument('--train_file', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning/train-toy.pkl')
+# parser.add_argument('--valid_file', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning/valid-toy_4.pkl')
+parser.add_argument('--train_file', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning/VOC-2012-train.pkl')
+parser.add_argument('--valid_file', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning/VOC-2012-valid_4.pkl')
 parser.add_argument('--models_dir', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models')
 args = parser.parse_args()
 
@@ -54,7 +56,7 @@ optimizer = optim.Adam(model.parameters())
 
 for epoch in range(1, args.num_epochs + 1):
     model.train()
-    losses = AverageMeter()
+    train_losses = AverageMeter()
     for lrs, hrs in tqdm(train_loader):
         if torch.cuda.is_available():
             lrs, hrs = lrs.cuda(), hrs.cuda()
@@ -62,12 +64,12 @@ for epoch in range(1, args.num_epochs + 1):
         srs = model(lrs)
 
         loss = criterion(srs, hrs)
-        losses.update(loss.item(), lrs.shape[0])
+        train_losses.update(loss.item(), lrs.shape[0])
 
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
-    logging.info(f'EPOCH {epoch} - Loss: {losses.avg}')
+    logging.info(f'EPOCH {epoch} - Loss: {train_losses.avg}')
     x = datetime.datetime.now()
     time = x.strftime("%y-%m-%d_%H-%M-%S")
     model_checkpoint = os.path.join(args.models_dir, f'checkpoint_{time}_{epoch}.pth')
@@ -77,6 +79,7 @@ for epoch in range(1, args.num_epochs + 1):
     model.eval()
     psnrs = AverageMeter()
     ssims = AverageMeter()
+    valid_losses = AverageMeter()
     for lr, hr_bicubic, hr in tqdm(val_loader):
         assert lr.shape[0] == 1
         if torch.cuda.is_available():
@@ -85,7 +88,9 @@ for epoch in range(1, args.num_epochs + 1):
 
         with torch.no_grad():
             sr = model(lr)
-
+        
+        loss = criterion(sr, hr)
+        valid_losses.update(loss)
         sr_img = ToPILImage()(sr.cpu().squeeze())
         hr_img = ToPILImage()(hr.cpu().squeeze())
         psnr = calculate_psnr_y_channel(sr_img, hr_img)
@@ -93,5 +98,5 @@ for epoch in range(1, args.num_epochs + 1):
         
         psnrs.update(psnr)
         ssims.update(ssim)
-    logging.info(f'PSNR: {psnrs.avg} - SSIM: {ssims.avg}')
+    logging.info(f'Val_loss: {valid_losses.avg} - PSNR: {psnrs.avg} - SSIM: {ssims.avg}')
 logging.info('Completed\n\n')

@@ -8,6 +8,14 @@ class ESPCN(nn.Module):
         self.first_part = nn.Sequential(
             nn.Conv2d(num_channels, 64, kernel_size=kernel_size, padding=kernel_size//2),
             nn.Tanh(),
+            # nn.Conv2d(64, 64, kernel_size=kernel_size, padding=kernel_size//2),
+            # nn.Tanh(),
+            # nn.Conv2d(64, 64, kernel_size=kernel_size, padding=kernel_size//2),
+            # nn.Tanh(),
+            # nn.Conv2d(64, 64, kernel_size=kernel_size, padding=kernel_size//2),
+            # nn.Tanh(),
+            # nn.Conv2d(64, 64, kernel_size=kernel_size, padding=kernel_size//2),
+            # nn.Tanh(),
             nn.Conv2d(64, 32, kernel_size=kernel_size, padding=kernel_size//2),
             nn.Tanh(),
         )
