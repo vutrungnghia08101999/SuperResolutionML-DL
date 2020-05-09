@@ -7,12 +7,10 @@ import pandas as pd
 import torch.optim as optim
 import torch.utils.data
 import torchvision.utils as utils
-from torch.autograd import Variable
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-import pytorch_ssim
-from data_utils import TrainDatasetFromFolder, ValDatasetFromFolder, display_transform, TrainDatasetFromCompressFile, ValDatasetFromCompressFile
+from data_utils import display_transform, TrainDatasetFromCompressFile, ValDatasetFromCompressFile
 from loss import GeneratorLoss
 from model import Generator, Discriminator
 
@@ -20,8 +18,6 @@ parser = argparse.ArgumentParser(description='Train Super Resolution Models')
 parser.add_argument('--crop_size', default=88, type=int, help='training images crop size')
 parser.add_argument('--upscale_factor', default=4, type=int, choices=[2, 4, 8], help='super resolution upscale factor')
 parser.add_argument('--num_epochs', default=100, type=int, help='train epoch number')
-# parser.add_argument('--train_folder', default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/VOC-2012-train')
-# parser.add_argument('--valid_folder', default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/VOC-2012-valid')
 parser.add_argument('--train_file', default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train-toy_4_88.pkl')
 parser.add_argument('--valid_file', default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid-toy_4.pkl')
 parser.add_argument('--output', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/experiments/SRGAN')
@@ -32,11 +28,6 @@ UPSCALE_FACTOR = opt.upscale_factor
 NUM_EPOCHS = opt.num_epochs
 
 os.makedirs(opt.output, exist_ok=True)
-
-# train_set = TrainDatasetFromFolder(opt.train_folder, crop_size=CROP_SIZE, upscale_factor=UPSCALE_FACTOR)
-# val_set = ValDatasetFromFolder(opt.valid_folder, upscale_factor=UPSCALE_FACTOR)
-# train_set = TrainDatasetFromFolder(opt.train_folder, crop_size=CROP_SIZE, upscale_factor=UPSCALE_FACTOR)
-# val_set = ValDatasetFromFolder(opt.valid_folder, upscale_factor=UPSCALE_FACTOR)
 
 train_set = TrainDatasetFromCompressFile(opt.train_file)
 val_set = ValDatasetFromCompressFile(opt.valid_file)
@@ -77,10 +68,10 @@ for epoch in range(1, NUM_EPOCHS + 1):
         ############################
         # (1) Update D network: maximize D(x)-1-D(G(z))
         ###########################
-        real_img = Variable(target)
+        real_img = target
         if torch.cuda.is_available():
             real_img = real_img.cuda()
-        z = Variable(data)
+        z = data
         if torch.cuda.is_available():
             z = z.cuda()
         fake_img = netG(z)

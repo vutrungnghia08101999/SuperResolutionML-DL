@@ -2,6 +2,7 @@ import os
 from os import listdir
 from os.path import join
 from tqdm import tqdm
+import math
 import pickle
 
 from PIL import Image
@@ -41,56 +42,22 @@ def display_transform():
     ])
 
 
-class TrainDatasetFromFolder(Dataset):
-    def __init__(self, dataset_dir, crop_size, upscale_factor):
-        super(TrainDatasetFromFolder, self).__init__()
-        self.image_filenames = [join(dataset_dir, x) for x in listdir(dataset_dir) if is_image_file(x)]
+class TrainDatasetFromCompressFile(Dataset):
+    def __init__(self, compress_file_path, crop_size, upscale_factor):
+        super(TrainDatasetFromCompressFile, self).__init__()
+        with open(compress_file_path, 'rb') as f:
+            self.images_storage = pickle.load(f)
         crop_size = calculate_valid_crop_size(crop_size, upscale_factor)
         self.hr_transform = train_hr_transform(crop_size)
         self.lr_transform = train_lr_transform(crop_size, upscale_factor)
 
     def __getitem__(self, index):
-        hr_image = self.hr_transform(Image.open(self.image_filenames[index]))
+        hr_image = self.hr_transform(Image.fromarray(self.images_storage[index]))
         lr_image = self.lr_transform(hr_image)
         return lr_image, hr_image
 
     def __len__(self):
-        return len(self.image_filenames)
-
-
-class ValDatasetFromFolder(Dataset):
-    def __init__(self, dataset_dir, upscale_factor):
-        super(ValDatasetFromFolder, self).__init__()
-        self.upscale_factor = upscale_factor
-        self.image_filenames = [join(dataset_dir, x) for x in listdir(dataset_dir) if is_image_file(x)]
-
-    def __getitem__(self, index):
-        hr_image = Image.open(self.image_filenames[index])
-        w, h = hr_image.size
-        crop_size = calculate_valid_crop_size(min(w, h), self.upscale_factor)
-        lr_scale = Resize(crop_size // self.upscale_factor, interpolation=Image.BICUBIC)
-        hr_scale = Resize(crop_size, interpolation=Image.BICUBIC)
-        hr_image = CenterCrop(crop_size)(hr_image)
-        lr_image = lr_scale(hr_image)
-        hr_restore_img = hr_scale(lr_image)
-        return ToTensor()(lr_image), ToTensor()(hr_restore_img), ToTensor()(hr_image)
-
-    def __len__(self):
-        return len(self.image_filenames)
-
-class TrainDatasetFromCompressFile(Dataset):
-    def __init__(self, compress_file_path: str):
-        super(TrainDatasetFromCompressFile, self).__init__()
-        with open(compress_file_path, 'rb') as f:
-            self.images_storage = pickle.load(f)
-
-    def __getitem__(self, index):
-        lr_image, hr_image = self.images_storage[index]
-        return lr_image, hr_image
-
-    def __len__(self):
         return len(self.images_storage)
-
 
 class ValDatasetFromCompressFile(Dataset):
     def __init__(self, compress_file_path: str):
@@ -126,25 +93,3 @@ class TestDatasetFromFolder(Dataset):
 
     def __len__(self):
         return len(self.lr_filenames)
-
-
-# generate test_dataset
-# PATH = '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/BSDS100/original'
-# files = os.listdir(PATH)
-# for upscale_factor in [2, 4, 8]:
-#     lr_folder = os.path.join(PATH, f'SRF_{upscale_factor}', 'data')
-#     hr_folder = os.path.join(PATH, f'SRF_{upscale_factor}', 'target')
-#     os.makedirs(lr_folder, exist_ok=False)
-#     os.makedirs(hr_folder, exist_ok=False)
-
-#     for filename in tqdm(files):
-#         hr_img = Image.open(os.path.join(PATH, filename))
-#         w, h = hr_img.size
-#         hr_image = CenterCrop(crop_size)(hr_img)
-#         crop_size = calculate_valid_crop_size(min(w, h), upscale_factor)
-
-#         lr_scale = Resize(crop_size // upscale_factor, interpolation=Image.BICUBIC)
-#         lr_image = lr_scale(hr_image)
-
-#         lr_image.save(os.path.join(lr_folder, filename))
-#         hr_image.save(os.path.join(hr_folder, filename))
