@@ -1,26 +1,31 @@
-Train and Evaluate
-===
-```bash
-python train.py --train-file "/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train/t91.h5" \
-                --eval-file "/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14.h5" \
-                --outputs-dir "/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/ESPCN" \
-                --scale 3 \
-                --lr 1e-3 \
-                --batch-size 16 \
-                --num-epochs 200 \
-                --num-workers 8 \
-                --seed 123
+# SRGAN
+### Train
 ```
-Test
-===
-```bash
-python test.py --weights-file "/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/ESPCN/x3/epoch_199.pth" \
-               --test-file "/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/test/BSDS100.h5" \
-               --scale 3
+python train.py
+
+optional arguments:
+--crop_size                   training images crop size [default value is 88]
+--upscale_factor              super resolution upscale factor [default value is 4](choices:[2, 4, 8])
+--num_epochs                  train epoch number [default value is 100]
 ```
-Inference
-===
-```bash
-python inference.py --weights-file '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/ESPCN/x3/epoch_199.pth' \
-                    --image-folder 'data'
+
+### Test Benchmark Datasets
+```
+python test_benchmark.py
+
+optional arguments:
+--upscale_factor              super resolution upscale factor [default value is 4]
+--model_name                  generator model epoch name [default value is netG_epoch_4_100.pth]
+```
+The output super resolution images are on `benchmark_results` directory.
+
+### Test Single Image
+```
+python inference.py
+
+optional arguments:
+--upscale_factor              super resolution upscale factor [default value is 4]
+--test_mode                   using GPU or CPU [default value is 'GPU'](choices:['GPU', 'CPU'])
+--image_name                  test low resolution image name
+--model_name                  generator model epoch name [default value is netG_epoch_4_100.pth]
 ```

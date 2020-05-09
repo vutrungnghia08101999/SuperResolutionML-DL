@@ -1,18 +1,22 @@
 import argparse
 import logging
-import copy
 import os
+from math import log10
+import time
+import datetime
 
-import torch
-from torch import nn
+import pandas as pd
 import torch.optim as optim
-import torch.backends.cudnn as cudnn
-from torch.utils.data.dataloader import DataLoader
+import torch.utils.data
+import torchvision.utils as utils
+from torch.utils.data import DataLoader
 from tqdm import tqdm
+from torchvision.transforms import ToPILImage
 
-from models import ESPCN
-from datasets import TrainDataset, EvalDataset
-from utils import AverageMeter, calc_psnr, calc_ssim
+from dataset import display_transform, TrainDatasetFromCompressFile, ValDatasetFromCompressFile
+from loss import GeneratorLoss
+from model import ESPCN
+from utils import AverageMeter, calculate_psnr, calculate_ssim_y_channel
 
 logging.basicConfig(filename='logs.txt',
                     filemode='a',
@@ -24,91 +28,74 @@ console.setLevel(logging.INFO)
 logging.getLogger().addHandler(console)
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--train-file', type=str, required=True)
-parser.add_argument('--eval-file', type=str, required=True)
-parser.add_argument('--outputs-dir', type=str, required=True)
-parser.add_argument('--weights-file', type=str)
-parser.add_argument('--scale', type=int, default=3)
-parser.add_argument('--lr', type=float, default=1e-3)
-parser.add_argument('--batch-size', type=int, default=16)
-parser.add_argument('--num-epochs', type=int, default=200)
-parser.add_argument('--num-workers', type=int, default=8)
-parser.add_argument('--seed', type=int, default=123)
+parser.add_argument('--kernel_size', type=int, default=3)
+parser.add_argument('--crop_size', type=int, default=88)
+parser.add_argument('--upscale_factor', type=int, default=4,  choices=[2, 4, 8])
+parser.add_argument('--num_epochs', type=int, default=50)
+parser.add_argument('--train_file', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning/train-toy.pkl')
+parser.add_argument('--valid_file', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning/valid-toy_4.pkl')
+parser.add_argument('--models_dir', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models')
 args = parser.parse_args()
 
-args.outputs_dir = os.path.join(args.outputs_dir, 'x{}'.format(args.scale))
-
+logging.info('\n\n================ ESPCN - TRAINING =================\n\n')
 logging.info(args._get_kwargs())
 
-if not os.path.exists(args.outputs_dir):
-    os.makedirs(args.outputs_dir)
+train_set = TrainDatasetFromCompressFile(args.train_file, args.crop_size, args.upscale_factor)
+val_set = ValDatasetFromCompressFile(args.valid_file)
+train_loader = DataLoader(dataset=train_set, num_workers=4, batch_size=64, shuffle=True)
+val_loader = DataLoader(dataset=val_set, num_workers=4, batch_size=1, shuffle=False)
 
-cudnn.benchmark = True
-device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+model = ESPCN(kernel_size=args.kernel_size)
+logging.info(f'No.parameters: {sum(param.numel() for param in model.parameters())}')
+logging.info(model)
 
-torch.manual_seed(args.seed)
+criterion = torch.nn.MSELoss()
 
-model = ESPCN(scale_factor=args.scale).to(device)
-criterion = nn.MSELoss()
-optimizer = optim.Adam(model.parameters(), lr=args.lr)
+if torch.cuda.is_available():
+    model.cuda()
 
-train_dataset = TrainDataset(args.train_file)
-logging.info(f'No.train patches: {len(train_dataset)}')
-train_dataloader = DataLoader(dataset=train_dataset,
-                                batch_size=args.batch_size,
-                                shuffle=True,
-                                num_workers=args.num_workers,
-                                pin_memory=True)
+optimizer = optim.Adam(model.parameters())
 
-eval_dataset = EvalDataset(args.eval_file)
-logging.info(f'No.valid images: {len(eval_dataset)}')
-eval_dataloader = DataLoader(dataset=eval_dataset, batch_size=1)
-
-for epoch in range(args.num_epochs):
-    for param_group in optimizer.param_groups:
-        param_group['lr'] = args.lr * (0.1 ** (epoch // int(args.num_epochs * 0.8)))
-
+for epoch in range(1, args.num_epochs + 1):
     model.train()
-    epoch_losses = AverageMeter()
+    losses = AverageMeter()
+    for lrs, hrs in tqdm(train_loader):
+        if torch.cuda.is_available():
+            lrs, hrs = lrs.cuda(), hrs.cuda()
 
-    with tqdm(total=(len(train_dataset) - len(train_dataset) % args.batch_size), ncols=80) as t:
-        t.set_description('epoch: {}/{}'.format(epoch, args.num_epochs - 1))
+        srs = model(lrs)
 
-        for data in train_dataloader:
-            inputs, labels = data
+        loss = criterion(srs, hrs)
+        losses.update(loss.item(), lrs.shape[0])
 
-            inputs = inputs.to(device)
-            labels = labels.to(device)
-
-            preds = model(inputs)
-
-            loss = criterion(preds, labels)
-
-            epoch_losses.update(loss.item(), len(inputs))
-
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
-
-            t.set_postfix(loss='{:.6f}'.format(epoch_losses.avg))
-            t.update(len(inputs))
-
-    torch.save({'state_dict': model.state_dict()}, os.path.join(args.outputs_dir, f'epoch_{epoch}.pth'))
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+    logging.info(f'EPOCH {epoch} - Loss: {losses.avg}')
+    x = datetime.datetime.now()
+    time = x.strftime("%y-%m-%d_%H-%M-%S")
+    model_checkpoint = os.path.join(args.models_dir, f'checkpoint_{time}_{epoch}.pth')
+    torch.save({'state_dict': model.state_dict()}, model_checkpoint)
+    logging.info(model_checkpoint)
 
     model.eval()
-    epoch_psnr = AverageMeter()
-    epoch_ssim = AverageMeter()
-
-    for data in eval_dataloader:
-        inputs, labels = data
-
-        inputs = inputs.to(device)
-        labels = labels.to(device)
+    psnrs = AverageMeter()
+    ssims = AverageMeter()
+    for lr, hr_bicubic, hr in tqdm(val_loader):
+        assert lr.shape[0] == 1
+        if torch.cuda.is_available():
+            lr = lrs.cuda()
+            hr = hrs.cuda()
 
         with torch.no_grad():
-            preds = model(inputs).clamp(0.0, 1.0)
+            sr = model(lr)
 
-        epoch_psnr.update(calc_psnr(preds, labels), len(inputs))
-        epoch_ssim.update(calc_ssim(preds, labels), len(inputs))
-
-    logging.info(f'\33[91meval psnr: {epoch_psnr.avg} - eval ssim: {epoch_ssim.avg}\33[0m')
+        sr_img = ToPILImage()(sr.cpu().squeeze())
+        hr_img = ToPILImage()(hr.cpu().squeeze())
+        psnr = calculate_psnr(sr_img, hr_img)
+        ssim = calculate_ssim_y_channel(sr_img, hr_img)
+        
+        psnrs.update(psnr)
+        ssims.update(ssim)
+    logging.info(f'PSNR: {psnrs.avg} - SSIM: {ssims.avg}')
+logging.info('Completed\n\n')

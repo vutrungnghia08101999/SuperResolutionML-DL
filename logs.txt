@@ -1,223 +1,196 @@
-20-05-01 17:16:05, INFO: [('batch_size', 16), ('eval_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14.h5'), ('lr', 0.001), ('num_epochs', 200), ('num_workers', 8), ('outputs_dir', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/ESPCN/x3'), ('scale', 3), ('seed', 123), ('train_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train/t91.h5'), ('weights_file', None)]
-20-05-01 17:16:05, INFO: No.train patches: 2701
-20-05-01 17:16:05, INFO: No.valid images: 14
-20-05-01 17:16:08, INFO: [91meval psnr: 24.94856834411621 - eval ssim: 0.6908550814255608[0m
-20-05-01 17:16:12, INFO: [91meval psnr: 25.81100082397461 - eval ssim: 0.751505977444929[0m
-20-05-01 17:16:16, INFO: [91meval psnr: 26.927244186401367 - eval ssim: 0.782929118400098[0m
-20-05-01 17:16:20, INFO: [91meval psnr: 27.247072219848633 - eval ssim: 0.803926066605137[0m
-20-05-01 17:16:26, INFO: [91meval psnr: 27.7482852935791 - eval ssim: 0.8158882904770132[0m
-20-05-01 17:16:31, INFO: [91meval psnr: 27.523462295532227 - eval ssim: 0.8229725135176226[0m
-20-05-01 17:16:36, INFO: [91meval psnr: 27.963653564453125 - eval ssim: 0.8287334218335322[0m
-20-05-01 17:16:41, INFO: [91meval psnr: 28.20780372619629 - eval ssim: 0.8325935967132503[0m
-20-05-01 17:16:46, INFO: [91meval psnr: 28.26085090637207 - eval ssim: 0.8354433445125293[0m
-20-05-01 17:16:52, INFO: [91meval psnr: 28.431230545043945 - eval ssim: 0.8360191497704677[0m
-20-05-01 17:16:57, INFO: [91meval psnr: 28.445600509643555 - eval ssim: 0.8367922616544741[0m
-20-05-01 17:17:02, INFO: [91meval psnr: 28.562362670898438 - eval ssim: 0.8375433144206658[0m
-20-05-01 17:17:07, INFO: [91meval psnr: 28.436689376831055 - eval ssim: 0.8379472354230645[0m
-20-05-01 17:17:13, INFO: [91meval psnr: 28.615873336791992 - eval ssim: 0.8378919314073857[0m
-20-05-01 17:17:20, INFO: [91meval psnr: 28.473703384399414 - eval ssim: 0.8377919078706574[0m
-20-05-01 17:17:28, INFO: [91meval psnr: 28.607563018798828 - eval ssim: 0.8384744678583107[0m
-20-05-01 17:17:36, INFO: [91meval psnr: 28.628278732299805 - eval ssim: 0.8378237360009146[0m
-20-05-01 17:17:42, INFO: [91meval psnr: 28.65262794494629 - eval ssim: 0.8378476423417837[0m
-20-05-01 17:17:48, INFO: [91meval psnr: 27.846237182617188 - eval ssim: 0.8384206092649376[0m
-20-05-01 17:17:53, INFO: [91meval psnr: 28.658184051513672 - eval ssim: 0.8384099304340005[0m
-20-05-01 17:17:58, INFO: [91meval psnr: 28.484251022338867 - eval ssim: 0.8385265893025741[0m
-20-05-01 17:18:04, INFO: [91meval psnr: 28.607492446899414 - eval ssim: 0.8375461494061441[0m
-20-05-01 17:18:11, INFO: [91meval psnr: 28.288558959960938 - eval ssim: 0.8372371578694697[0m
-20-05-01 17:18:17, INFO: [91meval psnr: 28.64568519592285 - eval ssim: 0.8387051880677451[0m
-20-05-01 17:18:24, INFO: [91meval psnr: 28.31045150756836 - eval ssim: 0.8388373122199938[0m
-20-05-01 17:18:31, INFO: [91meval psnr: 28.37330436706543 - eval ssim: 0.8379987253703154[0m
-20-05-01 17:18:37, INFO: [91meval psnr: 28.694246292114258 - eval ssim: 0.8385027867727217[0m
-20-05-01 17:18:44, INFO: [91meval psnr: 28.713138580322266 - eval ssim: 0.8381460621170037[0m
-20-05-01 17:18:50, INFO: [91meval psnr: 28.69601821899414 - eval ssim: 0.8386947159255361[0m
-20-05-01 17:18:55, INFO: [91meval psnr: 28.601293563842773 - eval ssim: 0.8370712205235948[0m
-20-05-01 17:19:00, INFO: [91meval psnr: 28.70694351196289 - eval ssim: 0.8389540426711933[0m
-20-05-01 17:19:05, INFO: [91meval psnr: 28.700740814208984 - eval ssim: 0.8377217416760512[0m
-20-05-01 17:19:10, INFO: [91meval psnr: 28.73663902282715 - eval ssim: 0.838811660664123[0m
-20-05-01 17:19:15, INFO: [91meval psnr: 28.729536056518555 - eval ssim: 0.8377479489178278[0m
-20-05-01 17:19:21, INFO: [91meval psnr: 28.75455665588379 - eval ssim: 0.8384406252211054[0m
-20-05-01 17:19:26, INFO: [91meval psnr: 28.744211196899414 - eval ssim: 0.8382844803994125[0m
-20-05-01 17:19:31, INFO: [91meval psnr: 28.03978157043457 - eval ssim: 0.8389105406726055[0m
-20-05-01 17:19:36, INFO: [91meval psnr: 28.781023025512695 - eval ssim: 0.8393907963032329[0m
-20-05-01 17:19:41, INFO: [91meval psnr: 28.780414581298828 - eval ssim: 0.8390466796357172[0m
-20-05-01 17:19:46, INFO: [91meval psnr: 28.72515869140625 - eval ssim: 0.8380758430756657[0m
-20-05-01 17:19:51, INFO: [91meval psnr: 28.798643112182617 - eval ssim: 0.8395198255358901[0m
-20-05-01 17:19:56, INFO: [91meval psnr: 28.72770118713379 - eval ssim: 0.8374187518860697[0m
-20-05-01 17:20:01, INFO: [91meval psnr: 28.734359741210938 - eval ssim: 0.8397217629307071[0m
-20-05-01 17:20:06, INFO: [91meval psnr: 28.78384780883789 - eval ssim: 0.8398400882022309[0m
-20-05-01 17:20:11, INFO: [91meval psnr: 28.81610107421875 - eval ssim: 0.839484845255218[0m
-20-05-01 17:20:16, INFO: [91meval psnr: 28.828229904174805 - eval ssim: 0.8396549016331224[0m
-20-05-01 17:20:21, INFO: [91meval psnr: 28.767810821533203 - eval ssim: 0.8400389663952932[0m
-20-05-01 17:20:26, INFO: [91meval psnr: 28.83702278137207 - eval ssim: 0.8399023797707729[0m
-20-05-01 17:20:31, INFO: [91meval psnr: 28.841217041015625 - eval ssim: 0.8399853763176843[0m
-20-05-01 17:20:36, INFO: [91meval psnr: 28.8315486907959 - eval ssim: 0.8400763434981057[0m
-20-05-01 17:20:41, INFO: [91meval psnr: 28.839353561401367 - eval ssim: 0.8397709306943988[0m
-20-05-01 17:20:46, INFO: [91meval psnr: 28.840829849243164 - eval ssim: 0.8396912383429622[0m
-20-05-01 17:20:51, INFO: [91meval psnr: 28.839481353759766 - eval ssim: 0.8385168805161083[0m
-20-05-01 17:20:57, INFO: [91meval psnr: 28.835283279418945 - eval ssim: 0.839412265189375[0m
-20-05-01 17:21:03, INFO: [91meval psnr: 28.561967849731445 - eval ssim: 0.8404805154211406[0m
-20-05-01 17:21:08, INFO: [91meval psnr: 28.83868980407715 - eval ssim: 0.838589992721721[0m
-20-05-01 17:21:13, INFO: [91meval psnr: 28.866016387939453 - eval ssim: 0.8404192226054142[0m
-20-05-01 17:21:18, INFO: [91meval psnr: 28.80501365661621 - eval ssim: 0.8401583822997264[0m
-20-05-01 17:21:23, INFO: [91meval psnr: 28.63471794128418 - eval ssim: 0.8401242860880692[0m
-20-05-01 17:21:28, INFO: [91meval psnr: 28.870914459228516 - eval ssim: 0.8405982033977157[0m
-20-05-01 17:21:33, INFO: [91meval psnr: 28.854673385620117 - eval ssim: 0.8395173936601724[0m
-20-05-01 17:21:38, INFO: [91meval psnr: 28.801908493041992 - eval ssim: 0.8407012032722517[0m
-20-05-01 17:21:43, INFO: [91meval psnr: 28.277490615844727 - eval ssim: 0.8391458640573705[0m
-20-05-01 17:21:47, INFO: [91meval psnr: 28.88944435119629 - eval ssim: 0.8406801762666839[0m
-20-05-01 17:21:52, INFO: [91meval psnr: 28.680599212646484 - eval ssim: 0.8403747382358678[0m
-20-05-01 17:21:57, INFO: [91meval psnr: 28.79068946838379 - eval ssim: 0.839660187917569[0m
-20-05-01 17:22:02, INFO: [91meval psnr: 28.860441207885742 - eval ssim: 0.8403402097695949[0m
-20-05-01 17:22:07, INFO: [91meval psnr: 28.887332916259766 - eval ssim: 0.8411635644379253[0m
-20-05-01 17:22:12, INFO: [91meval psnr: 28.88547706604004 - eval ssim: 0.8404226744103898[0m
-20-05-01 17:22:17, INFO: [91meval psnr: 28.859628677368164 - eval ssim: 0.8405805382521484[0m
-20-05-01 17:22:22, INFO: [91meval psnr: 28.885356903076172 - eval ssim: 0.8408742723778452[0m
-20-05-01 17:22:27, INFO: [91meval psnr: 28.865951538085938 - eval ssim: 0.8395500430351571[0m
-20-05-01 17:22:32, INFO: [91meval psnr: 28.823469161987305 - eval ssim: 0.8410774657705964[0m
-20-05-01 17:22:37, INFO: [91meval psnr: 28.916025161743164 - eval ssim: 0.8407330170185155[0m
-20-05-01 17:22:42, INFO: [91meval psnr: 28.448150634765625 - eval ssim: 0.8390170790235588[0m
-20-05-01 17:22:47, INFO: [91meval psnr: 28.698305130004883 - eval ssim: 0.840321257264416[0m
-20-05-01 17:22:54, INFO: [91meval psnr: 28.991872787475586 - eval ssim: 0.8406623293804492[0m
-20-05-01 17:23:02, INFO: [91meval psnr: 28.79762840270996 - eval ssim: 0.8410157569752108[0m
-20-05-01 17:23:09, INFO: [91meval psnr: 29.02004623413086 - eval ssim: 0.8423027559370623[0m
-20-05-01 17:23:16, INFO: [91meval psnr: 28.944181442260742 - eval ssim: 0.840512134838398[0m
-20-05-01 17:23:22, INFO: [91meval psnr: 29.03470802307129 - eval ssim: 0.8422428237655719[0m
-20-05-01 17:23:29, INFO: [91meval psnr: 28.903451919555664 - eval ssim: 0.8426890420127172[0m
-20-05-01 17:23:36, INFO: [91meval psnr: 28.68757438659668 - eval ssim: 0.841018386123367[0m
-20-05-01 17:23:42, INFO: [91meval psnr: 29.061494827270508 - eval ssim: 0.8427661706484516[0m
-20-05-01 17:23:48, INFO: [91meval psnr: 28.961139678955078 - eval ssim: 0.8398216814992906[0m
-20-05-01 17:23:55, INFO: [91meval psnr: 28.95846176147461 - eval ssim: 0.8426050229400545[0m
-20-05-01 17:24:01, INFO: [91meval psnr: 29.069534301757812 - eval ssim: 0.8434848257456603[0m
-20-05-01 17:24:07, INFO: [91meval psnr: 29.074647903442383 - eval ssim: 0.8423296094459946[0m
-20-05-01 17:24:14, INFO: [91meval psnr: 28.877460479736328 - eval ssim: 0.8426829455280526[0m
-20-05-01 17:24:20, INFO: [91meval psnr: 29.05960464477539 - eval ssim: 0.8435274063258558[0m
-20-05-01 17:24:27, INFO: [91meval psnr: 29.02126693725586 - eval ssim: 0.8430994960928804[0m
-20-05-01 17:24:34, INFO: [91meval psnr: 29.043514251708984 - eval ssim: 0.8423215989037162[0m
-20-05-01 17:24:40, INFO: [91meval psnr: 29.06633186340332 - eval ssim: 0.8417611849650274[0m
-20-05-01 17:24:46, INFO: [91meval psnr: 29.089773178100586 - eval ssim: 0.8435054866300769[0m
-20-05-01 17:24:52, INFO: [91meval psnr: 28.232900619506836 - eval ssim: 0.836395548529857[0m
-20-05-01 17:24:59, INFO: [91meval psnr: 28.903051376342773 - eval ssim: 0.8437150183522293[0m
-20-05-01 17:25:05, INFO: [91meval psnr: 28.961320877075195 - eval ssim: 0.8441112626498832[0m
-20-05-01 17:25:11, INFO: [91meval psnr: 29.03619956970215 - eval ssim: 0.8443640954211636[0m
-20-05-01 17:25:18, INFO: [91meval psnr: 29.060184478759766 - eval ssim: 0.8444431953314826[0m
-20-05-01 17:25:24, INFO: [91meval psnr: 29.099456787109375 - eval ssim: 0.844406492113815[0m
-20-05-01 17:25:30, INFO: [91meval psnr: 29.110300064086914 - eval ssim: 0.8445049151901615[0m
-20-05-01 17:25:37, INFO: [91meval psnr: 29.115041732788086 - eval ssim: 0.8445835134174224[0m
-20-05-01 17:25:43, INFO: [91meval psnr: 29.116405487060547 - eval ssim: 0.8440143948493797[0m
-20-05-01 17:25:49, INFO: [91meval psnr: 29.12910270690918 - eval ssim: 0.8444835539229201[0m
-20-05-01 17:25:56, INFO: [91meval psnr: 29.134735107421875 - eval ssim: 0.8446945873989421[0m
-20-05-01 17:26:02, INFO: [91meval psnr: 29.134384155273438 - eval ssim: 0.8447677283204206[0m
-20-05-01 17:26:09, INFO: [91meval psnr: 29.09979820251465 - eval ssim: 0.844256968732057[0m
-20-05-01 17:26:15, INFO: [91meval psnr: 29.145967483520508 - eval ssim: 0.844641942719643[0m
-20-05-01 17:26:22, INFO: [91meval psnr: 29.13167381286621 - eval ssim: 0.8443894885455843[0m
-20-05-01 17:26:28, INFO: [91meval psnr: 29.138195037841797 - eval ssim: 0.8444298055869754[0m
-20-05-01 17:26:34, INFO: [91meval psnr: 28.92851448059082 - eval ssim: 0.8442270676831513[0m
-20-05-01 17:26:42, INFO: [91meval psnr: 29.14338493347168 - eval ssim: 0.8446284144550834[0m
-20-05-01 17:26:50, INFO: [91meval psnr: 29.148714065551758 - eval ssim: 0.8439137181033903[0m
-20-05-01 17:26:57, INFO: [91meval psnr: 29.129257202148438 - eval ssim: 0.8448295176948806[0m
-20-05-01 17:27:03, INFO: [91meval psnr: 29.14889144897461 - eval ssim: 0.8441920719551664[0m
-20-05-01 17:27:10, INFO: [91meval psnr: 29.096158981323242 - eval ssim: 0.8444050729605209[0m
-20-05-01 17:27:17, INFO: [91meval psnr: 29.15555191040039 - eval ssim: 0.8446628508969273[0m
-20-05-01 17:27:24, INFO: [91meval psnr: 29.1528377532959 - eval ssim: 0.8445133679391832[0m
-20-05-01 17:27:32, INFO: [91meval psnr: 29.15993881225586 - eval ssim: 0.8443917515798809[0m
-20-05-01 17:27:39, INFO: [91meval psnr: 29.041933059692383 - eval ssim: 0.8452898171719702[0m
-20-05-01 17:27:46, INFO: [91meval psnr: 29.15658950805664 - eval ssim: 0.8446963935952895[0m
-20-05-01 17:27:52, INFO: [91meval psnr: 29.166555404663086 - eval ssim: 0.8444712701770963[0m
-20-05-01 17:27:59, INFO: [91meval psnr: 29.164905548095703 - eval ssim: 0.8442317566310028[0m
-20-05-01 17:28:04, INFO: [91meval psnr: 29.15596580505371 - eval ssim: 0.8443994178131462[0m
-20-05-01 17:28:09, INFO: [91meval psnr: 28.970632553100586 - eval ssim: 0.8437774132027874[0m
-20-05-01 17:28:14, INFO: [91meval psnr: 29.16693115234375 - eval ssim: 0.8431273137714669[0m
-20-05-01 17:28:20, INFO: [91meval psnr: 29.17143440246582 - eval ssim: 0.8445118500397752[0m
-20-05-01 17:28:25, INFO: [91meval psnr: 29.179439544677734 - eval ssim: 0.8453027509533972[0m
-20-05-01 17:28:30, INFO: [91meval psnr: 29.1658992767334 - eval ssim: 0.8448396125938737[0m
-20-05-01 17:28:36, INFO: [91meval psnr: 29.19614601135254 - eval ssim: 0.8454906656465272[0m
-20-05-01 17:28:41, INFO: [91meval psnr: 29.146207809448242 - eval ssim: 0.8433504847075873[0m
-20-05-01 17:28:46, INFO: [91meval psnr: 29.162927627563477 - eval ssim: 0.8441454957849548[0m
-20-05-01 17:28:51, INFO: [91meval psnr: 29.19449806213379 - eval ssim: 0.8453737929674437[0m
-20-05-01 17:28:56, INFO: [91meval psnr: 29.157398223876953 - eval ssim: 0.8457283050912371[0m
-20-05-01 17:29:02, INFO: [91meval psnr: 29.16366958618164 - eval ssim: 0.8455872740238046[0m
-20-05-01 17:29:07, INFO: [91meval psnr: 29.198579788208008 - eval ssim: 0.8454322224514431[0m
-20-05-01 17:29:13, INFO: [91meval psnr: 29.16520118713379 - eval ssim: 0.8454899555599308[0m
-20-05-01 17:29:18, INFO: [91meval psnr: 29.191104888916016 - eval ssim: 0.8457030218011278[0m
-20-05-01 17:29:23, INFO: [91meval psnr: 29.211591720581055 - eval ssim: 0.845392044760867[0m
-20-05-01 17:29:28, INFO: [91meval psnr: 29.109731674194336 - eval ssim: 0.8435079104117268[0m
-20-05-01 17:29:33, INFO: [91meval psnr: 29.14706039428711 - eval ssim: 0.8458128078715994[0m
-20-05-01 17:29:38, INFO: [91meval psnr: 29.16450309753418 - eval ssim: 0.8463119777676965[0m
-20-05-01 17:29:42, INFO: [91meval psnr: 29.246129989624023 - eval ssim: 0.8454072432642752[0m
-20-05-01 17:29:47, INFO: [91meval psnr: 29.162776947021484 - eval ssim: 0.8459796321222358[0m
-20-05-01 17:29:53, INFO: [91meval psnr: 29.200225830078125 - eval ssim: 0.8455618731187872[0m
-20-05-01 17:29:58, INFO: [91meval psnr: 29.183029174804688 - eval ssim: 0.8459931619016174[0m
-20-05-01 17:30:03, INFO: [91meval psnr: 29.03473472595215 - eval ssim: 0.8446674436837981[0m
-20-05-01 17:30:11, INFO: [91meval psnr: 29.24591064453125 - eval ssim: 0.8461945121002391[0m
-20-05-01 17:30:18, INFO: [91meval psnr: 29.23533821105957 - eval ssim: 0.8463707409646851[0m
-20-05-01 17:30:28, INFO: [91meval psnr: 29.23817253112793 - eval ssim: 0.8443272771512086[0m
-20-05-01 17:30:36, INFO: [91meval psnr: 29.1971492767334 - eval ssim: 0.8451674411536022[0m
-20-05-01 17:30:41, INFO: [91meval psnr: 29.247838973999023 - eval ssim: 0.8455008047465477[0m
-20-05-01 17:30:47, INFO: [91meval psnr: 29.251461029052734 - eval ssim: 0.8467609384843876[0m
-20-05-01 17:30:53, INFO: [91meval psnr: 29.239604949951172 - eval ssim: 0.8453658375702255[0m
-20-05-01 17:30:59, INFO: [91meval psnr: 29.263580322265625 - eval ssim: 0.8465149593679662[0m
-20-05-01 17:31:05, INFO: [91meval psnr: 29.18963623046875 - eval ssim: 0.8452657094143144[0m
-20-05-01 17:31:10, INFO: [91meval psnr: 29.056964874267578 - eval ssim: 0.8452975695297891[0m
-20-05-01 17:31:15, INFO: [91meval psnr: 29.256105422973633 - eval ssim: 0.8461402792364661[0m
-20-05-01 17:31:20, INFO: [91meval psnr: 29.095321655273438 - eval ssim: 0.8459983771342731[0m
-20-05-01 17:31:26, INFO: [91meval psnr: 29.216419219970703 - eval ssim: 0.8461697969344095[0m
-20-05-01 17:31:31, INFO: [91meval psnr: 29.312044143676758 - eval ssim: 0.8478527770758991[0m
-20-05-01 17:31:36, INFO: [91meval psnr: 29.315507888793945 - eval ssim: 0.8479685494585828[0m
-20-05-01 17:31:42, INFO: [91meval psnr: 29.313547134399414 - eval ssim: 0.8479605646810752[0m
-20-05-01 17:31:47, INFO: [91meval psnr: 29.31732177734375 - eval ssim: 0.8479983818997335[0m
-20-05-01 17:31:51, INFO: [91meval psnr: 29.312152862548828 - eval ssim: 0.8480628323847166[0m
-20-05-01 17:31:56, INFO: [91meval psnr: 29.30967140197754 - eval ssim: 0.8477954380177445[0m
-20-05-01 17:32:01, INFO: [91meval psnr: 29.307693481445312 - eval ssim: 0.8479253721762028[0m
-20-05-01 17:32:06, INFO: [91meval psnr: 29.3135929107666 - eval ssim: 0.8481002850426378[0m
-20-05-01 17:32:11, INFO: [91meval psnr: 29.29483985900879 - eval ssim: 0.8479556789383017[0m
-20-05-01 17:32:16, INFO: [91meval psnr: 29.324522018432617 - eval ssim: 0.8480946056081197[0m
-20-05-01 17:32:21, INFO: [91meval psnr: 29.31159782409668 - eval ssim: 0.8479416793718599[0m
-20-05-01 17:32:26, INFO: [91meval psnr: 29.30997085571289 - eval ssim: 0.8480122594995986[0m
-20-05-01 17:32:31, INFO: [91meval psnr: 29.31015968322754 - eval ssim: 0.847929142833214[0m
-20-05-01 17:32:36, INFO: [91meval psnr: 29.321548461914062 - eval ssim: 0.8478092947085611[0m
-20-05-01 17:32:41, INFO: [91meval psnr: 29.31386947631836 - eval ssim: 0.847718707063528[0m
-20-05-01 17:32:46, INFO: [91meval psnr: 29.3228702545166 - eval ssim: 0.8482522018839379[0m
-20-05-01 17:32:51, INFO: [91meval psnr: 29.303895950317383 - eval ssim: 0.8479383903619884[0m
-20-05-01 17:32:56, INFO: [91meval psnr: 29.31149673461914 - eval ssim: 0.8476596314534202[0m
-20-05-01 17:33:01, INFO: [91meval psnr: 29.322895050048828 - eval ssim: 0.8478628909981886[0m
-20-05-01 17:33:06, INFO: [91meval psnr: 29.312328338623047 - eval ssim: 0.8478931545955675[0m
-20-05-01 17:33:11, INFO: [91meval psnr: 29.31557273864746 - eval ssim: 0.8479522056926971[0m
-20-05-01 17:33:16, INFO: [91meval psnr: 29.315166473388672 - eval ssim: 0.8480501225132034[0m
-20-05-01 17:33:22, INFO: [91meval psnr: 29.322710037231445 - eval ssim: 0.8479080114446889[0m
-20-05-01 17:33:27, INFO: [91meval psnr: 29.324750900268555 - eval ssim: 0.8482671756938195[0m
-20-05-01 17:33:32, INFO: [91meval psnr: 29.31644630432129 - eval ssim: 0.8476763024134913[0m
-20-05-01 17:33:37, INFO: [91meval psnr: 29.31367301940918 - eval ssim: 0.8477811900611049[0m
-20-05-01 17:33:42, INFO: [91meval psnr: 29.316654205322266 - eval ssim: 0.8479966909989921[0m
-20-05-01 17:33:47, INFO: [91meval psnr: 29.293169021606445 - eval ssim: 0.8477961068201638[0m
-20-05-01 17:33:53, INFO: [91meval psnr: 29.32992172241211 - eval ssim: 0.8480747657939739[0m
-20-05-01 17:33:59, INFO: [91meval psnr: 29.320903778076172 - eval ssim: 0.8480919531340143[0m
-20-05-01 17:34:06, INFO: [91meval psnr: 29.316696166992188 - eval ssim: 0.8480546184333612[0m
-20-05-01 17:34:12, INFO: [91meval psnr: 29.325002670288086 - eval ssim: 0.8478991767609043[0m
-20-05-01 17:34:17, INFO: [91meval psnr: 29.321044921875 - eval ssim: 0.848093787569148[0m
-20-05-01 17:34:22, INFO: [91meval psnr: 29.320390701293945 - eval ssim: 0.8480805698579108[0m
-20-05-01 17:34:27, INFO: [91meval psnr: 29.303007125854492 - eval ssim: 0.8479416541119108[0m
-20-05-01 17:34:32, INFO: [91meval psnr: 29.32464027404785 - eval ssim: 0.8480667888878965[0m
-20-05-01 17:34:37, INFO: [91meval psnr: 29.318790435791016 - eval ssim: 0.8480694842919742[0m
-20-05-01 17:34:42, INFO: [91meval psnr: 29.328582763671875 - eval ssim: 0.8484435500017998[0m
-20-05-01 17:34:47, INFO: [91meval psnr: 29.30283546447754 - eval ssim: 0.8477971460193652[0m
-20-05-01 17:34:52, INFO: [91meval psnr: 29.307653427124023 - eval ssim: 0.847884268829765[0m
-20-05-01 17:35:06, INFO: [('num_workers', 1), ('scale', 3), ('seed', 123), ('test_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/test/BSDS100.h5'), ('weights_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/ESPCN/x3/epoch_199.pth')]
-20-05-01 17:35:06, INFO: No.test images: 100
-20-05-01 17:35:09, INFO: [91meval psnr: 28.61471939086914 - eval ssim: 0.8127366826268825[0m
-20-05-03 00:05:36, INFO: [('image_folder', 'data'), ('scale', 3), ('weights_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/ESPCN/x3/epoch_199.pth')]
-20-05-03 00:05:36, INFO: 101087.png
-20-05-03 00:05:37, INFO: pnsr: 29.351652145385742 - ssim: 0.864453891262986
-20-05-03 00:05:37, INFO: Save at: data/101087_x3.png
-20-05-03 00:05:37, INFO: 145086.png
-20-05-03 00:05:37, INFO: pnsr: 26.97007942199707 - ssim: 0.7844585584598944
-20-05-03 00:05:37, INFO: Save at: data/145086_x3.png
-20-05-03 00:05:37, INFO: 197017.png
-20-05-03 00:05:37, INFO: pnsr: 29.12240219116211 - ssim: 0.7812182634048978
-20-05-03 00:05:37, INFO: Save at: data/197017_x3.png
-20-05-03 00:05:37, INFO: 260058.png
-20-05-03 00:05:37, INFO: pnsr: 33.6343879699707 - ssim: 0.8536847689190517
-20-05-03 00:05:37, INFO: Save at: data/260058_x3.png
-20-05-03 00:05:37, INFO: 295087.png
-20-05-03 00:05:37, INFO: pnsr: 28.76772117614746 - ssim: 0.8023695413679817
-20-05-03 00:05:37, INFO: Save at: data/295087_x3.png
-20-05-03 00:05:37, INFO: Completed
+20-05-09 22:06:35, INFO: 
+
+================ ESPCN - TRAINING =================
+
+
+20-05-09 22:06:35, INFO: [('crop_size', 88), ('kernel_size', 3), ('models_dir', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models'), ('num_epochs', 50), ('train_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning/train-toy.pkl'), ('upscale_factor', 4), ('valid_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning/valid-toy_4.pkl')]
+20-05-09 22:06:36, INFO: No.parameters: 34128
+20-05-09 22:06:36, INFO: ESPCN(
+  (first_part): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): Tanh()
+    (2): Conv2d(64, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): Tanh()
+  )
+  (last_part): Sequential(
+    (0): Conv2d(32, 48, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): PixelShuffle(upscale_factor=2)
+    (2): PixelShuffle(upscale_factor=2)
+  )
+)
+20-05-09 22:06:36, INFO: EPOCH 1 - Loss: 0.27639129757881165
+20-05-09 22:06:36, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-06-36_1.pth
+20-05-09 22:06:39, INFO: PSNR: 6.508513803517635 - SSIM: 0.050974667444403154
+20-05-09 22:06:39, INFO: EPOCH 2 - Loss: 0.1997702568769455
+20-05-09 22:06:39, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-06-39_2.pth
+20-05-09 22:06:42, INFO: PSNR: 7.849958247191076 - SSIM: 0.07478782284180704
+20-05-09 22:06:42, INFO: EPOCH 3 - Loss: 0.1723722368478775
+20-05-09 22:06:42, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-06-42_3.pth
+20-05-09 22:06:45, INFO: PSNR: 9.185803632590268 - SSIM: 0.10112412876162633
+20-05-09 22:06:45, INFO: EPOCH 4 - Loss: 0.12007369846105576
+20-05-09 22:06:45, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-06-45_4.pth
+20-05-09 22:06:49, INFO: PSNR: 10.113893024280426 - SSIM: 0.14871572062314153
+20-05-09 22:06:49, INFO: EPOCH 5 - Loss: 0.08495526760816574
+20-05-09 22:06:49, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-06-49_5.pth
+20-05-09 22:06:53, INFO: PSNR: 10.323039471877083 - SSIM: 0.1739920854592503
+20-05-09 22:06:53, INFO: EPOCH 6 - Loss: 0.07374519854784012
+20-05-09 22:06:53, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-06-53_6.pth
+20-05-09 22:06:57, INFO: PSNR: 10.290602542816924 - SSIM: 0.21323243334137196
+20-05-09 22:06:57, INFO: EPOCH 7 - Loss: 0.06761956959962845
+20-05-09 22:06:57, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-06-57_7.pth
+20-05-09 22:07:01, INFO: PSNR: 10.71767528077753 - SSIM: 0.284089544207366
+20-05-09 22:07:02, INFO: EPOCH 8 - Loss: 0.05357610061764717
+20-05-09 22:07:02, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-02_8.pth
+20-05-09 22:07:07, INFO: PSNR: 11.902047481547996 - SSIM: 0.33184410307998213
+20-05-09 22:07:08, INFO: EPOCH 9 - Loss: 0.04756253585219383
+20-05-09 22:07:08, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-08_9.pth
+20-05-09 22:07:12, INFO: PSNR: 12.520012074863153 - SSIM: 0.32004998198180357
+20-05-09 22:07:13, INFO: EPOCH 10 - Loss: 0.04124431312084198
+20-05-09 22:07:13, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-13_10.pth
+20-05-09 22:07:18, INFO: PSNR: 12.421083959791034 - SSIM: 0.28235532430804633
+20-05-09 22:07:18, INFO: EPOCH 11 - Loss: 0.04246717691421509
+20-05-09 22:07:18, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-18_11.pth
+20-05-09 22:07:22, INFO: PSNR: 12.025339698891962 - SSIM: 0.25625447189566714
+20-05-09 22:07:23, INFO: EPOCH 12 - Loss: 0.0419284962117672
+20-05-09 22:07:23, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-23_12.pth
+20-05-09 22:07:27, INFO: PSNR: 11.649272900970585 - SSIM: 0.25131262587725056
+20-05-09 22:07:28, INFO: EPOCH 13 - Loss: 0.045664992183446884
+20-05-09 22:07:28, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-28_13.pth
+20-05-09 22:07:32, INFO: PSNR: 11.514507228256779 - SSIM: 0.2621252950390269
+20-05-09 22:07:33, INFO: EPOCH 14 - Loss: 0.04802565649151802
+20-05-09 22:07:33, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-33_14.pth
+20-05-09 22:07:37, INFO: PSNR: 11.699114529805327 - SSIM: 0.2793550910506263
+20-05-09 22:07:38, INFO: EPOCH 15 - Loss: 0.03789357468485832
+20-05-09 22:07:38, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-38_15.pth
+20-05-09 22:07:41, INFO: PSNR: 11.73290722194882 - SSIM: 0.28901471634425996
+20-05-09 22:07:42, INFO: EPOCH 16 - Loss: 0.035927288234233856
+20-05-09 22:07:42, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-42_16.pth
+20-05-09 22:07:46, INFO: PSNR: 11.191108164668364 - SSIM: 0.29096206010607667
+20-05-09 22:07:47, INFO: EPOCH 17 - Loss: 0.03674981743097305
+20-05-09 22:07:47, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-47_17.pth
+20-05-09 22:07:51, INFO: PSNR: 10.801885507645606 - SSIM: 0.29364008448093604
+20-05-09 22:07:51, INFO: EPOCH 18 - Loss: 0.040370844304561615
+20-05-09 22:07:51, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-51_18.pth
+20-05-09 22:07:55, INFO: PSNR: 10.772753026298608 - SSIM: 0.30780951517916605
+20-05-09 22:07:55, INFO: EPOCH 19 - Loss: 0.035301726311445236
+20-05-09 22:07:55, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-55_19.pth
+20-05-09 22:07:59, INFO: PSNR: 11.088612987689197 - SSIM: 0.3339568709451206
+20-05-09 22:07:59, INFO: EPOCH 20 - Loss: 0.03316163644194603
+20-05-09 22:07:59, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-59_20.pth
+20-05-09 22:08:03, INFO: PSNR: 11.598230761141444 - SSIM: 0.3667240436974746
+20-05-09 22:08:03, INFO: EPOCH 21 - Loss: 0.027577867731451988
+20-05-09 22:08:03, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-03_21.pth
+20-05-09 22:08:06, INFO: PSNR: 11.954907307911746 - SSIM: 0.39406496694987875
+20-05-09 22:08:07, INFO: EPOCH 22 - Loss: 0.027429820969700813
+20-05-09 22:08:07, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-07_22.pth
+20-05-09 22:08:11, INFO: PSNR: 12.196407253591326 - SSIM: 0.4118266983820654
+20-05-09 22:08:11, INFO: EPOCH 23 - Loss: 0.03051474317908287
+20-05-09 22:08:11, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-11_23.pth
+20-05-09 22:08:15, INFO: PSNR: 12.282387282906361 - SSIM: 0.4172517750114908
+20-05-09 22:08:15, INFO: EPOCH 24 - Loss: 0.026308096945285797
+20-05-09 22:08:15, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-15_24.pth
+20-05-09 22:08:19, INFO: PSNR: 12.316264172395732 - SSIM: 0.41539794367691807
+20-05-09 22:08:19, INFO: EPOCH 25 - Loss: 0.028856273740530014
+20-05-09 22:08:19, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-19_25.pth
+20-05-09 22:08:23, INFO: PSNR: 12.142348535909242 - SSIM: 0.4130610194108973
+20-05-09 22:08:23, INFO: EPOCH 26 - Loss: 0.028748955577611923
+20-05-09 22:08:23, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-23_26.pth
+20-05-09 22:08:27, INFO: PSNR: 11.887429344717633 - SSIM: 0.407835287058663
+20-05-09 22:08:28, INFO: EPOCH 27 - Loss: 0.026654046028852463
+20-05-09 22:08:28, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-28_27.pth
+20-05-09 22:08:32, INFO: PSNR: 11.845667034121155 - SSIM: 0.40889449904788283
+20-05-09 22:08:32, INFO: EPOCH 28 - Loss: 0.02648322470486164
+20-05-09 22:08:33, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-32_28.pth
+20-05-09 22:08:36, INFO: PSNR: 12.074167317736794 - SSIM: 0.4180939051419982
+20-05-09 22:08:37, INFO: EPOCH 29 - Loss: 0.027276214212179184
+20-05-09 22:08:37, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-37_29.pth
+20-05-09 22:08:40, INFO: PSNR: 12.62642328039532 - SSIM: 0.4345776680580998
+20-05-09 22:08:41, INFO: EPOCH 30 - Loss: 0.025630859658122063
+20-05-09 22:08:41, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-41_30.pth
+20-05-09 22:08:44, INFO: PSNR: 13.301561056339251 - SSIM: 0.45741550620206695
+20-05-09 22:08:45, INFO: EPOCH 31 - Loss: 0.025653060525655746
+20-05-09 22:08:45, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-45_31.pth
+20-05-09 22:08:48, INFO: PSNR: 13.89359439528411 - SSIM: 0.48159096866369755
+20-05-09 22:08:48, INFO: EPOCH 32 - Loss: 0.02006690390408039
+20-05-09 22:08:48, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-48_32.pth
+20-05-09 22:08:52, INFO: PSNR: 14.096949832396758 - SSIM: 0.4970647708471659
+20-05-09 22:08:52, INFO: EPOCH 33 - Loss: 0.022747550159692764
+20-05-09 22:08:52, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-52_33.pth
+20-05-09 22:08:55, INFO: PSNR: 14.384319224483423 - SSIM: 0.5095586491398266
+20-05-09 22:08:56, INFO: EPOCH 34 - Loss: 0.021637175232172012
+20-05-09 22:08:56, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-56_34.pth
+20-05-09 22:08:59, INFO: PSNR: 14.7300970235554 - SSIM: 0.5172232532619679
+20-05-09 22:09:00, INFO: EPOCH 35 - Loss: 0.021123409271240234
+20-05-09 22:09:00, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-00_35.pth
+20-05-09 22:09:04, INFO: PSNR: 14.857592382936753 - SSIM: 0.5142524261538554
+20-05-09 22:09:05, INFO: EPOCH 36 - Loss: 0.020639386028051376
+20-05-09 22:09:05, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-05_36.pth
+20-05-09 22:09:09, INFO: PSNR: 14.77767923549245 - SSIM: 0.5106970245160848
+20-05-09 22:09:10, INFO: EPOCH 37 - Loss: 0.021759942173957825
+20-05-09 22:09:10, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-10_37.pth
+20-05-09 22:09:15, INFO: PSNR: 14.86094270525889 - SSIM: 0.5118203660267678
+20-05-09 22:09:15, INFO: EPOCH 38 - Loss: 0.0218880083411932
+20-05-09 22:09:15, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-15_38.pth
+20-05-09 22:09:20, INFO: PSNR: 15.096330909534393 - SSIM: 0.5195924793377741
+20-05-09 22:09:20, INFO: EPOCH 39 - Loss: 0.019234616309404373
+20-05-09 22:09:20, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-20_39.pth
+20-05-09 22:09:25, INFO: PSNR: 15.223308849582951 - SSIM: 0.5292813764854587
+20-05-09 22:09:25, INFO: EPOCH 40 - Loss: 0.019000176340341568
+20-05-09 22:09:25, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-25_40.pth
+20-05-09 22:09:29, INFO: PSNR: 15.173131676655725 - SSIM: 0.5374325141541889
+20-05-09 22:09:29, INFO: EPOCH 41 - Loss: 0.019699422642588615
+20-05-09 22:09:29, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-29_41.pth
+20-05-09 22:09:33, INFO: PSNR: 15.1122127616885 - SSIM: 0.5475651619107356
+20-05-09 22:09:33, INFO: EPOCH 42 - Loss: 0.017634017392992973
+20-05-09 22:09:33, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-33_42.pth
+20-05-09 22:09:37, INFO: PSNR: 15.01169884784923 - SSIM: 0.5476152793064121
+20-05-09 22:09:38, INFO: EPOCH 43 - Loss: 0.018528852611780167
+20-05-09 22:09:38, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-38_43.pth
+20-05-09 22:09:41, INFO: PSNR: 14.859250473944254 - SSIM: 0.5396628841358575
+20-05-09 22:09:42, INFO: EPOCH 44 - Loss: 0.017419394105672836
+20-05-09 22:09:42, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-42_44.pth
+20-05-09 22:09:45, INFO: PSNR: 14.680089586200973 - SSIM: 0.535404412887361
+20-05-09 22:09:45, INFO: EPOCH 45 - Loss: 0.01764662377536297
+20-05-09 22:09:45, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-45_45.pth
+20-05-09 22:09:49, INFO: PSNR: 14.409106968499922 - SSIM: 0.5247610231863037
+20-05-09 22:09:49, INFO: EPOCH 46 - Loss: 0.01894920878112316
+20-05-09 22:09:49, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-49_46.pth
+20-05-09 22:09:53, INFO: PSNR: 14.212953826010532 - SSIM: 0.5205266305158658
+20-05-09 22:09:53, INFO: EPOCH 47 - Loss: 0.01704864203929901
+20-05-09 22:09:53, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-53_47.pth
+20-05-09 22:09:56, INFO: PSNR: 14.217504522677478 - SSIM: 0.5254849248673984
+20-05-09 22:09:57, INFO: EPOCH 48 - Loss: 0.01678704470396042
+20-05-09 22:09:57, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-57_48.pth
+20-05-09 22:10:00, INFO: PSNR: 14.126273499732434 - SSIM: 0.5263817679987667
+20-05-09 22:10:00, INFO: EPOCH 49 - Loss: 0.018387874588370323
+20-05-09 22:10:00, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-10-00_49.pth
+20-05-09 22:10:04, INFO: PSNR: 14.061527302800533 - SSIM: 0.5267980287452478
+20-05-09 22:10:04, INFO: EPOCH 50 - Loss: 0.015108986757695675
+20-05-09 22:10:04, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-10-04_50.pth
+20-05-09 22:10:08, INFO: PSNR: 14.114602644095136 - SSIM: 0.5289901242179194
+20-05-09 22:10:08, INFO: Completed
+
+
+20-05-09 22-10-52, INFO: 
+
+================ ESPCN - TESTING =================
+
+
+20-05-09 22-10-52, INFO: [('model_path', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_21-25-46_50.pth'), ('output', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/testing-world-champion/ESPCN/X4'), ('test_folder', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/BSDS100/SRF_4')]
+20-05-09 22-10-52, INFO: ESPCN(
+  (first_part): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): Tanh()
+    (2): Conv2d(64, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): Tanh()
+  )
+  (last_part): Sequential(
+    (0): Conv2d(32, 48, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): PixelShuffle(upscale_factor=2)
+    (2): PixelShuffle(upscale_factor=2)
+  )
+)
+20-05-09 22-11-17, INFO: PSNR: 17.99404001519666 - SSIM: 0.6026883685328694
+20-05-09 22-11-17, INFO: Completed
+
+
