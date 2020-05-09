@@ -1,22 +1,18 @@
 import argparse
 import logging
 import os
-from math import log10
 import time
 import datetime
 
-import pandas as pd
 import torch.optim as optim
 import torch.utils.data
-import torchvision.utils as utils
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 from torchvision.transforms import ToPILImage
 
 from dataset import display_transform, TrainDatasetFromCompressFile, ValDatasetFromCompressFile
-from loss import GeneratorLoss
 from model import ESPCN
-from utils import AverageMeter, calculate_psnr, calculate_ssim_y_channel
+from utils import AverageMeter, calculate_psnr_y_channel, calculate_ssim_y_channel
 
 logging.basicConfig(filename='logs.txt',
                     filemode='a',
@@ -84,15 +80,15 @@ for epoch in range(1, args.num_epochs + 1):
     for lr, hr_bicubic, hr in tqdm(val_loader):
         assert lr.shape[0] == 1
         if torch.cuda.is_available():
-            lr = lrs.cuda()
-            hr = hrs.cuda()
+            lr = lr.cuda()
+            hr = hr.cuda()
 
         with torch.no_grad():
             sr = model(lr)
 
         sr_img = ToPILImage()(sr.cpu().squeeze())
         hr_img = ToPILImage()(hr.cpu().squeeze())
-        psnr = calculate_psnr(sr_img, hr_img)
+        psnr = calculate_psnr_y_channel(sr_img, hr_img)
         ssim = calculate_ssim_y_channel(sr_img, hr_img)
         
         psnrs.update(psnr)

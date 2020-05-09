@@ -12,7 +12,7 @@ from torchvision.transforms import ToPILImage
 
 from dataset import TestDatasetFromFolder, display_transform
 from model import ESPCN
-from utils import calculate_psnr, calculate_ssim_y_channel, AverageMeter
+from utils import calculate_psnr_y_channel, calculate_ssim_y_channel, AverageMeter
 
 logging.basicConfig(filename='logs.txt',
                     filemode='a',
@@ -55,7 +55,7 @@ for image_name, lr, hr_bicubic, hr in tqdm(test_loader):
     
     sr_img = ToPILImage()(sr.cpu().squeeze())
     hr_img = ToPILImage()(hr.cpu().squeeze())
-    psnr = calculate_psnr(sr_img, hr_img)
+    psnr = calculate_psnr_y_channel(sr_img, hr_img)
     ssim = calculate_ssim_y_channel(sr_img, hr_img)
     psnrs.update(psnr)
     ssims.update(ssim)

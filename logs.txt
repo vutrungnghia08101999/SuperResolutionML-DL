@@ -1,11 +1,11 @@
-20-05-09 22:06:35, INFO: 
+20-05-09 23:02:22, INFO: 
 
 ================ ESPCN - TRAINING =================
 
 
-20-05-09 22:06:35, INFO: [('crop_size', 88), ('kernel_size', 3), ('models_dir', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models'), ('num_epochs', 50), ('train_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning/train-toy.pkl'), ('upscale_factor', 4), ('valid_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning/valid-toy_4.pkl')]
-20-05-09 22:06:36, INFO: No.parameters: 34128
-20-05-09 22:06:36, INFO: ESPCN(
+20-05-09 23:02:22, INFO: [('crop_size', 88), ('kernel_size', 3), ('models_dir', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models'), ('num_epochs', 50), ('train_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning/train-toy.pkl'), ('upscale_factor', 4), ('valid_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning/valid-toy_4.pkl')]
+20-05-09 23:02:23, INFO: No.parameters: 34128
+20-05-09 23:02:23, INFO: ESPCN(
   (first_part): Sequential(
     (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
     (1): Tanh()
@@ -18,179 +18,156 @@
     (2): PixelShuffle(upscale_factor=2)
   )
 )
-20-05-09 22:06:36, INFO: EPOCH 1 - Loss: 0.27639129757881165
-20-05-09 22:06:36, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-06-36_1.pth
-20-05-09 22:06:39, INFO: PSNR: 6.508513803517635 - SSIM: 0.050974667444403154
-20-05-09 22:06:39, INFO: EPOCH 2 - Loss: 0.1997702568769455
-20-05-09 22:06:39, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-06-39_2.pth
-20-05-09 22:06:42, INFO: PSNR: 7.849958247191076 - SSIM: 0.07478782284180704
-20-05-09 22:06:42, INFO: EPOCH 3 - Loss: 0.1723722368478775
-20-05-09 22:06:42, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-06-42_3.pth
-20-05-09 22:06:45, INFO: PSNR: 9.185803632590268 - SSIM: 0.10112412876162633
-20-05-09 22:06:45, INFO: EPOCH 4 - Loss: 0.12007369846105576
-20-05-09 22:06:45, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-06-45_4.pth
-20-05-09 22:06:49, INFO: PSNR: 10.113893024280426 - SSIM: 0.14871572062314153
-20-05-09 22:06:49, INFO: EPOCH 5 - Loss: 0.08495526760816574
-20-05-09 22:06:49, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-06-49_5.pth
-20-05-09 22:06:53, INFO: PSNR: 10.323039471877083 - SSIM: 0.1739920854592503
-20-05-09 22:06:53, INFO: EPOCH 6 - Loss: 0.07374519854784012
-20-05-09 22:06:53, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-06-53_6.pth
-20-05-09 22:06:57, INFO: PSNR: 10.290602542816924 - SSIM: 0.21323243334137196
-20-05-09 22:06:57, INFO: EPOCH 7 - Loss: 0.06761956959962845
-20-05-09 22:06:57, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-06-57_7.pth
-20-05-09 22:07:01, INFO: PSNR: 10.71767528077753 - SSIM: 0.284089544207366
-20-05-09 22:07:02, INFO: EPOCH 8 - Loss: 0.05357610061764717
-20-05-09 22:07:02, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-02_8.pth
-20-05-09 22:07:07, INFO: PSNR: 11.902047481547996 - SSIM: 0.33184410307998213
-20-05-09 22:07:08, INFO: EPOCH 9 - Loss: 0.04756253585219383
-20-05-09 22:07:08, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-08_9.pth
-20-05-09 22:07:12, INFO: PSNR: 12.520012074863153 - SSIM: 0.32004998198180357
-20-05-09 22:07:13, INFO: EPOCH 10 - Loss: 0.04124431312084198
-20-05-09 22:07:13, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-13_10.pth
-20-05-09 22:07:18, INFO: PSNR: 12.421083959791034 - SSIM: 0.28235532430804633
-20-05-09 22:07:18, INFO: EPOCH 11 - Loss: 0.04246717691421509
-20-05-09 22:07:18, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-18_11.pth
-20-05-09 22:07:22, INFO: PSNR: 12.025339698891962 - SSIM: 0.25625447189566714
-20-05-09 22:07:23, INFO: EPOCH 12 - Loss: 0.0419284962117672
-20-05-09 22:07:23, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-23_12.pth
-20-05-09 22:07:27, INFO: PSNR: 11.649272900970585 - SSIM: 0.25131262587725056
-20-05-09 22:07:28, INFO: EPOCH 13 - Loss: 0.045664992183446884
-20-05-09 22:07:28, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-28_13.pth
-20-05-09 22:07:32, INFO: PSNR: 11.514507228256779 - SSIM: 0.2621252950390269
-20-05-09 22:07:33, INFO: EPOCH 14 - Loss: 0.04802565649151802
-20-05-09 22:07:33, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-33_14.pth
-20-05-09 22:07:37, INFO: PSNR: 11.699114529805327 - SSIM: 0.2793550910506263
-20-05-09 22:07:38, INFO: EPOCH 15 - Loss: 0.03789357468485832
-20-05-09 22:07:38, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-38_15.pth
-20-05-09 22:07:41, INFO: PSNR: 11.73290722194882 - SSIM: 0.28901471634425996
-20-05-09 22:07:42, INFO: EPOCH 16 - Loss: 0.035927288234233856
-20-05-09 22:07:42, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-42_16.pth
-20-05-09 22:07:46, INFO: PSNR: 11.191108164668364 - SSIM: 0.29096206010607667
-20-05-09 22:07:47, INFO: EPOCH 17 - Loss: 0.03674981743097305
-20-05-09 22:07:47, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-47_17.pth
-20-05-09 22:07:51, INFO: PSNR: 10.801885507645606 - SSIM: 0.29364008448093604
-20-05-09 22:07:51, INFO: EPOCH 18 - Loss: 0.040370844304561615
-20-05-09 22:07:51, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-51_18.pth
-20-05-09 22:07:55, INFO: PSNR: 10.772753026298608 - SSIM: 0.30780951517916605
-20-05-09 22:07:55, INFO: EPOCH 19 - Loss: 0.035301726311445236
-20-05-09 22:07:55, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-55_19.pth
-20-05-09 22:07:59, INFO: PSNR: 11.088612987689197 - SSIM: 0.3339568709451206
-20-05-09 22:07:59, INFO: EPOCH 20 - Loss: 0.03316163644194603
-20-05-09 22:07:59, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-07-59_20.pth
-20-05-09 22:08:03, INFO: PSNR: 11.598230761141444 - SSIM: 0.3667240436974746
-20-05-09 22:08:03, INFO: EPOCH 21 - Loss: 0.027577867731451988
-20-05-09 22:08:03, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-03_21.pth
-20-05-09 22:08:06, INFO: PSNR: 11.954907307911746 - SSIM: 0.39406496694987875
-20-05-09 22:08:07, INFO: EPOCH 22 - Loss: 0.027429820969700813
-20-05-09 22:08:07, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-07_22.pth
-20-05-09 22:08:11, INFO: PSNR: 12.196407253591326 - SSIM: 0.4118266983820654
-20-05-09 22:08:11, INFO: EPOCH 23 - Loss: 0.03051474317908287
-20-05-09 22:08:11, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-11_23.pth
-20-05-09 22:08:15, INFO: PSNR: 12.282387282906361 - SSIM: 0.4172517750114908
-20-05-09 22:08:15, INFO: EPOCH 24 - Loss: 0.026308096945285797
-20-05-09 22:08:15, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-15_24.pth
-20-05-09 22:08:19, INFO: PSNR: 12.316264172395732 - SSIM: 0.41539794367691807
-20-05-09 22:08:19, INFO: EPOCH 25 - Loss: 0.028856273740530014
-20-05-09 22:08:19, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-19_25.pth
-20-05-09 22:08:23, INFO: PSNR: 12.142348535909242 - SSIM: 0.4130610194108973
-20-05-09 22:08:23, INFO: EPOCH 26 - Loss: 0.028748955577611923
-20-05-09 22:08:23, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-23_26.pth
-20-05-09 22:08:27, INFO: PSNR: 11.887429344717633 - SSIM: 0.407835287058663
-20-05-09 22:08:28, INFO: EPOCH 27 - Loss: 0.026654046028852463
-20-05-09 22:08:28, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-28_27.pth
-20-05-09 22:08:32, INFO: PSNR: 11.845667034121155 - SSIM: 0.40889449904788283
-20-05-09 22:08:32, INFO: EPOCH 28 - Loss: 0.02648322470486164
-20-05-09 22:08:33, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-32_28.pth
-20-05-09 22:08:36, INFO: PSNR: 12.074167317736794 - SSIM: 0.4180939051419982
-20-05-09 22:08:37, INFO: EPOCH 29 - Loss: 0.027276214212179184
-20-05-09 22:08:37, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-37_29.pth
-20-05-09 22:08:40, INFO: PSNR: 12.62642328039532 - SSIM: 0.4345776680580998
-20-05-09 22:08:41, INFO: EPOCH 30 - Loss: 0.025630859658122063
-20-05-09 22:08:41, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-41_30.pth
-20-05-09 22:08:44, INFO: PSNR: 13.301561056339251 - SSIM: 0.45741550620206695
-20-05-09 22:08:45, INFO: EPOCH 31 - Loss: 0.025653060525655746
-20-05-09 22:08:45, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-45_31.pth
-20-05-09 22:08:48, INFO: PSNR: 13.89359439528411 - SSIM: 0.48159096866369755
-20-05-09 22:08:48, INFO: EPOCH 32 - Loss: 0.02006690390408039
-20-05-09 22:08:48, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-48_32.pth
-20-05-09 22:08:52, INFO: PSNR: 14.096949832396758 - SSIM: 0.4970647708471659
-20-05-09 22:08:52, INFO: EPOCH 33 - Loss: 0.022747550159692764
-20-05-09 22:08:52, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-52_33.pth
-20-05-09 22:08:55, INFO: PSNR: 14.384319224483423 - SSIM: 0.5095586491398266
-20-05-09 22:08:56, INFO: EPOCH 34 - Loss: 0.021637175232172012
-20-05-09 22:08:56, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-08-56_34.pth
-20-05-09 22:08:59, INFO: PSNR: 14.7300970235554 - SSIM: 0.5172232532619679
-20-05-09 22:09:00, INFO: EPOCH 35 - Loss: 0.021123409271240234
-20-05-09 22:09:00, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-00_35.pth
-20-05-09 22:09:04, INFO: PSNR: 14.857592382936753 - SSIM: 0.5142524261538554
-20-05-09 22:09:05, INFO: EPOCH 36 - Loss: 0.020639386028051376
-20-05-09 22:09:05, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-05_36.pth
-20-05-09 22:09:09, INFO: PSNR: 14.77767923549245 - SSIM: 0.5106970245160848
-20-05-09 22:09:10, INFO: EPOCH 37 - Loss: 0.021759942173957825
-20-05-09 22:09:10, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-10_37.pth
-20-05-09 22:09:15, INFO: PSNR: 14.86094270525889 - SSIM: 0.5118203660267678
-20-05-09 22:09:15, INFO: EPOCH 38 - Loss: 0.0218880083411932
-20-05-09 22:09:15, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-15_38.pth
-20-05-09 22:09:20, INFO: PSNR: 15.096330909534393 - SSIM: 0.5195924793377741
-20-05-09 22:09:20, INFO: EPOCH 39 - Loss: 0.019234616309404373
-20-05-09 22:09:20, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-20_39.pth
-20-05-09 22:09:25, INFO: PSNR: 15.223308849582951 - SSIM: 0.5292813764854587
-20-05-09 22:09:25, INFO: EPOCH 40 - Loss: 0.019000176340341568
-20-05-09 22:09:25, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-25_40.pth
-20-05-09 22:09:29, INFO: PSNR: 15.173131676655725 - SSIM: 0.5374325141541889
-20-05-09 22:09:29, INFO: EPOCH 41 - Loss: 0.019699422642588615
-20-05-09 22:09:29, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-29_41.pth
-20-05-09 22:09:33, INFO: PSNR: 15.1122127616885 - SSIM: 0.5475651619107356
-20-05-09 22:09:33, INFO: EPOCH 42 - Loss: 0.017634017392992973
-20-05-09 22:09:33, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-33_42.pth
-20-05-09 22:09:37, INFO: PSNR: 15.01169884784923 - SSIM: 0.5476152793064121
-20-05-09 22:09:38, INFO: EPOCH 43 - Loss: 0.018528852611780167
-20-05-09 22:09:38, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-38_43.pth
-20-05-09 22:09:41, INFO: PSNR: 14.859250473944254 - SSIM: 0.5396628841358575
-20-05-09 22:09:42, INFO: EPOCH 44 - Loss: 0.017419394105672836
-20-05-09 22:09:42, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-42_44.pth
-20-05-09 22:09:45, INFO: PSNR: 14.680089586200973 - SSIM: 0.535404412887361
-20-05-09 22:09:45, INFO: EPOCH 45 - Loss: 0.01764662377536297
-20-05-09 22:09:45, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-45_45.pth
-20-05-09 22:09:49, INFO: PSNR: 14.409106968499922 - SSIM: 0.5247610231863037
-20-05-09 22:09:49, INFO: EPOCH 46 - Loss: 0.01894920878112316
-20-05-09 22:09:49, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-49_46.pth
-20-05-09 22:09:53, INFO: PSNR: 14.212953826010532 - SSIM: 0.5205266305158658
-20-05-09 22:09:53, INFO: EPOCH 47 - Loss: 0.01704864203929901
-20-05-09 22:09:53, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-53_47.pth
-20-05-09 22:09:56, INFO: PSNR: 14.217504522677478 - SSIM: 0.5254849248673984
-20-05-09 22:09:57, INFO: EPOCH 48 - Loss: 0.01678704470396042
-20-05-09 22:09:57, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-09-57_48.pth
-20-05-09 22:10:00, INFO: PSNR: 14.126273499732434 - SSIM: 0.5263817679987667
-20-05-09 22:10:00, INFO: EPOCH 49 - Loss: 0.018387874588370323
-20-05-09 22:10:00, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-10-00_49.pth
-20-05-09 22:10:04, INFO: PSNR: 14.061527302800533 - SSIM: 0.5267980287452478
-20-05-09 22:10:04, INFO: EPOCH 50 - Loss: 0.015108986757695675
-20-05-09 22:10:04, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_22-10-04_50.pth
-20-05-09 22:10:08, INFO: PSNR: 14.114602644095136 - SSIM: 0.5289901242179194
-20-05-09 22:10:08, INFO: Completed
-
-
-20-05-09 22-10-52, INFO: 
-
-================ ESPCN - TESTING =================
-
-
-20-05-09 22-10-52, INFO: [('model_path', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_21-25-46_50.pth'), ('output', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/testing-world-champion/ESPCN/X4'), ('test_folder', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/BSDS100/SRF_4')]
-20-05-09 22-10-52, INFO: ESPCN(
-  (first_part): Sequential(
-    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (1): Tanh()
-    (2): Conv2d(64, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (3): Tanh()
-  )
-  (last_part): Sequential(
-    (0): Conv2d(32, 48, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (1): PixelShuffle(upscale_factor=2)
-    (2): PixelShuffle(upscale_factor=2)
-  )
-)
-20-05-09 22-11-17, INFO: PSNR: 17.99404001519666 - SSIM: 0.6026883685328694
-20-05-09 22-11-17, INFO: Completed
+20-05-09 23:02:23, INFO: EPOCH 1 - Loss: 0.29631829261779785
+20-05-09 23:02:23, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-02-23_1.pth
+20-05-09 23:02:26, INFO: PSNR: 9.354548044986268 - SSIM: 0.04882869132060524
+20-05-09 23:02:26, INFO: EPOCH 2 - Loss: 0.23291458189487457
+20-05-09 23:02:26, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-02-26_2.pth
+20-05-09 23:02:29, INFO: PSNR: 9.616852878422469 - SSIM: 0.06873946901598198
+20-05-09 23:02:29, INFO: EPOCH 3 - Loss: 0.18845906853675842
+20-05-09 23:02:29, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-02-29_3.pth
+20-05-09 23:02:32, INFO: PSNR: 11.415224741678271 - SSIM: 0.1102585697979476
+20-05-09 23:02:33, INFO: EPOCH 4 - Loss: 0.12834575772285461
+20-05-09 23:02:33, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-02-33_4.pth
+20-05-09 23:02:36, INFO: PSNR: 13.351409047087373 - SSIM: 0.21876572823108062
+20-05-09 23:02:37, INFO: EPOCH 5 - Loss: 0.08225661516189575
+20-05-09 23:02:37, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-02-37_5.pth
+20-05-09 23:02:40, INFO: PSNR: 14.552333778799404 - SSIM: 0.25221401382610636
+20-05-09 23:02:41, INFO: EPOCH 6 - Loss: 0.06935828924179077
+20-05-09 23:02:41, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-02-41_6.pth
+20-05-09 23:02:44, INFO: PSNR: 13.600582344506563 - SSIM: 0.24840641768428884
+20-05-09 23:02:44, INFO: EPOCH 7 - Loss: 0.06624996662139893
+20-05-09 23:02:44, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-02-44_7.pth
+20-05-09 23:02:48, INFO: PSNR: 12.720861149637024 - SSIM: 0.28582327205207075
+20-05-09 23:02:49, INFO: EPOCH 8 - Loss: 0.06403758376836777
+20-05-09 23:02:49, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-02-49_8.pth
+20-05-09 23:02:52, INFO: PSNR: 13.050807020042182 - SSIM: 0.34282627232648394
+20-05-09 23:02:53, INFO: EPOCH 9 - Loss: 0.055704157799482346
+20-05-09 23:02:53, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-02-53_9.pth
+20-05-09 23:02:56, INFO: PSNR: 14.768230168303306 - SSIM: 0.3870426343820377
+20-05-09 23:02:57, INFO: EPOCH 10 - Loss: 0.04639304056763649
+20-05-09 23:02:57, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-02-57_10.pth
+20-05-09 23:03:00, INFO: PSNR: 16.578153374818665 - SSIM: 0.3849726572401804
+20-05-09 23:03:01, INFO: EPOCH 11 - Loss: 0.046088799834251404
+20-05-09 23:03:01, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-03-01_11.pth
+20-05-09 23:03:04, INFO: PSNR: 17.017074577920393 - SSIM: 0.3657794252158607
+20-05-09 23:03:05, INFO: EPOCH 12 - Loss: 0.04845436289906502
+20-05-09 23:03:05, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-03-05_12.pth
+20-05-09 23:03:08, INFO: PSNR: 16.265088948449847 - SSIM: 0.347641664908599
+20-05-09 23:03:09, INFO: EPOCH 13 - Loss: 0.049068208783864975
+20-05-09 23:03:09, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-03-09_13.pth
+20-05-09 23:03:13, INFO: PSNR: 15.670887537225054 - SSIM: 0.3415880525231624
+20-05-09 23:03:14, INFO: EPOCH 14 - Loss: 0.056796710938215256
+20-05-09 23:03:14, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-03-14_14.pth
+20-05-09 23:03:20, INFO: PSNR: 15.723224075494866 - SSIM: 0.34531286875972383
+20-05-09 23:03:20, INFO: EPOCH 15 - Loss: 0.04437248781323433
+20-05-09 23:03:20, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-03-20_15.pth
+20-05-09 23:03:25, INFO: PSNR: 16.104692586334696 - SSIM: 0.35025871803980574
+20-05-09 23:03:26, INFO: EPOCH 16 - Loss: 0.04517148807644844
+20-05-09 23:03:26, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-03-26_16.pth
+20-05-09 23:03:31, INFO: PSNR: 16.44575755187999 - SSIM: 0.35056976389987293
+20-05-09 23:03:32, INFO: EPOCH 17 - Loss: 0.03478819131851196
+20-05-09 23:03:32, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-03-32_17.pth
+20-05-09 23:03:37, INFO: PSNR: 16.205329870827697 - SSIM: 0.34778261540370053
+20-05-09 23:03:37, INFO: EPOCH 18 - Loss: 0.0336650125682354
+20-05-09 23:03:37, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-03-37_18.pth
+20-05-09 23:03:42, INFO: PSNR: 15.419172344022543 - SSIM: 0.3470298637816335
+20-05-09 23:03:43, INFO: EPOCH 19 - Loss: 0.03565642982721329
+20-05-09 23:03:43, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-03-43_19.pth
+20-05-09 23:03:47, INFO: PSNR: 14.823365130658782 - SSIM: 0.35676821626887695
+20-05-09 23:03:48, INFO: EPOCH 20 - Loss: 0.03703106567263603
+20-05-09 23:03:48, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-03-48_20.pth
+20-05-09 23:03:52, INFO: PSNR: 14.859206284335274 - SSIM: 0.3826933543226932
+20-05-09 23:03:53, INFO: EPOCH 21 - Loss: 0.031203072518110275
+20-05-09 23:03:53, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-03-53_21.pth
+20-05-09 23:03:58, INFO: PSNR: 15.41121561816293 - SSIM: 0.40581772029875063
+20-05-09 23:03:58, INFO: EPOCH 22 - Loss: 0.030975574627518654
+20-05-09 23:03:58, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-03-58_22.pth
+20-05-09 23:04:02, INFO: PSNR: 15.927304425909645 - SSIM: 0.4125836730426848
+20-05-09 23:04:03, INFO: EPOCH 23 - Loss: 0.02976827695965767
+20-05-09 23:04:03, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-04-03_23.pth
+20-05-09 23:04:07, INFO: PSNR: 15.814775559248291 - SSIM: 0.40296173725590373
+20-05-09 23:04:07, INFO: EPOCH 24 - Loss: 0.031364619731903076
+20-05-09 23:04:07, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-04-07_24.pth
+20-05-09 23:04:11, INFO: PSNR: 15.560764874412996 - SSIM: 0.3937690686685338
+20-05-09 23:04:12, INFO: EPOCH 25 - Loss: 0.02824525535106659
+20-05-09 23:04:12, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-04-12_25.pth
+20-05-09 23:04:17, INFO: PSNR: 15.33790254024508 - SSIM: 0.38818799087805833
+20-05-09 23:04:17, INFO: EPOCH 26 - Loss: 0.03073321096599102
+20-05-09 23:04:17, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-04-17_26.pth
+20-05-09 23:04:22, INFO: PSNR: 15.205315861291622 - SSIM: 0.3859682145641322
+20-05-09 23:04:23, INFO: EPOCH 27 - Loss: 0.0281261894851923
+20-05-09 23:04:23, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-04-23_27.pth
+20-05-09 23:04:27, INFO: PSNR: 15.110523978060169 - SSIM: 0.3904589916904008
+20-05-09 23:04:27, INFO: EPOCH 28 - Loss: 0.028543712571263313
+20-05-09 23:04:27, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-04-27_28.pth
+20-05-09 23:04:32, INFO: PSNR: 14.623717988506087 - SSIM: 0.39180482823172885
+20-05-09 23:04:32, INFO: EPOCH 29 - Loss: 0.025330139324069023
+20-05-09 23:04:32, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-04-32_29.pth
+20-05-09 23:04:36, INFO: PSNR: 14.228481792180363 - SSIM: 0.3918816328518542
+20-05-09 23:04:36, INFO: EPOCH 30 - Loss: 0.025502385571599007
+20-05-09 23:04:36, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-04-36_30.pth
+20-05-09 23:04:40, INFO: PSNR: 14.033132765383996 - SSIM: 0.39576196167642264
+20-05-09 23:04:41, INFO: EPOCH 31 - Loss: 0.026762692257761955
+20-05-09 23:04:41, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-04-41_31.pth
+20-05-09 23:04:45, INFO: PSNR: 14.17124575061658 - SSIM: 0.4078709302328988
+20-05-09 23:04:45, INFO: EPOCH 32 - Loss: 0.025024453178048134
+20-05-09 23:04:45, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-04-45_32.pth
+20-05-09 23:04:49, INFO: PSNR: 14.648369978811488 - SSIM: 0.4280167093910685
+20-05-09 23:04:50, INFO: EPOCH 33 - Loss: 0.02689722366631031
+20-05-09 23:04:50, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-04-50_33.pth
+20-05-09 23:04:54, INFO: PSNR: 15.109396122789583 - SSIM: 0.45224878194707535
+20-05-09 23:04:54, INFO: EPOCH 34 - Loss: 0.024486063048243523
+20-05-09 23:04:54, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-04-54_34.pth
+20-05-09 23:04:58, INFO: PSNR: 15.484994446655527 - SSIM: 0.4705770100095104
+20-05-09 23:04:59, INFO: EPOCH 35 - Loss: 0.02081652171909809
+20-05-09 23:04:59, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-04-59_35.pth
+20-05-09 23:05:02, INFO: PSNR: 15.649119405750744 - SSIM: 0.4834592154371306
+20-05-09 23:05:03, INFO: EPOCH 36 - Loss: 0.02221507765352726
+20-05-09 23:05:03, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-05-03_36.pth
+20-05-09 23:05:06, INFO: PSNR: 15.840624952715324 - SSIM: 0.4904772184900365
+20-05-09 23:05:06, INFO: EPOCH 37 - Loss: 0.022942954674363136
+20-05-09 23:05:06, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-05-06_37.pth
+20-05-09 23:05:10, INFO: PSNR: 16.02817045507753 - SSIM: 0.4931795299605082
+20-05-09 23:05:10, INFO: EPOCH 38 - Loss: 0.021547134965658188
+20-05-09 23:05:11, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-05-11_38.pth
+20-05-09 23:05:14, INFO: PSNR: 16.062888182363398 - SSIM: 0.4921404242304211
+20-05-09 23:05:15, INFO: EPOCH 39 - Loss: 0.02151414565742016
+20-05-09 23:05:15, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-05-15_39.pth
+20-05-09 23:05:18, INFO: PSNR: 16.084199220542814 - SSIM: 0.49026804395507817
+20-05-09 23:05:19, INFO: EPOCH 40 - Loss: 0.023509226739406586
+20-05-09 23:05:19, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-05-19_40.pth
+20-05-09 23:05:23, INFO: PSNR: 16.176870422421672 - SSIM: 0.49290610471183854
+20-05-09 23:05:23, INFO: EPOCH 41 - Loss: 0.02014540135860443
+20-05-09 23:05:23, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-05-23_41.pth
+20-05-09 23:05:27, INFO: PSNR: 16.641860860908427 - SSIM: 0.500839611562295
+20-05-09 23:05:27, INFO: EPOCH 42 - Loss: 0.020178716629743576
+20-05-09 23:05:27, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-05-27_42.pth
+20-05-09 23:05:31, INFO: PSNR: 17.03874926353993 - SSIM: 0.5093296277730535
+20-05-09 23:05:31, INFO: EPOCH 43 - Loss: 0.017584051936864853
+20-05-09 23:05:31, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-05-31_43.pth
+20-05-09 23:05:35, INFO: PSNR: 17.332255332412014 - SSIM: 0.5170112437229307
+20-05-09 23:05:36, INFO: EPOCH 44 - Loss: 0.01876659505069256
+20-05-09 23:05:36, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-05-36_44.pth
+20-05-09 23:05:41, INFO: PSNR: 17.377105250373177 - SSIM: 0.5209642988476281
+20-05-09 23:05:42, INFO: EPOCH 45 - Loss: 0.017858553677797318
+20-05-09 23:05:42, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-05-42_45.pth
+20-05-09 23:05:46, INFO: PSNR: 17.574997728810736 - SSIM: 0.5336389962658274
+20-05-09 23:05:47, INFO: EPOCH 46 - Loss: 0.02008294314146042
+20-05-09 23:05:47, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-05-47_46.pth
+20-05-09 23:05:52, INFO: PSNR: 17.813457142269662 - SSIM: 0.5385785562829404
+20-05-09 23:05:53, INFO: EPOCH 47 - Loss: 0.020530302077531815
+20-05-09 23:05:53, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-05-53_47.pth
+20-05-09 23:05:58, INFO: PSNR: 18.00775023615504 - SSIM: 0.5354795886387075
+20-05-09 23:05:58, INFO: EPOCH 48 - Loss: 0.017360569909214973
+20-05-09 23:05:58, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-05-58_48.pth
+20-05-09 23:06:03, INFO: PSNR: 18.135365156482067 - SSIM: 0.5380978629707897
+20-05-09 23:06:03, INFO: EPOCH 49 - Loss: 0.01932816207408905
+20-05-09 23:06:03, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-06-03_49.pth
+20-05-09 23:06:08, INFO: PSNR: 18.125877657299803 - SSIM: 0.5406952621300244
+20-05-09 23:06:08, INFO: EPOCH 50 - Loss: 0.01632540114223957
+20-05-09 23:06:08, INFO: /media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-09_23-06-08_50.pth
+20-05-09 23:06:13, INFO: PSNR: 18.182547893416753 - SSIM: 0.5440998665539533
+20-05-09 23:06:13, INFO: Completed
 
 
