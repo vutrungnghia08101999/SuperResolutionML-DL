@@ -14,7 +14,7 @@ from dataset import display_transform, TrainDatasetFromCompressFile, ValDatasetF
 from model import ESPCN
 from utils import AverageMeter, calculate_psnr_y_channel, calculate_ssim_y_channel
 
-logging.basicConfig(filename='logs.txt',
+logging.basicConfig(filename='logs_relu_tanh.txt',
                     filemode='a',
                     format='%(asctime)s, %(levelname)s: %(message)s',
                     datefmt='%y-%m-%d %H:%M:%S',
