@@ -42,7 +42,7 @@ val_set = ValDatasetFromCompressFile(args.valid_file)
 train_loader = DataLoader(dataset=train_set, num_workers=4, batch_size=64, shuffle=True)
 val_loader = DataLoader(dataset=val_set, num_workers=4, batch_size=1, shuffle=False)
 
-model = ESPCN(kernel_size=args.kernel_size)
+model = ESPCN()
 logging.info(f'No.parameters: {sum(param.numel() for param in model.parameters())}')
 logging.info(model)
 
