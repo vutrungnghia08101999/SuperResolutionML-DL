@@ -12,21 +12,21 @@ def convert_to_y_channel(img: Image.Image):
     return 16. + (64.738 * img[..., 0] + 129.057 * img[..., 1] + 25.064 * img[..., 2]) / 256
 
 
-def calculate_pnsr(img1: Image.Image, img2: Image.Image) -> float:
+def calculate_psnr_y_channel(img1: Image.Image, img2: Image.Image) -> float:
     """
     Arguments:
         img1 {Image.Image} -- RGB image
         img2 {Ima
     """
-    img1 = ToTensor()(img1.convert('RGB'))
-    img2 = ToTensor()(img2.convert('RGB'))
-    return 10 * math.log10(1.0/((img1 - img2)**2).mean() + 1e-8)
+    y_img1 = convert_to_y_channel(img1)
+    y_img2 = convert_to_y_channel(img2)
+    return 10 * math.log10(1.0/((y_img1/255.0 - y_img2/255.0)**2).mean() + 1e-8)  # makesure y_img1 and y_img2 in range(0, 1)
 
 
 def calculate_ssim_y_channel(img1: Image.Image, img2: Image.Image):
     y_img1 = convert_to_y_channel(img1)
     y_img2 = convert_to_y_channel(img2)
-    return structural_similarity(y_img1, y_img2)
+    return structural_similarity(y_img1 / 255.0, y_img2 / 255.0)  # makesure y_img1 and y_img2 in range(0, 1)
 
 
 class AverageMeter(object):

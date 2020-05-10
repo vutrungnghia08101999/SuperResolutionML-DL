@@ -4,38 +4,37 @@ from torch import nn
 
 
 class Generator(nn.Module):
-    def __init__(self, scale_factor):
+    def __init__(self, scale_factor=4, kernel_size=9, n_channels=64):
         upsample_block_num = int(math.log(scale_factor, 2))
 
         super(Generator, self).__init__()
         self.block1 = nn.Sequential(
-            nn.Conv2d(3, 64, kernel_size=9, padding=4),
+            nn.Conv2d(3, n_channels, kernel_size=kernel_size, padding=kernel_size//2),
             nn.PReLU()
         )
-        self.block2 = ResidualBlock(64)
-        self.block3 = ResidualBlock(64)
-        self.block4 = ResidualBlock(64)
-        self.block5 = ResidualBlock(64)
-        self.block6 = ResidualBlock(64)
-        self.block7 = nn.Sequential(
-            nn.Conv2d(64, 64, kernel_size=3, padding=1),
-            nn.BatchNorm2d(64)
+        self.residual_blocks = nn.Sequential(
+            ResidualBlock(n_channels),
+            ResidualBlock(n_channels),
+            ResidualBlock(n_channels),
+            ResidualBlock(n_channels),
+            ResidualBlock(n_channels),
         )
-        block8 = [UpsampleBLock(64, 2) for _ in range(upsample_block_num)]
-        block8.append(nn.Conv2d(64, 3, kernel_size=9, padding=4))
-        self.block8 = nn.Sequential(*block8)
+
+        self.block3 = nn.Sequential(
+            nn.Conv2d(n_channels, n_channels, kernel_size=3, padding=1),
+            nn.BatchNorm2d(n_channels)
+        )
+        block4 = [UpsampleBLock(n_channels, 2) for _ in range(upsample_block_num)]
+        block4.append(nn.Conv2d(n_channels, 3, kernel_size=9, padding=4))
+        self.block4 = nn.Sequential(*block4)
 
     def forward(self, x):
         block1 = self.block1(x)
-        block2 = self.block2(block1)
+        block2 = self.residual_blocks(block1)
         block3 = self.block3(block2)
-        block4 = self.block4(block3)
-        block5 = self.block5(block4)
-        block6 = self.block6(block5)
-        block7 = self.block7(block6)
-        block8 = self.block8(block1 + block7)
+        block4 = self.block4(block1 + block3)
 
-        return (torch.tanh(block8) + 1) / 2
+        return (torch.tanh(block4) + 1) / 2
 
 
 class Discriminator(nn.Module):

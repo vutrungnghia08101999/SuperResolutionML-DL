@@ -46,6 +46,6 @@ class TVLoss(nn.Module):
         return t.size()[1] * t.size()[2] * t.size()[3]
 
 
-if __name__ == "__main__":
-    g_loss = GeneratorLoss()
-    print(g_loss)
+# if __name__ == "__main__":
+#     g_loss = GeneratorLoss()
+#     print(g_loss)
