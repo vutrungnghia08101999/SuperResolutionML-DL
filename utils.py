@@ -1,73 +1,33 @@
-import torch
+import math
 import numpy as np
-from skimage.metrics import structural_similarity as ssim
+from PIL import Image
+
+from skimage.metrics import structural_similarity
+from torchvision.transforms import ToTensor
+
+def convert_to_y_channel(img: Image.Image):
+    """Conver and RGB image to y channel, the output in range (0, 255)
+    """
+    img = np.array(img.convert('RGB'))
+    return 16. + (64.738 * img[..., 0] + 129.057 * img[..., 1] + 25.064 * img[..., 2]) / 256
 
 
-def calc_patch_size(func):
-    def wrapper(args):
-        if args.scale == 2:
-            args.patch_size = 10
-        elif args.scale == 3:
-            args.patch_size = 7
-        elif args.scale == 4:
-            args.patch_size = 6
-        else:
-            raise Exception('Scale Error', args.scale)
-        return func(args)
-    return wrapper
+def calculate_psnr_y_channel(img1: Image.Image, img2: Image.Image) -> float:
+    """
+    Arguments:
+        img1 {Image.Image} -- RGB image
+        img2 {Ima
+    """
+    y_img1 = convert_to_y_channel(img1)
+    y_img2 = convert_to_y_channel(img2)
+    return 10 * math.log10(1.0/((y_img1/255.0 - y_img2/255.0)**2).mean() + 1e-8)  # makesure y_img1 and y_img2 in range(0, 1)
 
 
-def convert_rgb_to_y(img, dim_order='hwc'):
-    if dim_order == 'hwc':
-        return 16. + (64.738 * img[..., 0] + 129.057 * img[..., 1] + 25.064 * img[..., 2]) / 256.
-    else:
-        return 16. + (64.738 * img[0] + 129.057 * img[1] + 25.064 * img[2]) / 256.
+def calculate_ssim_y_channel(img1: Image.Image, img2: Image.Image):
+    y_img1 = convert_to_y_channel(img1)
+    y_img2 = convert_to_y_channel(img2)
+    return structural_similarity(y_img1 / 255.0, y_img2 / 255.0)  # makesure y_img1 and y_img2 in range(0, 1)
 
-
-def convert_rgb_to_ycbcr(img, dim_order='hwc'):
-    if dim_order == 'hwc':
-        y = 16. + (64.738 * img[..., 0] + 129.057 * img[..., 1] + 25.064 * img[..., 2]) / 256.
-        cb = 128. + (-37.945 * img[..., 0] - 74.494 * img[..., 1] + 112.439 * img[..., 2]) / 256.
-        cr = 128. + (112.439 * img[..., 0] - 94.154 * img[..., 1] - 18.285 * img[..., 2]) / 256.
-    else:
-        y = 16. + (64.738 * img[0] + 129.057 * img[1] + 25.064 * img[2]) / 256.
-        cb = 128. + (-37.945 * img[0] - 74.494 * img[1] + 112.439 * img[2]) / 256.
-        cr = 128. + (112.439 * img[0] - 94.154 * img[1] - 18.285 * img[2]) / 256.
-    return np.array([y, cb, cr]).transpose([1, 2, 0])
-
-
-def convert_ycbcr_to_rgb(img, dim_order='hwc'):
-    if dim_order == 'hwc':
-        r = 298.082 * img[..., 0] / 256. + 408.583 * img[..., 2] / 256. - 222.921
-        g = 298.082 * img[..., 0] / 256. - 100.291 * img[..., 1] / 256. - 208.120 * img[..., 2] / 256. + 135.576
-        b = 298.082 * img[..., 0] / 256. + 516.412 * img[..., 1] / 256. - 276.836
-    else:
-        r = 298.082 * img[0] / 256. + 408.583 * img[2] / 256. - 222.921
-        g = 298.082 * img[0] / 256. - 100.291 * img[1] / 256. - 208.120 * img[2] / 256. + 135.576
-        b = 298.082 * img[0] / 256. + 516.412 * img[1] / 256. - 276.836
-    return np.array([r, g, b]).transpose([1, 2, 0])
-
-
-def preprocess(img, device):
-    img = np.array(img).astype(np.float32)
-    ycbcr = convert_rgb_to_ycbcr(img)
-    x = ycbcr[..., 0]
-    x /= 255.
-    x = torch.from_numpy(x).to(device)
-    x = x.unsqueeze(0).unsqueeze(0)
-    return x, ycbcr
-
-
-def calc_psnr(img1, img2):
-    # print(type(img1))
-    # print(img1.shape)
-    # print(img1)
-    return 10. * torch.log10(1. / torch.mean((img1 - img2) ** 2))
-
-def calc_ssim(img1, img2):
-    img1 = np.array(img1.squeeze())
-    img2 = np.array(img2.squeeze())
-    return ssim(im1=img1, im2=img2, data_range=1)
 
 class AverageMeter(object):
     def __init__(self):
