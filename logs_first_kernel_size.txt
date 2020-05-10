@@ -1,0 +1,1098 @@
+20-05-10 07:04:47, INFO: 
+
+================ SRResNet - TRAINING =================
+
+
+20-05-10 07:04:47, INFO: [('crop_size', 88), ('models_dir', '/content/gdrive/My Drive/MOUNT/models'), ('num_epochs', 50), ('train_file', '/content/gdrive/My Drive/MOUNT/dataset/VOC-2012-train.pkl'), ('upscale_factor', 4), ('valid_file', '/content/gdrive/My Drive/MOUNT/dataset/VOC-2012-valid_4.pkl')]
+20-05-10 07:06:15, INFO: 
+
+================ SRResNet - TRAINING =================
+
+
+20-05-10 07:06:15, INFO: [('crop_size', 88), ('models_dir', '/content/gdrive/My Drive/MOUNT/models'), ('num_epochs', 50), ('train_file', '/content/gdrive/My Drive/MOUNT/dataset/VOC-2012-train.pkl'), ('upscale_factor', 4), ('valid_file', '/content/gdrive/My Drive/MOUNT/dataset/VOC-2012-valid_4.pkl')]
+20-05-10 07:06:37, INFO: No.parameters: 720395
+20-05-10 07:06:37, INFO: SRResNet(
+  (block1): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): PReLU(num_parameters=1)
+  )
+  (block2): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block3): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block4): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block5): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block6): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block7): Sequential(
+    (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block8): Sequential(
+    (0): UpsampleBLock(
+      (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (pixel_shuffle): PixelShuffle(upscale_factor=2)
+      (prelu): PReLU(num_parameters=1)
+    )
+    (1): UpsampleBLock(
+      (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (pixel_shuffle): PixelShuffle(upscale_factor=2)
+      (prelu): PReLU(num_parameters=1)
+    )
+    (2): Conv2d(64, 3, kernel_size=(9, 9), stride=(1, 1), padding=(4, 4))
+  )
+)
+20-05-10 07:07:04, INFO: EPOCH 1 - Loss: 0.01931458841264248
+20-05-10 07:07:04, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-07-04_1.pth
+20-05-10 07:07:13, INFO: Val_loss: 0.012503717094659805 - PSNR: 21.243016383368296 - SSIM: 0.6879063447648894
+20-05-10 07:07:28, INFO: EPOCH 2 - Loss: 0.010088080450892448
+20-05-10 07:07:28, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-07-28_2.pth
+20-05-10 07:07:37, INFO: Val_loss: 0.009494949132204056 - PSNR: 22.554591731048117 - SSIM: 0.7391563038812238
+20-05-10 07:07:52, INFO: EPOCH 3 - Loss: 0.008188846831520399
+20-05-10 07:07:52, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-07-52_3.pth
+20-05-10 07:08:01, INFO: Val_loss: 0.008505618199706078 - PSNR: 23.735722406224376 - SSIM: 0.7697716492175172
+20-05-10 07:08:16, INFO: EPOCH 4 - Loss: 0.007766162612785896
+20-05-10 07:08:16, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-08-16_4.pth
+20-05-10 07:08:25, INFO: Val_loss: 0.00686866557225585 - PSNR: 24.680307146649984 - SSIM: 0.7836067648049938
+20-05-10 07:08:40, INFO: EPOCH 5 - Loss: 0.007193680077791214
+20-05-10 07:08:40, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-08-40_5.pth
+20-05-10 07:08:49, INFO: Val_loss: 0.00691327266395092 - PSNR: 24.295994292371724 - SSIM: 0.7869960046582664
+20-05-10 07:09:04, INFO: EPOCH 6 - Loss: 0.00750503284111619
+20-05-10 07:09:04, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-09-04_6.pth
+20-05-10 07:09:13, INFO: Val_loss: 0.006531005725264549 - PSNR: 24.951292352427643 - SSIM: 0.792692198816801
+20-05-10 07:09:29, INFO: EPOCH 7 - Loss: 0.0068038222069541614
+20-05-10 07:09:29, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-09-29_7.pth
+20-05-10 07:09:38, INFO: Val_loss: 0.006133595481514931 - PSNR: 24.93198785971923 - SSIM: 0.7960354536069144
+20-05-10 07:09:53, INFO: EPOCH 8 - Loss: 0.006436955377459526
+20-05-10 07:09:53, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-09-53_8.pth
+20-05-10 07:10:02, INFO: Val_loss: 0.006005704868584871 - PSNR: 25.164254842059727 - SSIM: 0.7955820891379511
+20-05-10 07:10:17, INFO: EPOCH 9 - Loss: 0.006083332839111487
+20-05-10 07:10:17, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-10-17_9.pth
+20-05-10 07:10:26, INFO: Val_loss: 0.005742964800447226 - PSNR: 25.22371120888507 - SSIM: 0.7984201689212261
+20-05-10 07:10:41, INFO: EPOCH 10 - Loss: 0.005699135395387809
+20-05-10 07:10:41, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-10-41_10.pth
+20-05-10 07:10:50, INFO: Val_loss: 0.005769033450633287 - PSNR: 25.16049840628871 - SSIM: 0.8014684202733501
+20-05-10 07:11:06, INFO: EPOCH 11 - Loss: 0.005864285894980033
+20-05-10 07:11:06, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-11-06_11.pth
+20-05-10 07:11:15, INFO: Val_loss: 0.005759275984019041 - PSNR: 25.265880322218187 - SSIM: 0.8000726262977135
+20-05-10 07:11:30, INFO: EPOCH 12 - Loss: 0.005805086081226667
+20-05-10 07:11:30, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-11-30_12.pth
+20-05-10 07:11:39, INFO: Val_loss: 0.005877968389540911 - PSNR: 24.99672292110922 - SSIM: 0.800981649394179
+20-05-10 07:11:54, INFO: EPOCH 13 - Loss: 0.00595962608853976
+20-05-10 07:11:54, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-11-54_13.pth
+20-05-10 07:12:03, INFO: Val_loss: 0.0059888786636292934 - PSNR: 24.921148057646274 - SSIM: 0.7997490864266669
+20-05-10 07:12:18, INFO: EPOCH 14 - Loss: 0.005681289838006099
+20-05-10 07:12:18, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-12-18_14.pth
+20-05-10 07:12:27, INFO: Val_loss: 0.00547491991892457 - PSNR: 25.3694580658784 - SSIM: 0.8029280257657122
+20-05-10 07:12:43, INFO: EPOCH 15 - Loss: 0.005425142443428437
+20-05-10 07:12:43, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-12-43_15.pth
+20-05-10 07:12:52, INFO: Val_loss: 0.005449122749269009 - PSNR: 25.27405280713667 - SSIM: 0.8028365687098479
+20-05-10 07:13:07, INFO: EPOCH 16 - Loss: 0.005454638876020908
+20-05-10 07:13:07, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-13-07_16.pth
+20-05-10 07:13:16, INFO: Val_loss: 0.005540342070162296 - PSNR: 25.451719644655686 - SSIM: 0.8059287684851192
+20-05-10 07:13:31, INFO: EPOCH 17 - Loss: 0.0055462366913755735
+20-05-10 07:13:31, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-13-31_17.pth
+20-05-10 07:13:40, INFO: Val_loss: 0.005497530568391085 - PSNR: 25.368360177004465 - SSIM: 0.8055864016747459
+20-05-10 07:13:55, INFO: EPOCH 18 - Loss: 0.005302035308132569
+20-05-10 07:13:55, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-13-55_18.pth
+20-05-10 07:14:05, INFO: Val_loss: 0.005841350648552179 - PSNR: 25.164101292170177 - SSIM: 0.8042709465918467
+20-05-10 07:14:20, INFO: EPOCH 19 - Loss: 0.005394237942993641
+20-05-10 07:14:20, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-14-20_19.pth
+20-05-10 07:14:29, INFO: Val_loss: 0.005426155868917704 - PSNR: 25.4338556505726 - SSIM: 0.803419725276955
+20-05-10 07:14:44, INFO: EPOCH 20 - Loss: 0.005294392429292202
+20-05-10 07:14:44, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-14-44_20.pth
+20-05-10 07:14:54, INFO: Val_loss: 0.00565154617652297 - PSNR: 25.446509206894515 - SSIM: 0.8069470839082544
+20-05-10 07:15:09, INFO: EPOCH 21 - Loss: 0.005277416452765465
+20-05-10 07:15:09, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-15-09_21.pth
+20-05-10 07:15:18, INFO: Val_loss: 0.0056567140854895115 - PSNR: 25.3982183311628 - SSIM: 0.8061911668247117
+20-05-10 07:15:33, INFO: EPOCH 22 - Loss: 0.005135938573628664
+20-05-10 07:15:33, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-15-33_22.pth
+20-05-10 07:15:42, INFO: Val_loss: 0.005479178391396999 - PSNR: 25.351915541968133 - SSIM: 0.8069383668657751
+20-05-10 07:15:58, INFO: EPOCH 23 - Loss: 0.005241967334101597
+20-05-10 07:15:58, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-15-58_23.pth
+20-05-10 07:16:07, INFO: Val_loss: 0.005366113036870956 - PSNR: 25.603697981866443 - SSIM: 0.8088706963058037
+20-05-10 07:16:22, INFO: EPOCH 24 - Loss: 0.005155028650537134
+20-05-10 07:16:22, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-16-22_24.pth
+20-05-10 07:16:31, INFO: Val_loss: 0.00569927878677845 - PSNR: 25.149644805128613 - SSIM: 0.7991589143669157
+20-05-10 07:16:46, INFO: EPOCH 25 - Loss: 0.00530493975058198
+20-05-10 07:16:46, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-16-46_25.pth
+20-05-10 07:16:55, INFO: Val_loss: 0.0056260195560753345 - PSNR: 25.48557200501926 - SSIM: 0.8086802518072972
+20-05-10 07:17:10, INFO: EPOCH 26 - Loss: 0.005068182999889056
+20-05-10 07:17:10, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-17-10_26.pth
+20-05-10 07:17:20, INFO: Val_loss: 0.005337606184184551 - PSNR: 25.554319918991077 - SSIM: 0.8107373873367605
+20-05-10 07:17:35, INFO: EPOCH 27 - Loss: 0.005064581753065189
+20-05-10 07:17:35, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-17-35_27.pth
+20-05-10 07:17:44, INFO: Val_loss: 0.005195776000618935 - PSNR: 25.629515494064517 - SSIM: 0.8103002921079044
+20-05-10 07:17:59, INFO: EPOCH 28 - Loss: 0.005017553503314654
+20-05-10 07:17:59, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-17-59_28.pth
+20-05-10 07:18:08, INFO: Val_loss: 0.005226225592195988 - PSNR: 25.480331009852197 - SSIM: 0.8090616745284397
+20-05-10 07:18:23, INFO: EPOCH 29 - Loss: 0.00511667646219333
+20-05-10 07:18:23, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-18-23_29.pth
+20-05-10 07:18:33, INFO: Val_loss: 0.005298490636050701 - PSNR: 25.539260082136497 - SSIM: 0.8108659043748285
+20-05-10 07:18:48, INFO: EPOCH 30 - Loss: 0.004920981404682
+20-05-10 07:18:48, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-18-48_30.pth
+20-05-10 07:18:57, INFO: Val_loss: 0.005046036094427109 - PSNR: 25.74911303004888 - SSIM: 0.8114887957341499
+20-05-10 07:19:12, INFO: EPOCH 31 - Loss: 0.004885319594293833
+20-05-10 07:19:12, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-19-12_31.pth
+20-05-10 07:19:21, INFO: Val_loss: 0.005134857725352049 - PSNR: 25.570426093947184 - SSIM: 0.8103742530677384
+20-05-10 07:19:37, INFO: EPOCH 32 - Loss: 0.0048491375700881086
+20-05-10 07:19:37, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-19-37_32.pth
+20-05-10 07:19:46, INFO: Val_loss: 0.005087336990982294 - PSNR: 25.714033935277957 - SSIM: 0.8115461913891971
+20-05-10 07:20:01, INFO: EPOCH 33 - Loss: 0.004912445387492578
+20-05-10 07:20:01, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-20-01_33.pth
+20-05-10 07:20:10, INFO: Val_loss: 0.00517975864931941 - PSNR: 25.526073204240564 - SSIM: 0.8094862410751554
+20-05-10 07:20:25, INFO: EPOCH 34 - Loss: 0.004934137560427189
+20-05-10 07:20:25, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-20-25_34.pth
+20-05-10 07:20:34, INFO: Val_loss: 0.00515962578356266 - PSNR: 25.62350535484908 - SSIM: 0.8105168036107477
+20-05-10 07:20:50, INFO: EPOCH 35 - Loss: 0.004942240430663029
+20-05-10 07:20:50, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-20-50_35.pth
+20-05-10 07:20:59, INFO: Val_loss: 0.005468916147947311 - PSNR: 25.375376682184054 - SSIM: 0.811277408326839
+20-05-10 07:21:14, INFO: EPOCH 36 - Loss: 0.004878184380630652
+20-05-10 07:21:14, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-21-14_36.pth
+20-05-10 07:21:23, INFO: Val_loss: 0.005020288284868002 - PSNR: 25.779020294537997 - SSIM: 0.8120557730696417
+20-05-10 07:21:38, INFO: EPOCH 37 - Loss: 0.004759137106438478
+20-05-10 07:21:38, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-21-38_37.pth
+20-05-10 07:21:48, INFO: Val_loss: 0.0049987188540399075 - PSNR: 25.849468915420285 - SSIM: 0.8121570432201385
+20-05-10 07:22:03, INFO: EPOCH 38 - Loss: 0.004843740846961737
+20-05-10 07:22:03, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-22-03_38.pth
+20-05-10 07:22:12, INFO: Val_loss: 0.005028770305216312 - PSNR: 25.736020907182173 - SSIM: 0.8101380952967161
+20-05-10 07:22:27, INFO: EPOCH 39 - Loss: 0.0047591702813903495
+20-05-10 07:22:27, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-22-27_39.pth
+20-05-10 07:22:36, INFO: Val_loss: 0.004950493108481169 - PSNR: 25.820694392047507 - SSIM: 0.8156475961851878
+20-05-10 07:22:52, INFO: EPOCH 40 - Loss: 0.0048280798668662705
+20-05-10 07:22:52, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-22-52_40.pth
+20-05-10 07:23:01, INFO: Val_loss: 0.005107444245368242 - PSNR: 25.68113261820583 - SSIM: 0.8128902981823377
+20-05-10 07:23:16, INFO: EPOCH 41 - Loss: 0.004683412993947665
+20-05-10 07:23:16, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-23-16_41.pth
+20-05-10 07:23:25, INFO: Val_loss: 0.004939346574246883 - PSNR: 25.75713879949061 - SSIM: 0.8139250043576243
+20-05-10 07:23:40, INFO: EPOCH 42 - Loss: 0.004837310423453649
+20-05-10 07:23:40, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-23-40_42.pth
+20-05-10 07:23:49, INFO: Val_loss: 0.004970410838723183 - PSNR: 25.821373084369835 - SSIM: 0.815108383427028
+20-05-10 07:24:05, INFO: EPOCH 43 - Loss: 0.004830340233941873
+20-05-10 07:24:05, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-24-05_43.pth
+20-05-10 07:24:14, INFO: Val_loss: 0.0049835084937512875 - PSNR: 25.804987390654933 - SSIM: 0.8142370054211034
+20-05-10 07:24:29, INFO: EPOCH 44 - Loss: 0.0047647165916860105
+20-05-10 07:24:29, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-24-29_44.pth
+20-05-10 07:24:38, INFO: Val_loss: 0.004988816101104021 - PSNR: 25.829524059711684 - SSIM: 0.8133649360510146
+20-05-10 07:24:53, INFO: EPOCH 45 - Loss: 0.004717591104408106
+20-05-10 07:24:53, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-24-53_45.pth
+20-05-10 07:25:03, INFO: Val_loss: 0.004941141698509455 - PSNR: 25.834531422054784 - SSIM: 0.8137819467996931
+20-05-10 07:25:18, INFO: EPOCH 46 - Loss: 0.004742199725160996
+20-05-10 07:25:18, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-25-18_46.pth
+20-05-10 07:25:27, INFO: Val_loss: 0.005005057901144028 - PSNR: 25.705045681776536 - SSIM: 0.8151555687982627
+20-05-10 07:25:42, INFO: EPOCH 47 - Loss: 0.004806126188486815
+20-05-10 07:25:42, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-25-42_47.pth
+20-05-10 07:25:51, INFO: Val_loss: 0.004892509896308184 - PSNR: 25.906309558387854 - SSIM: 0.8167564487917497
+20-05-10 07:26:07, INFO: EPOCH 48 - Loss: 0.004843879892180363
+20-05-10 07:26:07, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-26-07_48.pth
+20-05-10 07:26:16, INFO: Val_loss: 0.004929922521114349 - PSNR: 25.707765290473176 - SSIM: 0.8139848167670606
+20-05-10 07:26:31, INFO: EPOCH 49 - Loss: 0.005177677938093742
+20-05-10 07:26:31, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-26-31_49.pth
+20-05-10 07:26:40, INFO: Val_loss: 0.007742924615740776 - PSNR: 24.46526200608686 - SSIM: 0.801552067301445
+20-05-10 07:26:55, INFO: EPOCH 50 - Loss: 0.10126491301258406
+20-05-10 07:26:55, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-26-55_50.pth
+20-05-10 07:27:04, INFO: Val_loss: 0.12908557057380676 - PSNR: 12.217821549460474 - SSIM: 0.432955300881916
+20-05-10 07:27:04, INFO: Completed
+
+
+20-05-10 07:28:49, INFO: 
+
+================ SRResNet - TRAINING =================
+
+
+20-05-10 07:28:49, INFO: [('crop_size', 88), ('models_dir', '/content/gdrive/My Drive/MOUNT/models'), ('num_epochs', 50), ('train_file', '/content/gdrive/My Drive/MOUNT/dataset/VOC-2012-train.pkl'), ('upscale_factor', 4), ('valid_file', '/content/gdrive/My Drive/MOUNT/dataset/VOC-2012-valid_4.pkl')]
+20-05-10 07:28:53, INFO: No.parameters: 723467
+20-05-10 07:28:53, INFO: SRResNet(
+  (block1): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+    (1): PReLU(num_parameters=1)
+  )
+  (block2): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block3): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block4): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block5): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block6): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block7): Sequential(
+    (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block8): Sequential(
+    (0): UpsampleBLock(
+      (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (pixel_shuffle): PixelShuffle(upscale_factor=2)
+      (prelu): PReLU(num_parameters=1)
+    )
+    (1): UpsampleBLock(
+      (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (pixel_shuffle): PixelShuffle(upscale_factor=2)
+      (prelu): PReLU(num_parameters=1)
+    )
+    (2): Conv2d(64, 3, kernel_size=(9, 9), stride=(1, 1), padding=(4, 4))
+  )
+)
+20-05-10 07:29:10, INFO: EPOCH 1 - Loss: 0.020272229162355264
+20-05-10 07:29:11, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-29-10_1.pth
+20-05-10 07:29:20, INFO: Val_loss: 0.011084028519690037 - PSNR: 22.24580292415326 - SSIM: 0.6990749284923982
+20-05-10 07:29:35, INFO: EPOCH 2 - Loss: 0.010759843717018764
+20-05-10 07:29:35, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-29-35_2.pth
+20-05-10 07:29:44, INFO: Val_loss: 0.009028200060129166 - PSNR: 23.207370198711015 - SSIM: 0.7349243816673482
+20-05-10 07:30:00, INFO: EPOCH 3 - Loss: 0.008251921266317368
+20-05-10 07:30:00, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-30-00_3.pth
+20-05-10 07:30:09, INFO: Val_loss: 0.009795265272259712 - PSNR: 23.99477657474498 - SSIM: 0.7634457783071567
+20-05-10 07:30:24, INFO: EPOCH 4 - Loss: 0.007479519332448641
+20-05-10 07:30:24, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-30-24_4.pth
+20-05-10 07:30:33, INFO: Val_loss: 0.007773154880851507 - PSNR: 23.959188348334578 - SSIM: 0.7752750187304656
+20-05-10 07:30:49, INFO: EPOCH 5 - Loss: 0.007417099690685669
+20-05-10 07:30:49, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-30-49_5.pth
+20-05-10 07:30:58, INFO: Val_loss: 0.006807971280068159 - PSNR: 24.552948182658444 - SSIM: 0.782421791747973
+20-05-10 07:31:13, INFO: EPOCH 6 - Loss: 0.0069289340736965336
+20-05-10 07:31:13, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-31-13_6.pth
+20-05-10 07:31:23, INFO: Val_loss: 0.008829263038933277 - PSNR: 23.63313432983707 - SSIM: 0.7885517089323567
+20-05-10 07:31:38, INFO: EPOCH 7 - Loss: 0.006949151622752349
+20-05-10 07:31:38, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-31-38_7.pth
+20-05-10 07:31:47, INFO: Val_loss: 0.0102395536378026 - PSNR: 22.429585172484042 - SSIM: 0.7875284857042477
+20-05-10 07:32:02, INFO: EPOCH 8 - Loss: 0.007094658049444358
+20-05-10 07:32:02, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-32-02_8.pth
+20-05-10 07:32:12, INFO: Val_loss: 0.007794809993356466 - PSNR: 23.862881419602136 - SSIM: 0.7951665573125293
+20-05-10 07:32:27, INFO: EPOCH 9 - Loss: 0.006515206165611744
+20-05-10 07:32:27, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-32-27_9.pth
+20-05-10 07:32:36, INFO: Val_loss: 0.0077357785776257515 - PSNR: 24.455725292631072 - SSIM: 0.7997391549173141
+20-05-10 07:32:52, INFO: EPOCH 10 - Loss: 0.006447690633436044
+20-05-10 07:32:52, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-32-52_10.pth
+20-05-10 07:33:01, INFO: Val_loss: 0.007445629686117172 - PSNR: 23.623616697316994 - SSIM: 0.7962225239683111
+20-05-10 07:33:16, INFO: EPOCH 11 - Loss: 0.006131050325930119
+20-05-10 07:33:16, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-33-16_11.pth
+20-05-10 07:33:26, INFO: Val_loss: 0.006105184555053711 - PSNR: 24.657557513861715 - SSIM: 0.7994901246440493
+20-05-10 07:33:41, INFO: EPOCH 12 - Loss: 0.006171572497735421
+20-05-10 07:33:41, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-33-41_12.pth
+20-05-10 07:33:50, INFO: Val_loss: 0.006614513695240021 - PSNR: 24.353517037028645 - SSIM: 0.7960181226328459
+20-05-10 07:34:06, INFO: EPOCH 13 - Loss: 0.006362247293194135
+20-05-10 07:34:06, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-34-06_13.pth
+20-05-10 07:34:15, INFO: Val_loss: 0.0059005203656852245 - PSNR: 25.172849927445863 - SSIM: 0.8006589938055968
+20-05-10 07:34:30, INFO: EPOCH 14 - Loss: 0.005916092216968536
+20-05-10 07:34:30, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-34-30_14.pth
+20-05-10 07:34:39, INFO: Val_loss: 0.005934637505561113 - PSNR: 24.935814918667624 - SSIM: 0.7991422870282401
+20-05-10 07:34:55, INFO: EPOCH 15 - Loss: 0.0060920404940843585
+20-05-10 07:34:55, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-34-55_15.pth
+20-05-10 07:35:04, INFO: Val_loss: 0.005759009625762701 - PSNR: 25.30599517158682 - SSIM: 0.8035299019976343
+20-05-10 07:35:19, INFO: EPOCH 16 - Loss: 0.0059788725177447
+20-05-10 07:35:19, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-35-19_16.pth
+20-05-10 07:35:29, INFO: Val_loss: 0.006474579218775034 - PSNR: 24.94538704755999 - SSIM: 0.8002598237004187
+20-05-10 07:35:44, INFO: EPOCH 17 - Loss: 0.00587406916792194
+20-05-10 07:35:44, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-35-44_17.pth
+20-05-10 07:35:53, INFO: Val_loss: 0.005940655712038279 - PSNR: 25.099647827499748 - SSIM: 0.8028690411488876
+20-05-10 07:36:09, INFO: EPOCH 18 - Loss: 0.005572263911366462
+20-05-10 07:36:09, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-36-09_18.pth
+20-05-10 07:36:18, INFO: Val_loss: 0.0062841265462338924 - PSNR: 24.673694425500845 - SSIM: 0.8052726667553105
+20-05-10 07:36:33, INFO: EPOCH 19 - Loss: 0.005637466571604212
+20-05-10 07:36:33, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-36-33_19.pth
+20-05-10 07:36:43, INFO: Val_loss: 0.005331014283001423 - PSNR: 25.536913080744643 - SSIM: 0.8075908356838021
+20-05-10 07:36:58, INFO: EPOCH 20 - Loss: 0.005619471590965986
+20-05-10 07:36:58, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-36-58_20.pth
+20-05-10 07:37:07, INFO: Val_loss: 0.005899264011532068 - PSNR: 25.079176921550427 - SSIM: 0.8031900754248922
+20-05-10 07:37:23, INFO: EPOCH 21 - Loss: 0.005446884397417307
+20-05-10 07:37:23, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-37-23_21.pth
+20-05-10 07:37:32, INFO: Val_loss: 0.005533674731850624 - PSNR: 25.20505467617482 - SSIM: 0.8025994904122213
+20-05-10 07:37:47, INFO: EPOCH 22 - Loss: 0.005788881052285433
+20-05-10 07:37:47, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-37-47_22.pth
+20-05-10 07:37:56, INFO: Val_loss: 0.005785351153463125 - PSNR: 25.375545675670338 - SSIM: 0.80813195986368
+20-05-10 07:38:12, INFO: EPOCH 23 - Loss: 0.0053278674508134526
+20-05-10 07:38:12, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-38-12_23.pth
+20-05-10 07:38:21, INFO: Val_loss: 0.0056913732551038265 - PSNR: 25.027130384783685 - SSIM: 0.8068046060701296
+20-05-10 07:38:36, INFO: EPOCH 24 - Loss: 0.005395100465665261
+20-05-10 07:38:36, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-38-36_24.pth
+20-05-10 07:38:46, INFO: Val_loss: 0.005433307960629463 - PSNR: 25.247843317192725 - SSIM: 0.8078355504147757
+20-05-10 07:39:01, INFO: EPOCH 25 - Loss: 0.00529544788847367
+20-05-10 07:39:01, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-39-01_25.pth
+20-05-10 07:39:11, INFO: Val_loss: 0.005250871647149324 - PSNR: 25.652602814252518 - SSIM: 0.8117222710353018
+20-05-10 07:39:26, INFO: EPOCH 26 - Loss: 0.005166114048411449
+20-05-10 07:39:26, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-39-26_26.pth
+20-05-10 07:39:35, INFO: Val_loss: 0.006130275782197714 - PSNR: 24.71610898464493 - SSIM: 0.8091575372251293
+20-05-10 07:39:50, INFO: EPOCH 27 - Loss: 0.005372296101103226
+20-05-10 07:39:50, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-39-50_27.pth
+20-05-10 07:40:00, INFO: Val_loss: 0.005693040322512388 - PSNR: 24.794426054082347 - SSIM: 0.8037474325929108
+20-05-10 07:40:15, INFO: EPOCH 28 - Loss: 0.005250563013056914
+20-05-10 07:40:15, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-40-15_28.pth
+20-05-10 07:40:24, INFO: Val_loss: 0.00518177030608058 - PSNR: 25.654915422885182 - SSIM: 0.8085876920647336
+20-05-10 07:40:40, INFO: EPOCH 29 - Loss: 0.0051093335238595805
+20-05-10 07:40:40, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-40-40_29.pth
+20-05-10 07:40:49, INFO: Val_loss: 0.005883523263037205 - PSNR: 24.93479312654209 - SSIM: 0.8092174825908998
+20-05-10 07:41:04, INFO: EPOCH 30 - Loss: 0.0054089717256526155
+20-05-10 07:41:04, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-41-04_30.pth
+20-05-10 07:41:14, INFO: Val_loss: 0.005451598204672337 - PSNR: 25.339375783327085 - SSIM: 0.8117197153984725
+20-05-10 07:41:29, INFO: EPOCH 31 - Loss: 0.0052984473519027235
+20-05-10 07:41:29, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-41-29_31.pth
+20-05-10 07:41:38, INFO: Val_loss: 0.005374966189265251 - PSNR: 25.54270637868436 - SSIM: 0.8092053809730024
+20-05-10 07:41:53, INFO: EPOCH 32 - Loss: 0.005283892230441173
+20-05-10 07:41:53, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-41-53_32.pth
+20-05-10 07:42:03, INFO: Val_loss: 0.005390698090195656 - PSNR: 25.28605075304939 - SSIM: 0.8107962238960995
+20-05-10 07:42:18, INFO: EPOCH 33 - Loss: 0.0053615539036691185
+20-05-10 07:42:18, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-42-18_33.pth
+20-05-10 07:42:27, INFO: Val_loss: 0.005125096533447504 - PSNR: 25.629567267797388 - SSIM: 0.8125975006562065
+20-05-10 07:42:43, INFO: EPOCH 34 - Loss: 0.005084248960018158
+20-05-10 07:42:43, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-42-43_34.pth
+20-05-10 07:42:52, INFO: Val_loss: 0.005255637224763632 - PSNR: 25.636505411251505 - SSIM: 0.8081058885024922
+20-05-10 07:43:07, INFO: EPOCH 35 - Loss: 0.005045866642147303
+20-05-10 07:43:07, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-43-07_35.pth
+20-05-10 07:43:17, INFO: Val_loss: 0.0054499185644090176 - PSNR: 25.24442318751627 - SSIM: 0.814068296747833
+20-05-10 07:43:32, INFO: EPOCH 36 - Loss: 0.005117451950907707
+20-05-10 07:43:32, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-43-32_36.pth
+20-05-10 07:43:41, INFO: Val_loss: 0.005272722337394953 - PSNR: 25.48583426510497 - SSIM: 0.8110696166674818
+20-05-10 07:43:56, INFO: EPOCH 37 - Loss: 0.004814435417453448
+20-05-10 07:43:56, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-43-56_37.pth
+20-05-10 07:44:05, INFO: Val_loss: 0.005335601978003979 - PSNR: 25.33467041717152 - SSIM: 0.8112800370490458
+20-05-10 07:44:21, INFO: EPOCH 38 - Loss: 0.005079562675207853
+20-05-10 07:44:21, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-44-21_38.pth
+20-05-10 07:44:30, INFO: Val_loss: 0.005713591352105141 - PSNR: 25.09161886671113 - SSIM: 0.8131815878485983
+20-05-10 07:44:45, INFO: EPOCH 39 - Loss: 0.004928672105073929
+20-05-10 07:44:45, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-44-45_39.pth
+20-05-10 07:44:54, INFO: Val_loss: 0.00504897627979517 - PSNR: 25.811129863063098 - SSIM: 0.8114692018445983
+20-05-10 07:45:10, INFO: EPOCH 40 - Loss: 0.005007228950659434
+20-05-10 07:45:10, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-45-10_40.pth
+20-05-10 07:45:19, INFO: Val_loss: 0.0051231374964118 - PSNR: 25.628224823826745 - SSIM: 0.8128182484689137
+20-05-10 07:45:34, INFO: EPOCH 41 - Loss: 0.005053917826463779
+20-05-10 07:45:34, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-45-34_41.pth
+20-05-10 07:45:44, INFO: Val_loss: 0.005245355889201164 - PSNR: 25.410863178160877 - SSIM: 0.8105363729361497
+20-05-10 07:45:59, INFO: EPOCH 42 - Loss: 0.00509573740636309
+20-05-10 07:45:59, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-45-59_42.pth
+20-05-10 07:46:08, INFO: Val_loss: 0.0052619269117712975 - PSNR: 25.67406881295353 - SSIM: 0.8134912407364535
+20-05-10 07:46:23, INFO: EPOCH 43 - Loss: 0.005023799783239762
+20-05-10 07:46:24, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-46-23_43.pth
+20-05-10 07:46:33, INFO: Val_loss: 0.006021610461175442 - PSNR: 24.893437640776327 - SSIM: 0.8126164178241634
+20-05-10 07:46:48, INFO: EPOCH 44 - Loss: 0.005070907744268576
+20-05-10 07:46:48, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-46-48_44.pth
+20-05-10 07:46:57, INFO: Val_loss: 0.005010383203625679 - PSNR: 25.812942174113523 - SSIM: 0.8139166717017219
+20-05-10 07:47:13, INFO: EPOCH 45 - Loss: 0.00499146955832839
+20-05-10 07:47:13, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-47-13_45.pth
+20-05-10 07:47:22, INFO: Val_loss: 0.0052189333364367485 - PSNR: 25.515032148155726 - SSIM: 0.8121575307469123
+20-05-10 07:47:37, INFO: EPOCH 46 - Loss: 0.005013250862558683
+20-05-10 07:47:37, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-47-37_46.pth
+20-05-10 07:47:46, INFO: Val_loss: 0.005067707039415836 - PSNR: 25.834755299061975 - SSIM: 0.8149887372086004
+20-05-10 07:48:02, INFO: EPOCH 47 - Loss: 0.004916471193234126
+20-05-10 07:48:02, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-48-02_47.pth
+20-05-10 07:48:11, INFO: Val_loss: 0.005239694379270077 - PSNR: 25.414717636726973 - SSIM: 0.8108048292032108
+20-05-10 07:48:26, INFO: EPOCH 48 - Loss: 0.004802800677716732
+20-05-10 07:48:26, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-48-26_48.pth
+20-05-10 07:48:35, INFO: Val_loss: 0.004915942903608084 - PSNR: 25.86363751449978 - SSIM: 0.8155840219280504
+20-05-10 07:48:51, INFO: EPOCH 49 - Loss: 0.004975797628362973
+20-05-10 07:48:51, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-48-51_49.pth
+20-05-10 07:49:00, INFO: Val_loss: 0.005528942681849003 - PSNR: 25.018876362437005 - SSIM: 0.810890241084168
+20-05-10 07:49:15, INFO: EPOCH 50 - Loss: 0.005046549582233032
+20-05-10 07:49:15, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_07-49-15_50.pth
+20-05-10 07:49:25, INFO: Val_loss: 0.00665829936042428 - PSNR: 24.644611699910953 - SSIM: 0.809976859465583
+20-05-10 07:49:25, INFO: Completed
+
+
+20-05-10 08:07:53, INFO: 
+
+================ SRResNet - TRAINING =================
+
+
+20-05-10 08:07:53, INFO: [('crop_size', 88), ('models_dir', '/content/gdrive/My Drive/MOUNT/models'), ('num_epochs', 50), ('train_file', '/content/gdrive/My Drive/MOUNT/dataset/VOC-2012-train.pkl'), ('upscale_factor', 4), ('valid_file', '/content/gdrive/My Drive/MOUNT/dataset/VOC-2012-valid_4.pkl')]
+20-05-10 08:07:57, INFO: No.parameters: 728075
+20-05-10 08:07:57, INFO: SRResNet(
+  (block1): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3))
+    (1): PReLU(num_parameters=1)
+  )
+  (block2): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block3): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block4): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block5): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block6): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block7): Sequential(
+    (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block8): Sequential(
+    (0): UpsampleBLock(
+      (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (pixel_shuffle): PixelShuffle(upscale_factor=2)
+      (prelu): PReLU(num_parameters=1)
+    )
+    (1): UpsampleBLock(
+      (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (pixel_shuffle): PixelShuffle(upscale_factor=2)
+      (prelu): PReLU(num_parameters=1)
+    )
+    (2): Conv2d(64, 3, kernel_size=(9, 9), stride=(1, 1), padding=(4, 4))
+  )
+)
+20-05-10 08:08:15, INFO: EPOCH 1 - Loss: 0.019253825018803277
+20-05-10 08:08:15, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-08-15_1.pth
+20-05-10 08:08:24, INFO: Val_loss: 0.011153366416692734 - PSNR: 22.46136392853639 - SSIM: 0.6985926518510918
+20-05-10 08:08:39, INFO: EPOCH 2 - Loss: 0.010305362394700448
+20-05-10 08:08:39, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-08-39_2.pth
+20-05-10 08:08:48, INFO: Val_loss: 0.009808648377656937 - PSNR: 22.481836768033077 - SSIM: 0.7312567925187667
+20-05-10 08:09:04, INFO: EPOCH 3 - Loss: 0.008929477912684282
+20-05-10 08:09:04, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-09-04_3.pth
+20-05-10 08:09:13, INFO: Val_loss: 0.0177766140550375 - PSNR: 20.15536107706705 - SSIM: 0.7415596615444459
+20-05-10 08:09:28, INFO: EPOCH 4 - Loss: 0.008293949039032062
+20-05-10 08:09:28, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-09-28_4.pth
+20-05-10 08:09:38, INFO: Val_loss: 0.00857473909854889 - PSNR: 23.269398284764378 - SSIM: 0.7695586166709893
+20-05-10 08:09:53, INFO: EPOCH 5 - Loss: 0.007431348022073507
+20-05-10 08:09:53, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-09-53_5.pth
+20-05-10 08:10:02, INFO: Val_loss: 0.007112082559615374 - PSNR: 24.69977317383099 - SSIM: 0.7793995602518291
+20-05-10 08:10:18, INFO: EPOCH 6 - Loss: 0.006969402976334095
+20-05-10 08:10:18, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-10-18_6.pth
+20-05-10 08:10:27, INFO: Val_loss: 0.007153030019253492 - PSNR: 23.96848937681465 - SSIM: 0.7849332257772761
+20-05-10 08:10:42, INFO: EPOCH 7 - Loss: 0.006944072846323252
+20-05-10 08:10:42, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-10-42_7.pth
+20-05-10 08:10:52, INFO: Val_loss: 0.007412792183458805 - PSNR: 23.81751503562428 - SSIM: 0.7886043502317304
+20-05-10 08:11:07, INFO: EPOCH 8 - Loss: 0.0067512686761717
+20-05-10 08:11:07, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-11-07_8.pth
+20-05-10 08:11:17, INFO: Val_loss: 0.008114500902593136 - PSNR: 23.241454838033093 - SSIM: 0.7907998361610793
+20-05-10 08:11:32, INFO: EPOCH 9 - Loss: 0.006353790995975336
+20-05-10 08:11:32, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-11-32_9.pth
+20-05-10 08:11:41, INFO: Val_loss: 0.007220819592475891 - PSNR: 24.250551788118482 - SSIM: 0.7887713886644443
+20-05-10 08:11:57, INFO: EPOCH 10 - Loss: 0.006508613458524147
+20-05-10 08:11:57, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-11-57_10.pth
+20-05-10 08:12:06, INFO: Val_loss: 0.006151584908366203 - PSNR: 25.07983624013679 - SSIM: 0.7968375267474027
+20-05-10 08:12:22, INFO: EPOCH 11 - Loss: 0.0061421902899940805
+20-05-10 08:12:22, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-12-22_11.pth
+20-05-10 08:12:31, INFO: Val_loss: 0.0063025373965501785 - PSNR: 24.909123257500553 - SSIM: 0.7984376882178578
+20-05-10 08:12:46, INFO: EPOCH 12 - Loss: 0.0070237230447431406
+20-05-10 08:12:46, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-12-46_12.pth
+20-05-10 08:12:56, INFO: Val_loss: 0.009429904632270336 - PSNR: 23.22127541814366 - SSIM: 0.7872557042392593
+20-05-10 08:13:11, INFO: EPOCH 13 - Loss: 0.006237670303632816
+20-05-10 08:13:11, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-13-11_13.pth
+20-05-10 08:13:20, INFO: Val_loss: 0.0068511939607560635 - PSNR: 23.93565683015147 - SSIM: 0.7979399341930553
+20-05-10 08:13:36, INFO: EPOCH 14 - Loss: 0.006047368003676335
+20-05-10 08:13:36, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-13-36_14.pth
+20-05-10 08:13:45, INFO: Val_loss: 0.006566671654582024 - PSNR: 24.646633410063263 - SSIM: 0.8000053432677801
+20-05-10 08:14:01, INFO: EPOCH 15 - Loss: 0.006350358925759792
+20-05-10 08:14:01, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-14-01_15.pth
+20-05-10 08:14:10, INFO: Val_loss: 0.006179450079798698 - PSNR: 25.01983899030492 - SSIM: 0.8014139084189409
+20-05-10 08:14:25, INFO: EPOCH 16 - Loss: 0.0060515349184473355
+20-05-10 08:14:25, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-14-25_16.pth
+20-05-10 08:14:35, INFO: Val_loss: 0.005964798852801323 - PSNR: 24.763715792521335 - SSIM: 0.7984611864792496
+20-05-10 08:14:50, INFO: EPOCH 17 - Loss: 0.005960885388155778
+20-05-10 08:14:50, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-14-50_17.pth
+20-05-10 08:15:00, INFO: Val_loss: 0.006050188560038805 - PSNR: 25.041580160153007 - SSIM: 0.803224957879037
+20-05-10 08:15:15, INFO: EPOCH 18 - Loss: 0.0058412262375156085
+20-05-10 08:15:15, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-15-15_18.pth
+20-05-10 08:15:24, INFO: Val_loss: 0.006714977324008942 - PSNR: 24.551639161888023 - SSIM: 0.8017623885301955
+20-05-10 08:15:40, INFO: EPOCH 19 - Loss: 0.005682037753363451
+20-05-10 08:15:40, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-15-40_19.pth
+20-05-10 08:15:49, INFO: Val_loss: 0.005698795896023512 - PSNR: 25.1922147588291 - SSIM: 0.8058840364088092
+20-05-10 08:16:05, INFO: EPOCH 20 - Loss: 0.005539087160180012
+20-05-10 08:16:05, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-16-05_20.pth
+20-05-10 08:16:14, INFO: Val_loss: 0.005512863397598267 - PSNR: 25.465274300924953 - SSIM: 0.806596745628486
+20-05-10 08:16:30, INFO: EPOCH 21 - Loss: 0.005612942992399136
+20-05-10 08:16:30, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-16-30_21.pth
+20-05-10 08:16:39, INFO: Val_loss: 0.005868384148925543 - PSNR: 25.046372922430145 - SSIM: 0.806317852752864
+20-05-10 08:16:54, INFO: EPOCH 22 - Loss: 0.005535218548029661
+20-05-10 08:16:54, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-16-54_22.pth
+20-05-10 08:17:04, INFO: Val_loss: 0.00589720718562603 - PSNR: 24.744233234331826 - SSIM: 0.8051812647482955
+20-05-10 08:17:19, INFO: EPOCH 23 - Loss: 0.005581430772940318
+20-05-10 08:17:19, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-17-19_23.pth
+20-05-10 08:17:28, INFO: Val_loss: 0.005595100577920675 - PSNR: 25.464343064660643 - SSIM: 0.8084276537951033
+20-05-10 08:17:44, INFO: EPOCH 24 - Loss: 0.005525552272796631
+20-05-10 08:17:44, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-17-44_24.pth
+20-05-10 08:17:53, INFO: Val_loss: 0.005473421886563301 - PSNR: 25.49700436969714 - SSIM: 0.8061192043700774
+20-05-10 08:18:09, INFO: EPOCH 25 - Loss: 0.005543179729332526
+20-05-10 08:18:09, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-18-09_25.pth
+20-05-10 08:18:18, INFO: Val_loss: 0.00558801693841815 - PSNR: 25.40757564498078 - SSIM: 0.8084647305545719
+20-05-10 08:18:33, INFO: EPOCH 26 - Loss: 0.005507388969262441
+20-05-10 08:18:33, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-18-33_26.pth
+20-05-10 08:18:43, INFO: Val_loss: 0.005583431571722031 - PSNR: 25.186367783910278 - SSIM: 0.8050995123819266
+20-05-10 08:18:58, INFO: EPOCH 27 - Loss: 0.0054709587308267756
+20-05-10 08:18:58, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-18-58_27.pth
+20-05-10 08:19:07, INFO: Val_loss: 0.005234840791672468 - PSNR: 25.574702821526945 - SSIM: 0.8098966743058444
+20-05-10 08:19:23, INFO: EPOCH 28 - Loss: 0.00561088040471077
+20-05-10 08:19:23, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-19-23_28.pth
+20-05-10 08:19:32, INFO: Val_loss: 0.005628845654428005 - PSNR: 25.432262463992224 - SSIM: 0.8099291751304402
+20-05-10 08:19:48, INFO: EPOCH 29 - Loss: 0.005382170980175336
+20-05-10 08:19:48, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-19-48_29.pth
+20-05-10 08:19:57, INFO: Val_loss: 0.005431546363979578 - PSNR: 25.364716561478584 - SSIM: 0.8047345046513878
+20-05-10 08:20:12, INFO: EPOCH 30 - Loss: 0.005344425282130639
+20-05-10 08:20:12, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-20-12_30.pth
+20-05-10 08:20:22, INFO: Val_loss: 0.006371716503053904 - PSNR: 24.819260348306184 - SSIM: 0.8073806794296422
+20-05-10 08:20:37, INFO: EPOCH 31 - Loss: 0.005519027223189672
+20-05-10 08:20:37, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-20-37_31.pth
+20-05-10 08:20:46, INFO: Val_loss: 0.00529843894764781 - PSNR: 25.56787809890263 - SSIM: 0.8057728955115
+20-05-10 08:21:02, INFO: EPOCH 32 - Loss: 0.005467436652630568
+20-05-10 08:21:02, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-21-02_32.pth
+20-05-10 08:21:11, INFO: Val_loss: 0.005858219228684902 - PSNR: 24.856937230595523 - SSIM: 0.8093690219494042
+20-05-10 08:21:27, INFO: EPOCH 33 - Loss: 0.005667751183112462
+20-05-10 08:21:27, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-21-27_33.pth
+20-05-10 08:21:36, INFO: Val_loss: 0.006130516994744539 - PSNR: 24.72394735986026 - SSIM: 0.8059596923002769
+20-05-10 08:21:51, INFO: EPOCH 34 - Loss: 0.005838038562486569
+20-05-10 08:21:51, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-21-51_34.pth
+20-05-10 08:22:01, INFO: Val_loss: 0.005675580818206072 - PSNR: 25.364566056562385 - SSIM: 0.8085427095350803
+20-05-10 08:22:16, INFO: EPOCH 35 - Loss: 0.0054718512097994484
+20-05-10 08:22:16, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-22-16_35.pth
+20-05-10 08:22:25, INFO: Val_loss: 0.005467564798891544 - PSNR: 25.3005042641603 - SSIM: 0.8087389365416555
+20-05-10 08:22:41, INFO: EPOCH 36 - Loss: 0.005393715782711903
+20-05-10 08:22:41, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-22-41_36.pth
+20-05-10 08:22:50, INFO: Val_loss: 0.01965009793639183 - PSNR: 21.978224153661603 - SSIM: 0.7859142641612437
+20-05-10 08:23:06, INFO: EPOCH 37 - Loss: 0.0051959417151908075
+20-05-10 08:23:06, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-23-06_37.pth
+20-05-10 08:23:15, INFO: Val_loss: 0.005378933623433113 - PSNR: 25.382883822415465 - SSIM: 0.8098239741668779
+20-05-10 08:23:31, INFO: EPOCH 38 - Loss: 0.005235663748035828
+20-05-10 08:23:31, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-23-31_38.pth
+20-05-10 08:23:40, INFO: Val_loss: 0.005898012313991785 - PSNR: 24.9637312016992 - SSIM: 0.8076828932223765
+20-05-10 08:23:55, INFO: EPOCH 39 - Loss: 0.005075138941407204
+20-05-10 08:23:55, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-23-55_39.pth
+20-05-10 08:24:05, INFO: Val_loss: 0.005144921597093344 - PSNR: 25.65651889954246 - SSIM: 0.8109437001809273
+20-05-10 08:24:20, INFO: EPOCH 40 - Loss: 0.005338757740954558
+20-05-10 08:24:20, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-24-20_40.pth
+20-05-10 08:24:29, INFO: Val_loss: 0.005280537065118551 - PSNR: 25.62725148595841 - SSIM: 0.8128136377761395
+20-05-10 08:24:45, INFO: EPOCH 41 - Loss: 0.0052824394926428795
+20-05-10 08:24:45, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-24-45_41.pth
+20-05-10 08:24:54, INFO: Val_loss: 0.005466305650770664 - PSNR: 25.26468515238603 - SSIM: 0.8090974901591872
+20-05-10 08:25:10, INFO: EPOCH 42 - Loss: 0.005305048278222481
+20-05-10 08:25:10, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-25-10_42.pth
+20-05-10 08:25:19, INFO: Val_loss: 0.0071864258497953415 - PSNR: 23.570070164121784 - SSIM: 0.8062318769023645
+20-05-10 08:25:35, INFO: EPOCH 43 - Loss: 0.00545339622721076
+20-05-10 08:25:35, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-25-35_43.pth
+20-05-10 08:25:44, INFO: Val_loss: 0.006075912620872259 - PSNR: 24.542556216850908 - SSIM: 0.808672252036443
+20-05-10 08:25:59, INFO: EPOCH 44 - Loss: 0.005176489658653736
+20-05-10 08:25:59, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-25-59_44.pth
+20-05-10 08:26:09, INFO: Val_loss: 0.005233000032603741 - PSNR: 25.599516586304436 - SSIM: 0.8099417922142119
+20-05-10 08:26:24, INFO: EPOCH 45 - Loss: 0.004965676901241144
+20-05-10 08:26:24, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-26-24_45.pth
+20-05-10 08:26:33, INFO: Val_loss: 0.004998307675123215 - PSNR: 25.81608220976794 - SSIM: 0.8147243815737143
+20-05-10 08:26:49, INFO: EPOCH 46 - Loss: 0.005298508733510971
+20-05-10 08:26:49, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-26-49_46.pth
+20-05-10 08:26:58, INFO: Val_loss: 0.005186638794839382 - PSNR: 25.565934251533832 - SSIM: 0.8117802160584594
+20-05-10 08:27:14, INFO: EPOCH 47 - Loss: 0.005074563857167959
+20-05-10 08:27:14, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-27-14_47.pth
+20-05-10 08:27:23, INFO: Val_loss: 0.005313507746905088 - PSNR: 25.35938068514575 - SSIM: 0.811258524863063
+20-05-10 08:27:39, INFO: EPOCH 48 - Loss: 0.005178161746511856
+20-05-10 08:27:39, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-27-39_48.pth
+20-05-10 08:27:48, INFO: Val_loss: 0.005767941940575838 - PSNR: 25.267909796567768 - SSIM: 0.8121671258746872
+20-05-10 08:28:03, INFO: EPOCH 49 - Loss: 0.005156049615393082
+20-05-10 08:28:03, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-28-03_49.pth
+20-05-10 08:28:13, INFO: Val_loss: 0.0054421937093138695 - PSNR: 25.58772013310913 - SSIM: 0.8104013638125054
+20-05-10 08:28:28, INFO: EPOCH 50 - Loss: 0.005203591000288725
+20-05-10 08:28:28, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-28-28_50.pth
+20-05-10 08:28:38, INFO: Val_loss: 0.005333872511982918 - PSNR: 25.525624605588504 - SSIM: 0.8095654966500213
+20-05-10 08:28:38, INFO: Completed
+
+
+20-05-10 08:31:09, INFO: 
+
+================ SRResNet - TRAINING =================
+
+
+20-05-10 08:31:09, INFO: [('crop_size', 88), ('models_dir', '/content/gdrive/My Drive/MOUNT/models'), ('num_epochs', 50), ('train_file', '/content/gdrive/My Drive/MOUNT/dataset/VOC-2012-train.pkl'), ('upscale_factor', 4), ('valid_file', '/content/gdrive/My Drive/MOUNT/dataset/VOC-2012-valid_4.pkl')]
+20-05-10 08:31:13, INFO: No.parameters: 734219
+20-05-10 08:31:13, INFO: SRResNet(
+  (block1): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(9, 9), stride=(1, 1), padding=(4, 4))
+    (1): PReLU(num_parameters=1)
+  )
+  (block2): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block3): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block4): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block5): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block6): ResidualBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (prelu): PReLU(num_parameters=1)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block7): Sequential(
+    (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block8): Sequential(
+    (0): UpsampleBLock(
+      (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (pixel_shuffle): PixelShuffle(upscale_factor=2)
+      (prelu): PReLU(num_parameters=1)
+    )
+    (1): UpsampleBLock(
+      (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (pixel_shuffle): PixelShuffle(upscale_factor=2)
+      (prelu): PReLU(num_parameters=1)
+    )
+    (2): Conv2d(64, 3, kernel_size=(9, 9), stride=(1, 1), padding=(4, 4))
+  )
+)
+20-05-10 08:31:31, INFO: EPOCH 1 - Loss: 0.020029384456574918
+20-05-10 08:31:31, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-31-31_1.pth
+20-05-10 08:31:40, INFO: Val_loss: 0.017483273521065712 - PSNR: 20.31370658510219 - SSIM: 0.6783071371667546
+20-05-10 08:31:55, INFO: EPOCH 2 - Loss: 0.011827787342170874
+20-05-10 08:31:55, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-31-55_2.pth
+20-05-10 08:32:05, INFO: Val_loss: 0.010982212610542774 - PSNR: 22.542882902172448 - SSIM: 0.716143461216052
+20-05-10 08:32:20, INFO: EPOCH 3 - Loss: 0.009571496419608593
+20-05-10 08:32:20, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-32-20_3.pth
+20-05-10 08:32:29, INFO: Val_loss: 0.009722564369440079 - PSNR: 22.976026841736665 - SSIM: 0.729796740001056
+20-05-10 08:32:45, INFO: EPOCH 4 - Loss: 0.008552073550721009
+20-05-10 08:32:45, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-32-45_4.pth
+20-05-10 08:32:54, INFO: Val_loss: 0.008666065521538258 - PSNR: 23.493481799494813 - SSIM: 0.7571899992041925
+20-05-10 08:33:09, INFO: EPOCH 5 - Loss: 0.008276972313721974
+20-05-10 08:33:09, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-33-09_5.pth
+20-05-10 08:33:19, INFO: Val_loss: 0.008389882743358612 - PSNR: 24.285017199076204 - SSIM: 0.7688925571375148
+20-05-10 08:33:34, INFO: EPOCH 6 - Loss: 0.007485491561392943
+20-05-10 08:33:34, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-33-34_6.pth
+20-05-10 08:33:43, INFO: Val_loss: 0.00844005960971117 - PSNR: 23.43874869165415 - SSIM: 0.7727968214338405
+20-05-10 08:33:59, INFO: EPOCH 7 - Loss: 0.00750722319384416
+20-05-10 08:33:59, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-33-59_7.pth
+20-05-10 08:34:08, INFO: Val_loss: 0.008104747161269188 - PSNR: 24.048285711654568 - SSIM: 0.7824303371779588
+20-05-10 08:34:23, INFO: EPOCH 8 - Loss: 0.006733879116674264
+20-05-10 08:34:23, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-34-23_8.pth
+20-05-10 08:34:33, INFO: Val_loss: 0.011745274998247623 - PSNR: 22.875134355654453 - SSIM: 0.7875622103957807
+20-05-10 08:34:48, INFO: EPOCH 9 - Loss: 0.006813315515716871
+20-05-10 08:34:48, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-34-48_9.pth
+20-05-10 08:34:57, INFO: Val_loss: 0.007113968022167683 - PSNR: 24.52143326660864 - SSIM: 0.7909065177504072
+20-05-10 08:35:13, INFO: EPOCH 10 - Loss: 0.006622919446478287
+20-05-10 08:35:13, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-35-13_10.pth
+20-05-10 08:35:22, INFO: Val_loss: 0.006094836629927158 - PSNR: 24.87822315490746 - SSIM: 0.7949611863628314
+20-05-10 08:35:38, INFO: EPOCH 11 - Loss: 0.006271500485638778
+20-05-10 08:35:38, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-35-38_11.pth
+20-05-10 08:35:47, INFO: Val_loss: 0.006236300803720951 - PSNR: 24.948324033154996 - SSIM: 0.7939345717738547
+20-05-10 08:36:02, INFO: EPOCH 12 - Loss: 0.006518295427163442
+20-05-10 08:36:02, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-36-02_12.pth
+20-05-10 08:36:12, INFO: Val_loss: 0.00813460722565651 - PSNR: 23.509977140866177 - SSIM: 0.7948101868439629
+20-05-10 08:36:27, INFO: EPOCH 13 - Loss: 0.006987767202158769
+20-05-10 08:36:27, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-36-27_13.pth
+20-05-10 08:36:36, INFO: Val_loss: 0.00688675744459033 - PSNR: 25.11478623682067 - SSIM: 0.7992539830360889
+20-05-10 08:36:52, INFO: EPOCH 14 - Loss: 0.006398214620848497
+20-05-10 08:36:52, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-36-52_14.pth
+20-05-10 08:37:01, INFO: Val_loss: 0.006266369484364986 - PSNR: 24.92225244751801 - SSIM: 0.802226101630638
+20-05-10 08:37:16, INFO: EPOCH 15 - Loss: 0.006186344849566618
+20-05-10 08:37:17, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-37-16_15.pth
+20-05-10 08:37:26, INFO: Val_loss: 0.007646562065929174 - PSNR: 23.774094990644564 - SSIM: 0.799358291964391
+20-05-10 08:37:41, INFO: EPOCH 16 - Loss: 0.006280226593216261
+20-05-10 08:37:41, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-37-41_16.pth
+20-05-10 08:37:51, INFO: Val_loss: 0.006999240256845951 - PSNR: 24.36356094415414 - SSIM: 0.79910594381876
+20-05-10 08:38:06, INFO: EPOCH 17 - Loss: 0.0062348176216085755
+20-05-10 08:38:06, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-38-06_17.pth
+20-05-10 08:38:15, INFO: Val_loss: 0.006366747431457043 - PSNR: 24.68609273737344 - SSIM: 0.8025829989292891
+20-05-10 08:38:31, INFO: EPOCH 18 - Loss: 0.005963500771671534
+20-05-10 08:38:31, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-38-31_18.pth
+20-05-10 08:38:40, INFO: Val_loss: 0.005669168662279844 - PSNR: 25.373015328058376 - SSIM: 0.80249447312258
+20-05-10 08:38:55, INFO: EPOCH 19 - Loss: 0.00584050856033961
+20-05-10 08:38:55, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-38-55_19.pth
+20-05-10 08:39:05, INFO: Val_loss: 0.006162295583635569 - PSNR: 24.6754434109083 - SSIM: 0.8037460704595726
+20-05-10 08:39:20, INFO: EPOCH 20 - Loss: 0.0061527508360644185
+20-05-10 08:39:20, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-39-20_20.pth
+20-05-10 08:39:29, INFO: Val_loss: 0.005526172462850809 - PSNR: 25.45912150274029 - SSIM: 0.8040535439804889
+20-05-10 08:39:45, INFO: EPOCH 21 - Loss: 0.005793889163682858
+20-05-10 08:39:45, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-39-45_21.pth
+20-05-10 08:39:54, INFO: Val_loss: 0.005953924730420113 - PSNR: 24.804586318010692 - SSIM: 0.8053686916519895
+20-05-10 08:40:10, INFO: EPOCH 22 - Loss: 0.005580478003869454
+20-05-10 08:40:10, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-40-10_22.pth
+20-05-10 08:40:19, INFO: Val_loss: 0.006015560124069452 - PSNR: 25.019349320071925 - SSIM: 0.8035648853060602
+20-05-10 08:40:34, INFO: EPOCH 23 - Loss: 0.005594824480513731
+20-05-10 08:40:34, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-40-34_23.pth
+20-05-10 08:40:44, INFO: Val_loss: 0.007612096611410379 - PSNR: 23.61265929373791 - SSIM: 0.8026227193683779
+20-05-10 08:40:59, INFO: EPOCH 24 - Loss: 0.0065911574140191075
+20-05-10 08:40:59, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-40-59_24.pth
+20-05-10 08:41:08, INFO: Val_loss: 0.007687037345021963 - PSNR: 23.27825055664513 - SSIM: 0.7983184122134225
+20-05-10 08:41:24, INFO: EPOCH 25 - Loss: 0.0056274449415504935
+20-05-10 08:41:24, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-41-24_25.pth
+20-05-10 08:41:33, INFO: Val_loss: 0.00552785862237215 - PSNR: 25.37397487079829 - SSIM: 0.8086368492209581
+20-05-10 08:41:49, INFO: EPOCH 26 - Loss: 0.005480870208392541
+20-05-10 08:41:49, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-41-49_26.pth
+20-05-10 08:41:58, INFO: Val_loss: 0.005907336715608835 - PSNR: 25.051022900099436 - SSIM: 0.805151978669974
+20-05-10 08:42:13, INFO: EPOCH 27 - Loss: 0.005629622592280308
+20-05-10 08:42:13, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-42-13_27.pth
+20-05-10 08:42:23, INFO: Val_loss: 0.0057765464298427105 - PSNR: 24.981158381576282 - SSIM: 0.8080050796833599
+20-05-10 08:42:38, INFO: EPOCH 28 - Loss: 0.005370634430398544
+20-05-10 08:42:38, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-42-38_28.pth
+20-05-10 08:42:47, INFO: Val_loss: 0.005273344460874796 - PSNR: 25.671609109928323 - SSIM: 0.8099410492853054
+20-05-10 08:43:03, INFO: EPOCH 29 - Loss: 0.005367543739577135
+20-05-10 08:43:03, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-43-03_29.pth
+20-05-10 08:43:12, INFO: Val_loss: 0.006816670764237642 - PSNR: 23.763253726994908 - SSIM: 0.8084597212234711
+20-05-10 08:43:27, INFO: EPOCH 30 - Loss: 0.005456380367279053
+20-05-10 08:43:27, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-43-27_30.pth
+20-05-10 08:43:37, INFO: Val_loss: 0.006181318778544664 - PSNR: 24.588314981644263 - SSIM: 0.8070133629308441
+20-05-10 08:43:52, INFO: EPOCH 31 - Loss: 0.005451895778377851
+20-05-10 08:43:52, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-43-52_31.pth
+20-05-10 08:44:01, INFO: Val_loss: 0.005331114865839481 - PSNR: 25.59229113718901 - SSIM: 0.8106505488671213
+20-05-10 08:44:17, INFO: EPOCH 32 - Loss: 0.005297006179889043
+20-05-10 08:44:17, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-44-17_32.pth
+20-05-10 08:44:26, INFO: Val_loss: 0.005231543444097042 - PSNR: 25.61396184314944 - SSIM: 0.8105796786867121
+20-05-10 08:44:41, INFO: EPOCH 33 - Loss: 0.005374545748035113
+20-05-10 08:44:41, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-44-41_33.pth
+20-05-10 08:44:51, INFO: Val_loss: 0.005552345886826515 - PSNR: 25.48990785271664 - SSIM: 0.8108515746433427
+20-05-10 08:45:06, INFO: EPOCH 34 - Loss: 0.005397407957663139
+20-05-10 08:45:06, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-45-06_34.pth
+20-05-10 08:45:15, INFO: Val_loss: 0.006146457511931658 - PSNR: 25.23745527943663 - SSIM: 0.8082909569071381
+20-05-10 08:45:31, INFO: EPOCH 35 - Loss: 0.005543685220181942
+20-05-10 08:45:31, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-45-31_35.pth
+20-05-10 08:45:40, INFO: Val_loss: 0.006033007986843586 - PSNR: 24.960630536024773 - SSIM: 0.8106619076319052
+20-05-10 08:45:56, INFO: EPOCH 36 - Loss: 0.005362931627780199
+20-05-10 08:45:56, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-45-56_36.pth
+20-05-10 08:46:05, INFO: Val_loss: 0.00525641068816185 - PSNR: 25.516043132282135 - SSIM: 0.8112294874160847
+20-05-10 08:46:20, INFO: EPOCH 37 - Loss: 0.005285462611665328
+20-05-10 08:46:20, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-46-20_37.pth
+20-05-10 08:46:30, INFO: Val_loss: 0.005260572303086519 - PSNR: 25.66703989760184 - SSIM: 0.8119699493770689
+20-05-10 08:46:45, INFO: EPOCH 38 - Loss: 0.005479401120295127
+20-05-10 08:46:45, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-46-45_38.pth
+20-05-10 08:46:54, INFO: Val_loss: 0.00539604015648365 - PSNR: 25.180030766457136 - SSIM: 0.8106078007191968
+20-05-10 08:47:10, INFO: EPOCH 39 - Loss: 0.005478720380614201
+20-05-10 08:47:10, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-47-10_39.pth
+20-05-10 08:47:19, INFO: Val_loss: 0.005621735472232103 - PSNR: 25.184866267880064 - SSIM: 0.8059694013223127
+20-05-10 08:47:34, INFO: EPOCH 40 - Loss: 0.005438070209076007
+20-05-10 08:47:34, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-47-34_40.pth
+20-05-10 08:47:44, INFO: Val_loss: 0.005505512934178114 - PSNR: 25.609473615802408 - SSIM: 0.8120913922385197
+20-05-10 08:47:59, INFO: EPOCH 41 - Loss: 0.005238872474680344
+20-05-10 08:47:59, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-47-59_41.pth
+20-05-10 08:48:08, INFO: Val_loss: 0.006650307681411505 - PSNR: 24.675226259010497 - SSIM: 0.8070936074779859
+20-05-10 08:48:24, INFO: EPOCH 42 - Loss: 0.005389801510920127
+20-05-10 08:48:24, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-48-24_42.pth
+20-05-10 08:48:33, INFO: Val_loss: 0.006288878619670868 - PSNR: 24.576119928357535 - SSIM: 0.8040867950548776
+20-05-10 08:48:48, INFO: EPOCH 43 - Loss: 0.00516988833496968
+20-05-10 08:48:48, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-48-48_43.pth
+20-05-10 08:48:58, INFO: Val_loss: 0.005235164426267147 - PSNR: 25.62655683895478 - SSIM: 0.8102842669911867
+20-05-10 08:49:13, INFO: EPOCH 44 - Loss: 0.005132748875766992
+20-05-10 08:49:13, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-49-13_44.pth
+20-05-10 08:49:22, INFO: Val_loss: 0.005527878645807505 - PSNR: 25.53298209261336 - SSIM: 0.8130810450315554
+20-05-10 08:49:38, INFO: EPOCH 45 - Loss: 0.005055769840876262
+20-05-10 08:49:38, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-49-38_45.pth
+20-05-10 08:49:47, INFO: Val_loss: 0.005324947647750378 - PSNR: 25.272048207419537 - SSIM: 0.8114884167040358
+20-05-10 08:50:02, INFO: EPOCH 46 - Loss: 0.005492461875081062
+20-05-10 08:50:03, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-50-02_46.pth
+20-05-10 08:50:12, INFO: Val_loss: 0.005969699937850237 - PSNR: 25.106013399910065 - SSIM: 0.811903575924897
+20-05-10 08:50:27, INFO: EPOCH 47 - Loss: 0.005127230554819107
+20-05-10 08:50:27, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-50-27_47.pth
+20-05-10 08:50:36, INFO: Val_loss: 0.005189604591578245 - PSNR: 25.629371832272508 - SSIM: 0.8120408174119024
+20-05-10 08:50:52, INFO: EPOCH 48 - Loss: 0.005151329426715772
+20-05-10 08:50:52, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-50-52_48.pth
+20-05-10 08:51:01, INFO: Val_loss: 0.0053559099324047565 - PSNR: 25.390477324286177 - SSIM: 0.8105628499593684
+20-05-10 08:51:17, INFO: EPOCH 49 - Loss: 0.005179375308255354
+20-05-10 08:51:17, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-51-17_49.pth
+20-05-10 08:51:26, INFO: Val_loss: 0.005889746360480785 - PSNR: 24.87228693133113 - SSIM: 0.8118022259932017
+20-05-10 08:51:41, INFO: EPOCH 50 - Loss: 0.0051904085353016854
+20-05-10 08:51:41, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_08-51-41_50.pth
+20-05-10 08:51:50, INFO: Val_loss: 0.005278903059661388 - PSNR: 25.42761001231529 - SSIM: 0.8114454734187093
+20-05-10 08:51:50, INFO: Completed
+
+
+20-05-10 09:12:46, INFO: 
+
+================ SRResNet - TRAINING =================
+
+
+20-05-10 09:12:46, INFO: [('crop_size', 88), ('models_dir', '/content/gdrive/My Drive/MOUNT/models'), ('num_epochs', 50), ('train_file', '/content/gdrive/My Drive/MOUNT/dataset/VOC-2012-train.pkl'), ('upscale_factor', 4), ('valid_file', '/content/gdrive/My Drive/MOUNT/dataset/VOC-2012-valid_4.pkl')]
+20-05-10 09:12:51, INFO: No.parameters: 741899
+20-05-10 09:12:51, INFO: SRResNet(
+  (block1): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(11, 11), stride=(1, 1), padding=(5, 5))
+    (1): PReLU(num_parameters=1)
+  )
+  (residual_blocks): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (2): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (3): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (4): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (block3): Sequential(
+    (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block4): Sequential(
+    (0): UpsampleBLock(
+      (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (pixel_shuffle): PixelShuffle(upscale_factor=2)
+      (prelu): PReLU(num_parameters=1)
+    )
+    (1): UpsampleBLock(
+      (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (pixel_shuffle): PixelShuffle(upscale_factor=2)
+      (prelu): PReLU(num_parameters=1)
+    )
+    (2): Conv2d(64, 3, kernel_size=(9, 9), stride=(1, 1), padding=(4, 4))
+  )
+)
+20-05-10 09:13:08, INFO: EPOCH 1 - Loss: 0.024919542603194712
+20-05-10 09:13:08, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-13-08_1.pth
+20-05-10 09:13:17, INFO: Val_loss: 0.02395494654774666 - PSNR: 20.311841544181675 - SSIM: 0.6537096135433904
+20-05-10 09:13:33, INFO: EPOCH 2 - Loss: 0.013002126917243003
+20-05-10 09:13:33, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-13-33_2.pth
+20-05-10 09:13:42, INFO: Val_loss: 0.012195149436593056 - PSNR: 21.74190908021605 - SSIM: 0.6847222606551959
+20-05-10 09:13:57, INFO: EPOCH 3 - Loss: 0.010328334848086039
+20-05-10 09:13:57, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-13-57_3.pth
+20-05-10 09:14:06, INFO: Val_loss: 0.009479976259171963 - PSNR: 22.991331647284397 - SSIM: 0.7160349261183524
+20-05-10 09:14:22, INFO: EPOCH 4 - Loss: 0.009497141217192013
+20-05-10 09:14:22, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-14-22_4.pth
+20-05-10 09:14:31, INFO: Val_loss: 0.008447199128568172 - PSNR: 23.660664618690284 - SSIM: 0.731279424688144
+20-05-10 09:14:47, INFO: EPOCH 5 - Loss: 0.008604176675279936
+20-05-10 09:14:47, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-14-47_5.pth
+20-05-10 09:14:56, INFO: Val_loss: 0.007997769862413406 - PSNR: 24.028681495956857 - SSIM: 0.7479742948119805
+20-05-10 09:15:11, INFO: EPOCH 6 - Loss: 0.008144033702711264
+20-05-10 09:15:11, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-15-11_6.pth
+20-05-10 09:15:21, INFO: Val_loss: 0.008774146437644958 - PSNR: 23.449518299785645 - SSIM: 0.7614070888602729
+20-05-10 09:15:36, INFO: EPOCH 7 - Loss: 0.007979632725318273
+20-05-10 09:15:36, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-15-36_7.pth
+20-05-10 09:15:45, INFO: Val_loss: 0.007383028510957956 - PSNR: 24.091049898164414 - SSIM: 0.7708253661810638
+20-05-10 09:16:01, INFO: EPOCH 8 - Loss: 0.007277172910670439
+20-05-10 09:16:01, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-16-01_8.pth
+20-05-10 09:16:10, INFO: Val_loss: 0.0069217681884765625 - PSNR: 24.38782588819431 - SSIM: 0.7781674304590829
+20-05-10 09:16:26, INFO: EPOCH 9 - Loss: 0.007110756233334541
+20-05-10 09:16:26, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-16-26_9.pth
+20-05-10 09:16:35, INFO: Val_loss: 0.008447335101664066 - PSNR: 22.576105843267907 - SSIM: 0.7761148698352228
+20-05-10 09:16:51, INFO: EPOCH 10 - Loss: 0.0071247834886113805
+20-05-10 09:16:51, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-16-51_10.pth
+20-05-10 09:17:00, INFO: Val_loss: 0.007874101400375366 - PSNR: 23.69657682382724 - SSIM: 0.7790799067558997
+20-05-10 09:17:15, INFO: EPOCH 11 - Loss: 0.0069362497230370836
+20-05-10 09:17:15, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-17-15_11.pth
+20-05-10 09:17:25, INFO: Val_loss: 0.008354833349585533 - PSNR: 24.108690894152982 - SSIM: 0.7880174966730986
+20-05-10 09:17:40, INFO: EPOCH 12 - Loss: 0.006333590389539798
+20-05-10 09:17:40, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-17-40_12.pth
+20-05-10 09:17:49, INFO: Val_loss: 0.0070001813583076 - PSNR: 24.49923999057233 - SSIM: 0.7925454795739114
+20-05-10 09:18:05, INFO: EPOCH 13 - Loss: 0.006477882203956445
+20-05-10 09:18:05, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-18-05_13.pth
+20-05-10 09:18:14, INFO: Val_loss: 0.014289861544966698 - PSNR: 20.78507089692859 - SSIM: 0.7787741017320284
+20-05-10 09:18:30, INFO: EPOCH 14 - Loss: 0.00667134948944052
+20-05-10 09:18:30, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-18-30_14.pth
+20-05-10 09:18:39, INFO: Val_loss: 0.006308875046670437 - PSNR: 24.6658743129949 - SSIM: 0.7925125425450373
+20-05-10 09:18:54, INFO: EPOCH 15 - Loss: 0.006335112733145555
+20-05-10 09:18:54, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-18-54_15.pth
+20-05-10 09:19:04, INFO: Val_loss: 0.0066917636431753635 - PSNR: 24.791810583209816 - SSIM: 0.7963295095552689
+20-05-10 09:19:19, INFO: EPOCH 16 - Loss: 0.006449261932323376
+20-05-10 09:19:19, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-19-19_16.pth
+20-05-10 09:19:28, INFO: Val_loss: 0.007720234338194132 - PSNR: 23.636137181548747 - SSIM: 0.7876130477581844
+20-05-10 09:19:44, INFO: EPOCH 17 - Loss: 0.006672769730289777
+20-05-10 09:19:44, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-19-44_17.pth
+20-05-10 09:19:53, INFO: Val_loss: 0.007615874987095594 - PSNR: 24.770084347503857 - SSIM: 0.7984822520077028
+20-05-10 09:20:09, INFO: EPOCH 18 - Loss: 0.006087614261855682
+20-05-10 09:20:09, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-20-09_18.pth
+20-05-10 09:20:18, INFO: Val_loss: 0.0059591131284832954 - PSNR: 24.899049408306333 - SSIM: 0.7983035946033508
+20-05-10 09:20:33, INFO: EPOCH 19 - Loss: 0.00615354448184371
+20-05-10 09:20:33, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-20-33_19.pth
+20-05-10 09:20:43, INFO: Val_loss: 0.005908581893891096 - PSNR: 24.801504873505618 - SSIM: 0.8019788617811183
+20-05-10 09:20:58, INFO: EPOCH 20 - Loss: 0.005893096475551526
+20-05-10 09:20:58, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-20-58_20.pth
+20-05-10 09:21:07, INFO: Val_loss: 0.006191175896674395 - PSNR: 24.504098966317542 - SSIM: 0.7974914530064926
+20-05-10 09:21:23, INFO: EPOCH 21 - Loss: 0.0063074203580617905
+20-05-10 09:21:23, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-21-23_21.pth
+20-05-10 09:21:32, INFO: Val_loss: 0.006218070164322853 - PSNR: 24.854163049579896 - SSIM: 0.7984538067308067
+20-05-10 09:21:48, INFO: EPOCH 22 - Loss: 0.005859101085613171
+20-05-10 09:21:48, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-21-48_22.pth
+20-05-10 09:21:57, INFO: Val_loss: 0.005950423423200846 - PSNR: 25.199023911100166 - SSIM: 0.8052227605192761
+20-05-10 09:22:13, INFO: EPOCH 23 - Loss: 0.0060633069090545175
+20-05-10 09:22:13, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-22-13_23.pth
+20-05-10 09:22:22, INFO: Val_loss: 0.006079045590013266 - PSNR: 25.082365452343538 - SSIM: 0.8002828024814428
+20-05-10 09:22:37, INFO: EPOCH 24 - Loss: 0.005718854229897261
+20-05-10 09:22:37, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-22-37_24.pth
+20-05-10 09:22:47, INFO: Val_loss: 0.005814863368868828 - PSNR: 25.102543764173735 - SSIM: 0.8046249907005335
+20-05-10 09:23:02, INFO: EPOCH 25 - Loss: 0.005817115849504868
+20-05-10 09:23:02, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-23-02_25.pth
+20-05-10 09:23:12, INFO: Val_loss: 0.006806148216128349 - PSNR: 23.953421109737516 - SSIM: 0.8037801299538223
+20-05-10 09:23:27, INFO: EPOCH 26 - Loss: 0.0056980721391737465
+20-05-10 09:23:27, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-23-27_26.pth
+20-05-10 09:23:37, INFO: Val_loss: 0.005424180068075657 - PSNR: 25.558440705386825 - SSIM: 0.807730768435301
+20-05-10 09:23:52, INFO: EPOCH 27 - Loss: 0.0056773819761971635
+20-05-10 09:23:52, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-23-52_27.pth
+20-05-10 09:24:01, INFO: Val_loss: 0.005639694631099701 - PSNR: 25.412460635103642 - SSIM: 0.8047823040607669
+20-05-10 09:24:17, INFO: EPOCH 28 - Loss: 0.005718166957298915
+20-05-10 09:24:17, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-24-17_28.pth
+20-05-10 09:24:26, INFO: Val_loss: 0.005779760889708996 - PSNR: 24.74164591597198 - SSIM: 0.8040918870412629
+20-05-10 09:24:42, INFO: EPOCH 29 - Loss: 0.005671875468144814
+20-05-10 09:24:42, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-24-42_29.pth
+20-05-10 09:24:51, INFO: Val_loss: 0.0057314615696668625 - PSNR: 24.879070643157526 - SSIM: 0.8045173496015746
+20-05-10 09:25:07, INFO: EPOCH 30 - Loss: 0.00552244296297431
+20-05-10 09:25:07, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-25-07_30.pth
+20-05-10 09:25:16, INFO: Val_loss: 0.0053467703983187675 - PSNR: 25.507255657731694 - SSIM: 0.8081527349820038
+20-05-10 09:25:32, INFO: EPOCH 31 - Loss: 0.0054465324816604455
+20-05-10 09:25:32, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-25-32_31.pth
+20-05-10 09:25:41, INFO: Val_loss: 0.005499809980392456 - PSNR: 25.392272562245193 - SSIM: 0.8065050222555102
+20-05-10 09:25:57, INFO: EPOCH 32 - Loss: 0.005415934165318807
+20-05-10 09:25:57, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-25-57_32.pth
+20-05-10 09:26:06, INFO: Val_loss: 0.006189318373799324 - PSNR: 24.657398462632706 - SSIM: 0.8056323743341
+20-05-10 09:26:21, INFO: EPOCH 33 - Loss: 0.005328611467033625
+20-05-10 09:26:22, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-26-21_33.pth
+20-05-10 09:26:31, INFO: Val_loss: 0.005803695879876614 - PSNR: 25.56231328300609 - SSIM: 0.8109028236272658
+20-05-10 09:26:46, INFO: EPOCH 34 - Loss: 0.005388647901515166
+20-05-10 09:26:46, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-26-46_34.pth
+20-05-10 09:26:56, INFO: Val_loss: 0.006504683755338192 - PSNR: 25.000984049248 - SSIM: 0.8068204484382033
+20-05-10 09:27:11, INFO: EPOCH 35 - Loss: 0.005568970582137505
+20-05-10 09:27:11, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-27-11_35.pth
+20-05-10 09:27:21, INFO: Val_loss: 0.006377735640853643 - PSNR: 24.459390717718712 - SSIM: 0.8081537445957286
+20-05-10 09:27:36, INFO: EPOCH 36 - Loss: 0.005337609971563021
+20-05-10 09:27:36, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-27-36_36.pth
+20-05-10 09:27:46, INFO: Val_loss: 0.006533538457006216 - PSNR: 23.833184711050514 - SSIM: 0.8085109160144155
+20-05-10 09:28:01, INFO: EPOCH 37 - Loss: 0.0054325300740698974
+20-05-10 09:28:01, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-28-01_37.pth
+20-05-10 09:28:11, INFO: Val_loss: 0.005928806960582733 - PSNR: 25.60794777397611 - SSIM: 0.8087412778116883
+20-05-10 09:28:26, INFO: EPOCH 38 - Loss: 0.005379823361833891
+20-05-10 09:28:26, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-28-26_38.pth
+20-05-10 09:28:36, INFO: Val_loss: 0.005789979360997677 - PSNR: 24.997589764011888 - SSIM: 0.8089653115750629
+20-05-10 09:28:51, INFO: EPOCH 39 - Loss: 0.005163955075045427
+20-05-10 09:28:51, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-28-51_39.pth
+20-05-10 09:29:00, INFO: Val_loss: 0.0058091776445508 - PSNR: 25.005385038526178 - SSIM: 0.8075913738120383
+20-05-10 09:29:16, INFO: EPOCH 40 - Loss: 0.005460287891328335
+20-05-10 09:29:16, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-29-16_40.pth
+20-05-10 09:29:25, INFO: Val_loss: 0.00674881786108017 - PSNR: 23.55228811939843 - SSIM: 0.8089019081050867
+20-05-10 09:29:41, INFO: EPOCH 41 - Loss: 0.0052764377544323605
+20-05-10 09:29:41, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-29-41_41.pth
+20-05-10 09:29:50, INFO: Val_loss: 0.005488356109708548 - PSNR: 25.539395486857188 - SSIM: 0.811198587721999
+20-05-10 09:30:06, INFO: EPOCH 42 - Loss: 0.005577471359322468
+20-05-10 09:30:06, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-30-06_42.pth
+20-05-10 09:30:15, INFO: Val_loss: 0.005646242760121822 - PSNR: 25.27463344805208 - SSIM: 0.8096909034773784
+20-05-10 09:30:31, INFO: EPOCH 43 - Loss: 0.005328672458728155
+20-05-10 09:30:31, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-30-31_43.pth
+20-05-10 09:30:40, INFO: Val_loss: 0.005540425423532724 - PSNR: 25.006193650532605 - SSIM: 0.8110122764741348
+20-05-10 09:30:55, INFO: EPOCH 44 - Loss: 0.00523749262963732
+20-05-10 09:30:56, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-30-55_44.pth
+20-05-10 09:31:05, INFO: Val_loss: 0.005395299289375544 - PSNR: 25.44690560459963 - SSIM: 0.8099896512798567
+20-05-10 09:31:20, INFO: EPOCH 45 - Loss: 0.005066437399635713
+20-05-10 09:31:20, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-31-20_45.pth
+20-05-10 09:31:30, INFO: Val_loss: 0.00584280164912343 - PSNR: 24.809607649236646 - SSIM: 0.8094737488170085
+20-05-10 09:31:45, INFO: EPOCH 46 - Loss: 0.005170757338404656
+20-05-10 09:31:45, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-31-45_46.pth
+20-05-10 09:31:55, INFO: Val_loss: 0.0057320743799209595 - PSNR: 25.261744291241893 - SSIM: 0.8080669472120121
+20-05-10 09:32:10, INFO: EPOCH 47 - Loss: 0.00541943667208155
+20-05-10 09:32:10, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-32-10_47.pth
+20-05-10 09:32:20, INFO: Val_loss: 0.005778602324426174 - PSNR: 25.46342944950681 - SSIM: 0.8129104115340305
+20-05-10 09:32:35, INFO: EPOCH 48 - Loss: 0.005075546047339837
+20-05-10 09:32:35, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-32-35_48.pth
+20-05-10 09:32:44, INFO: Val_loss: 0.005621740594506264 - PSNR: 24.95035722293249 - SSIM: 0.8122709155029648
+20-05-10 09:33:00, INFO: EPOCH 49 - Loss: 0.005258794988195101
+20-05-10 09:33:00, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-33-00_49.pth
+20-05-10 09:33:09, INFO: Val_loss: 0.0054123178124427795 - PSNR: 25.61367958756127 - SSIM: 0.8118406171382354
+20-05-10 09:33:25, INFO: EPOCH 50 - Loss: 0.005011226892471314
+20-05-10 09:33:25, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-10_09-33-25_50.pth
+20-05-10 09:33:34, INFO: Val_loss: 0.0051423655822873116 - PSNR: 25.57106763797522 - SSIM: 0.8136592626657841
+20-05-10 09:33:34, INFO: Completed
+
+

@@ -4,28 +4,28 @@ from torch import nn
 
 
 class SRResNet(nn.Module):
-    def __init__(self, scale_factor=4, kernel_size=9):
+    def __init__(self, scale_factor=4, kernel_size=9, n_channels=64):
         upsample_block_num = int(math.log(scale_factor, 2))
 
         super(SRResNet, self).__init__()
         self.block1 = nn.Sequential(
-            nn.Conv2d(3, 64, kernel_size=kernel_size, padding=kernel_size//2),
+            nn.Conv2d(3, n_channels, kernel_size=kernel_size, padding=kernel_size//2),
             nn.PReLU()
         )
         self.residual_blocks = nn.Sequential(
-            ResidualBlock(64),
-            ResidualBlock(64),
-            ResidualBlock(64),
-            # ResidualBlock(64),
-            # ResidualBlock(64),
+            ResidualBlock(n_channels),
+            ResidualBlock(n_channels),
+            ResidualBlock(n_channels),
+            ResidualBlock(n_channels),
+            ResidualBlock(n_channels),
         )
 
         self.block3 = nn.Sequential(
-            nn.Conv2d(64, 64, kernel_size=3, padding=1),
-            nn.BatchNorm2d(64)
+            nn.Conv2d(n_channels, n_channels, kernel_size=3, padding=1),
+            nn.BatchNorm2d(n_channels)
         )
-        block4 = [UpsampleBLock(64, 2) for _ in range(upsample_block_num)]
-        block4.append(nn.Conv2d(64, 3, kernel_size=9, padding=4))
+        block4 = [UpsampleBLock(n_channels, 2) for _ in range(upsample_block_num)]
+        block4.append(nn.Conv2d(n_channels, 3, kernel_size=9, padding=4))
         self.block4 = nn.Sequential(*block4)
 
     def forward(self, x):
