@@ -4,12 +4,12 @@ from torch import nn
 
 
 class SRResNet(nn.Module):
-    def __init__(self, scale_factor=4):
+    def __init__(self, scale_factor=4, kernel_size=3):
         upsample_block_num = int(math.log(scale_factor, 2))
 
         super(SRResNet, self).__init__()
         self.block1 = nn.Sequential(
-            nn.Conv2d(3, 64, kernel_size=9, padding=4),
+            nn.Conv2d(3, 64, kernel_size=kernel_size, padding=kernel_size//2),
             nn.PReLU()
         )
         self.block2 = ResidualBlock(64)
