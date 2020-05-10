@@ -24,7 +24,6 @@ console.setLevel(logging.INFO)
 logging.getLogger().addHandler(console)
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--kernel_size', type=int, default=3)
 parser.add_argument('--crop_size', type=int, default=88)
 parser.add_argument('--upscale_factor', type=int, default=4,  choices=[2, 4, 8])
 parser.add_argument('--num_epochs', type=int, default=50)
