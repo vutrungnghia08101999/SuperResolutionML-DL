@@ -14,7 +14,7 @@ from dataset import display_transform, TrainDatasetFromCompressFile, ValDatasetF
 from model import SRResNet
 from utils import AverageMeter, calculate_psnr_y_channel, calculate_ssim_y_channel
 
-logging.basicConfig(filename='logs_kernel_size.txt',
+logging.basicConfig(filename='logs_n_res_blocks.txt',
                     filemode='a',
                     format='%(asctime)s, %(levelname)s: %(message)s',
                     datefmt='%y-%m-%d %H:%M:%S',
@@ -22,7 +22,6 @@ logging.basicConfig(filename='logs_kernel_size.txt',
 console = logging.StreamHandler()
 console.setLevel(logging.INFO)
 logging.getLogger().addHandler(console)
-# logging.basicConfig(level=logging.INFO)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--crop_size', type=int, default=88)
@@ -73,7 +72,7 @@ for epoch in range(1, args.num_epochs + 1):
     x = datetime.datetime.now()
     time = x.strftime("%y-%m-%d_%H-%M-%S")
     model_checkpoint = os.path.join(args.models_dir, f'checkpoint_{time}_{epoch}.pth')
-    # torch.save({'state_dict': model.state_dict()}, model_checkpoint)
+    torch.save({'state_dict': model.state_dict()}, model_checkpoint)
     logging.info(model_checkpoint)
 
     model.eval()
