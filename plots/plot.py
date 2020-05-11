@@ -64,7 +64,7 @@ def plot(param):
     elif param == 'BN':
         values = ['without BN', 'with BN']
     elif param == 'ReLU_Tanh':
-        values = ['ReLU', 'Tanh']
+        values = ['Tanh', 'ReLU']
     else:
         print("Param not valid")
         return -1
