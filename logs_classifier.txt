@@ -1,0 +1,603 @@
+20-05-11 00:54:59, INFO: 
+
+================ SRGAN - TRAINING - 5 x 7 =================
+
+
+20-05-11 00:54:59, INFO: [('crop_size', 88), ('models_dir', '/content/gdrive/My Drive/MOUNT/models'), ('num_epochs', 50), ('train_file', '/content/gdrive/My Drive/MOUNT/dataset/VOC-2012-train.pkl'), ('upscale_factor', 4), ('valid_file', '/content/gdrive/My Drive/MOUNT/dataset/VOC-2012-valid_4.pkl')]
+20-05-11 00:55:20, INFO: generator parameters: 734219
+20-05-11 00:55:20, INFO: discriminator parameters: 5215425
+20-05-11 00:55:20, INFO: Generator(
+  (block1): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(9, 9), stride=(1, 1), padding=(4, 4))
+    (1): PReLU(num_parameters=1)
+  )
+  (residual_blocks): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (2): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (3): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (4): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (block3): Sequential(
+    (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block4): Sequential(
+    (0): UpsampleBLock(
+      (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (pixel_shuffle): PixelShuffle(upscale_factor=2)
+      (prelu): PReLU(num_parameters=1)
+    )
+    (1): UpsampleBLock(
+      (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (pixel_shuffle): PixelShuffle(upscale_factor=2)
+      (prelu): PReLU(num_parameters=1)
+    )
+    (2): Conv2d(64, 3, kernel_size=(9, 9), stride=(1, 1), padding=(4, 4))
+  )
+)
+20-05-11 00:55:20, INFO: Discriminator(
+  (net): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): LeakyReLU(negative_slope=0.2)
+    (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (3): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): LeakyReLU(negative_slope=0.2)
+    (5): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (6): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): LeakyReLU(negative_slope=0.2)
+    (8): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (9): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): LeakyReLU(negative_slope=0.2)
+    (11): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (12): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (13): LeakyReLU(negative_slope=0.2)
+    (14): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (15): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (16): LeakyReLU(negative_slope=0.2)
+    (17): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (18): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (19): LeakyReLU(negative_slope=0.2)
+    (20): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (21): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (22): LeakyReLU(negative_slope=0.2)
+    (23): AdaptiveAvgPool2d(output_size=1)
+    (24): Conv2d(512, 1024, kernel_size=(1, 1), stride=(1, 1))
+    (25): LeakyReLU(negative_slope=0.2)
+    (26): Conv2d(1024, 1, kernel_size=(1, 1), stride=(1, 1))
+  )
+)
+20-05-11 00:56:15, INFO: EPOCH: 1 - D_loss: 0.9741623983383179 - sr_prob: 0.5150723460515341 - hr_prob: 0.5409099464416504 - G_loss: 0.026359349489212036
+20-05-11 00:56:26, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_00-56-15_1.pth
+20-05-11 00:56:27, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_00-56-15_1.pth
+20-05-11 00:56:33, INFO: PSNR: 21.896697515208714 - SSIM: 0.6744062346343486 - SR_PROB: 0.3286081487321399 - HR_PROB: 0.33364557961310515
+20-05-11 00:56:53, INFO: EPOCH: 2 - D_loss: 0.9965555653572082 - sr_prob: 0.6428023382822673 - hr_prob: 0.6462467691103617 - G_loss: 0.014908608980476856
+20-05-11 00:56:53, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_00-56-53_2.pth
+20-05-11 00:56:53, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_00-56-53_2.pth
+20-05-11 00:57:00, INFO: PSNR: 22.70999906781616 - SSIM: 0.70894353736517 - SR_PROB: 0.5287077002426497 - HR_PROB: 0.41303303743880115
+20-05-11 00:57:20, INFO: EPOCH: 3 - D_loss: 0.972039779663086 - sr_prob: 0.5436868371963501 - hr_prob: 0.571647053082784 - G_loss: 0.013933042995631695
+20-05-11 00:57:20, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_00-57-20_3.pth
+20-05-11 00:57:20, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_00-57-20_3.pth
+20-05-11 00:57:27, INFO: PSNR: 23.484327224560925 - SSIM: 0.7373330751016607 - SR_PROB: 0.00998075889365315 - HR_PROB: 0.016659734083382383
+20-05-11 00:57:47, INFO: EPOCH: 4 - D_loss: 0.7153746283849081 - sr_prob: 0.3927815086245537 - hr_prob: 0.6774068788985411 - G_loss: 0.013640335761010647
+20-05-11 00:57:47, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_00-57-47_4.pth
+20-05-11 00:57:47, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_00-57-47_4.pth
+20-05-11 00:57:54, INFO: PSNR: 22.917005612832828 - SSIM: 0.7504827287729172 - SR_PROB: 0.3909942414255594 - HR_PROB: 0.02954353817602629
+20-05-11 00:58:14, INFO: EPOCH: 5 - D_loss: 1.002993355433146 - sr_prob: 0.38745941003163653 - hr_prob: 0.3844660528500875 - G_loss: 0.011731833219528198
+20-05-11 00:58:14, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_00-58-14_5.pth
+20-05-11 00:58:14, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_00-58-14_5.pth
+20-05-11 00:58:20, INFO: PSNR: 23.9083319504495 - SSIM: 0.7679301913191391 - SR_PROB: 0.21041391987502042 - HR_PROB: 0.25302956540759347
+20-05-11 00:58:40, INFO: EPOCH: 6 - D_loss: 1.0000928745269775 - sr_prob: 0.6256669465700785 - hr_prob: 0.6255740745862325 - G_loss: 0.010413170792162418
+20-05-11 00:58:41, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_00-58-40_6.pth
+20-05-11 00:58:41, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_00-58-40_6.pth
+20-05-11 00:58:47, INFO: PSNR: 24.36921879344418 - SSIM: 0.7816500775502562 - SR_PROB: 0.24435714023994395 - HR_PROB: 0.2870522056176696
+20-05-11 00:59:07, INFO: EPOCH: 7 - D_loss: 1.0013957465489705 - sr_prob: 0.6364073292414347 - hr_prob: 0.6350115826924642 - G_loss: 0.00994559470564127
+20-05-11 00:59:07, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_00-59-07_7.pth
+20-05-11 00:59:07, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_00-59-07_7.pth
+20-05-11 00:59:14, INFO: PSNR: 21.75490978251217 - SSIM: 0.7787851762577757 - SR_PROB: 0.1419725634558604 - HR_PROB: 0.27003646503618695
+20-05-11 00:59:34, INFO: EPOCH: 8 - D_loss: 1.0044225678443908 - sr_prob: 0.45087620480855306 - hr_prob: 0.4464536280632019 - G_loss: 0.010186048224568367
+20-05-11 00:59:34, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_00-59-34_8.pth
+20-05-11 00:59:34, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_00-59-34_8.pth
+20-05-11 00:59:41, INFO: PSNR: 24.26238695681222 - SSIM: 0.7853212694440864 - SR_PROB: 0.32205795199645093 - HR_PROB: 0.2535533126202367
+20-05-11 01:00:01, INFO: EPOCH: 9 - D_loss: 1.002063439687093 - sr_prob: 0.45270672559738157 - hr_prob: 0.4506432789166768 - G_loss: 0.009762848727405071
+20-05-11 01:00:01, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-00-01_9.pth
+20-05-11 01:00:01, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-00-01_9.pth
+20-05-11 01:00:08, INFO: PSNR: 24.18157233865139 - SSIM: 0.7883441922268595 - SR_PROB: 0.40826766273286913 - HR_PROB: 0.27148301475609615
+20-05-11 01:00:28, INFO: EPOCH: 10 - D_loss: 1.002112139225006 - sr_prob: 0.44093384917577105 - hr_prob: 0.4388217130502065 - G_loss: 0.009518074803054333
+20-05-11 01:00:28, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-00-28_10.pth
+20-05-11 01:00:28, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-00-28_10.pth
+20-05-11 01:00:35, INFO: PSNR: 24.35950059124144 - SSIM: 0.7882432356589064 - SR_PROB: 0.16542707587032737 - HR_PROB: 0.26611019894331867
+20-05-11 01:00:55, INFO: EPOCH: 11 - D_loss: 1.000053731918335 - sr_prob: 0.3081266344388326 - hr_prob: 0.3080729064146678 - G_loss: 0.009396873414516449
+20-05-11 01:00:55, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-00-55_11.pth
+20-05-11 01:00:55, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-00-55_11.pth
+20-05-11 01:01:02, INFO: PSNR: 25.11476972618244 - SSIM: 0.7967849016282992 - SR_PROB: 0.2133556704048984 - HR_PROB: 0.16381884666389976
+20-05-11 01:01:22, INFO: EPOCH: 12 - D_loss: 1.0038512643178303 - sr_prob: 0.41519812178611754 - hr_prob: 0.41134685866038007 - G_loss: 0.00896888505667448
+20-05-11 01:01:22, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-01-22_12.pth
+20-05-11 01:01:22, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-01-22_12.pth
+20-05-11 01:01:29, INFO: PSNR: 22.376917774283115 - SSIM: 0.7928593544331491 - SR_PROB: 0.16015231889604525 - HR_PROB: 0.20381950902118526
+20-05-11 01:01:49, INFO: EPOCH: 13 - D_loss: 0.9999367135365804 - sr_prob: 0.32916974075635275 - hr_prob: 0.3292330254713694 - G_loss: 0.009416701272130013
+20-05-11 01:01:49, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-01-49_13.pth
+20-05-11 01:01:49, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-01-49_13.pth
+20-05-11 01:01:55, INFO: PSNR: 24.65028427571446 - SSIM: 0.7954928197557777 - SR_PROB: 0.12768682319020078 - HR_PROB: 0.14758588583902998
+20-05-11 01:02:15, INFO: EPOCH: 14 - D_loss: 0.9996941328048706 - sr_prob: 0.5133612624804179 - hr_prob: 0.5136671322186788 - G_loss: 0.008828049525618553
+20-05-11 01:02:15, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-02-15_14.pth
+20-05-11 01:02:16, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-02-15_14.pth
+20-05-11 01:02:22, INFO: PSNR: 23.42397273119988 - SSIM: 0.7957266418500666 - SR_PROB: 0.5362846449649129 - HR_PROB: 0.3987096282383022
+20-05-11 01:02:42, INFO: EPOCH: 15 - D_loss: 1.0002284571329754 - sr_prob: 0.6108622722625733 - hr_prob: 0.6106338117917379 - G_loss: 0.008654344826936722
+20-05-11 01:02:42, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-02-42_15.pth
+20-05-11 01:02:42, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-02-42_15.pth
+20-05-11 01:02:49, INFO: PSNR: 24.161446589492115 - SSIM: 0.7966858428441627 - SR_PROB: 0.41971870367900416 - HR_PROB: 0.3800207391009552
+20-05-11 01:03:09, INFO: EPOCH: 16 - D_loss: 1.0040122833251952 - sr_prob: 0.6559358310699462 - hr_prob: 0.6519235491752624 - G_loss: 0.008727233856916428
+20-05-11 01:03:09, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-03-09_16.pth
+20-05-11 01:03:09, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-03-09_16.pth
+20-05-11 01:03:16, INFO: PSNR: 24.547244766728465 - SSIM: 0.7956040807343969 - SR_PROB: 0.4103913806542355 - HR_PROB: 0.36085964272442583
+20-05-11 01:03:36, INFO: EPOCH: 17 - D_loss: 1.0039003680547078 - sr_prob: 0.4707569035689036 - hr_prob: 0.4668565305868785 - G_loss: 0.008718179538846016
+20-05-11 01:03:36, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-03-36_17.pth
+20-05-11 01:03:36, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-03-36_17.pth
+20-05-11 01:03:43, INFO: PSNR: 25.19811718972255 - SSIM: 0.8016471007238557 - SR_PROB: 0.2988592606383818 - HR_PROB: 0.33766675170851684
+20-05-11 01:04:03, INFO: EPOCH: 18 - D_loss: 0.9987794249852499 - sr_prob: 0.5611542863845825 - hr_prob: 0.5623748620351156 - G_loss: 0.008413826115429401
+20-05-11 01:04:03, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-04-03_18.pth
+20-05-11 01:04:03, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-04-03_18.pth
+20-05-11 01:04:09, INFO: PSNR: 25.280620810119068 - SSIM: 0.7997202368914884 - SR_PROB: 0.4612445181892463 - HR_PROB: 0.442718733056943
+20-05-11 01:04:30, INFO: EPOCH: 19 - D_loss: 1.0028416597048442 - sr_prob: 0.6113825608889262 - hr_prob: 0.6085408986409505 - G_loss: 0.008356107398867607
+20-05-11 01:04:30, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-04-30_19.pth
+20-05-11 01:04:30, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-04-30_19.pth
+20-05-11 01:04:36, INFO: PSNR: 24.226952413183916 - SSIM: 0.7967942850895621 - SR_PROB: 0.5573115063636247 - HR_PROB: 0.502084329929115
+20-05-11 01:04:56, INFO: EPOCH: 20 - D_loss: 1.0001398054758708 - sr_prob: 0.5996916608810425 - hr_prob: 0.5995518560409546 - G_loss: 0.008777863346040249
+20-05-11 01:04:56, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-04-56_20.pth
+20-05-11 01:04:56, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-04-56_20.pth
+20-05-11 01:05:03, INFO: PSNR: 25.304233283720908 - SSIM: 0.8032976640217226 - SR_PROB: 0.42026570504166927 - HR_PROB: 0.43120042545362547
+20-05-11 01:05:23, INFO: EPOCH: 21 - D_loss: 1.0022235012054443 - sr_prob: 0.5262748031616211 - hr_prob: 0.5240513051350911 - G_loss: 0.008506081998348236
+20-05-11 01:05:23, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-05-23_21.pth
+20-05-11 01:05:23, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-05-23_21.pth
+20-05-11 01:05:30, INFO: PSNR: 25.22559607099985 - SSIM: 0.8021529590447232 - SR_PROB: 0.46402653164780155 - HR_PROB: 0.467117544315159
+20-05-11 01:05:50, INFO: EPOCH: 22 - D_loss: 1.0014237416585285 - sr_prob: 0.4376900707880656 - hr_prob: 0.43626633429527284 - G_loss: 0.008445724844932556
+20-05-11 01:05:50, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-05-50_22.pth
+20-05-11 01:05:50, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-05-50_22.pth
+20-05-11 01:05:56, INFO: PSNR: 25.119593681639536 - SSIM: 0.8048701084385219 - SR_PROB: 0.39689497029126947 - HR_PROB: 0.441862034129201
+20-05-11 01:06:17, INFO: EPOCH: 23 - D_loss: 0.9983784163792928 - sr_prob: 0.391173709154129 - hr_prob: 0.3927952833970388 - G_loss: 0.008645042777061462
+20-05-11 01:06:17, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-06-17_23.pth
+20-05-11 01:06:17, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-06-17_23.pth
+20-05-11 01:06:23, INFO: PSNR: 24.3999748916217 - SSIM: 0.7990536838523511 - SR_PROB: 0.23004935100975477 - HR_PROB: 0.20218167385350796
+20-05-11 01:06:44, INFO: EPOCH: 24 - D_loss: 1.0028141059875488 - sr_prob: 0.38021413040161134 - hr_prob: 0.37740002377827964 - G_loss: 0.009204684756696224
+20-05-11 01:06:44, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-06-44_24.pth
+20-05-11 01:06:44, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-06-44_24.pth
+20-05-11 01:06:50, INFO: PSNR: 25.01318729591053 - SSIM: 0.8025690951408245 - SR_PROB: 0.47997899052668996 - HR_PROB: 0.43703142171933007
+20-05-11 01:07:11, INFO: EPOCH: 25 - D_loss: 1.0002985118230183 - sr_prob: 0.34563073523839316 - hr_prob: 0.34533223740259805 - G_loss: 0.008579645305871964
+20-05-11 01:07:11, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-07-11_25.pth
+20-05-11 01:07:11, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-07-11_25.pth
+20-05-11 01:07:17, INFO: PSNR: 25.20167781746107 - SSIM: 0.7995113448430693 - SR_PROB: 0.3651693201911313 - HR_PROB: 0.4097721090721841
+20-05-11 01:07:38, INFO: EPOCH: 26 - D_loss: 1.0031853224436442 - sr_prob: 0.32343245307604473 - hr_prob: 0.32024712292353313 - G_loss: 0.008467542007565498
+20-05-11 01:07:38, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-07-38_26.pth
+20-05-11 01:07:38, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-07-38_26.pth
+20-05-11 01:07:44, INFO: PSNR: 25.431613741700595 - SSIM: 0.8074398753933064 - SR_PROB: 0.3520625111945701 - HR_PROB: 0.29017063775370644
+20-05-11 01:08:04, INFO: EPOCH: 27 - D_loss: 1.007250815073649 - sr_prob: 0.3782888669172923 - hr_prob: 0.3710380545457204 - G_loss: 0.008706831373274326
+20-05-11 01:08:05, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-08-04_27.pth
+20-05-11 01:08:05, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-08-04_27.pth
+20-05-11 01:08:11, INFO: PSNR: 24.205461756683707 - SSIM: 0.7979703595767856 - SR_PROB: 0.4399896575723685 - HR_PROB: 0.45384172171943177
+20-05-11 01:08:31, INFO: EPOCH: 28 - D_loss: 0.9999843746821085 - sr_prob: 0.31157083106040956 - hr_prob: 0.3115864573319753 - G_loss: 0.008542998693883419
+20-05-11 01:08:31, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-08-31_28.pth
+20-05-11 01:08:31, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-08-31_28.pth
+20-05-11 01:08:38, INFO: PSNR: 25.091175126611944 - SSIM: 0.8037873285100584 - SR_PROB: 0.4121063208491612 - HR_PROB: 0.39442018436284143
+20-05-11 01:08:58, INFO: EPOCH: 29 - D_loss: 1.0000477431615193 - sr_prob: 0.2959402848879496 - hr_prob: 0.295892542997996 - G_loss: 0.008442453108727932
+20-05-11 01:08:58, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-08-58_29.pth
+20-05-11 01:08:58, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-08-58_29.pth
+20-05-11 01:09:05, INFO: PSNR: 24.24607008264662 - SSIM: 0.8007831817561255 - SR_PROB: 0.2837593176248552 - HR_PROB: 0.3099302372394469
+20-05-11 01:09:25, INFO: EPOCH: 30 - D_loss: 1.0016259676615398 - sr_prob: 0.2783644727071126 - hr_prob: 0.2767384930451711 - G_loss: 0.008226417005062103
+20-05-11 01:09:25, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-09-25_30.pth
+20-05-11 01:09:25, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-09-25_30.pth
+20-05-11 01:09:32, INFO: PSNR: 25.199821317468132 - SSIM: 0.8032808377193615 - SR_PROB: 0.2527517675610785 - HR_PROB: 0.312420610979946
+20-05-11 01:09:52, INFO: EPOCH: 31 - D_loss: 1.000757401148478 - sr_prob: 0.24308759164810181 - hr_prob: 0.2423301903406779 - G_loss: 0.008247487246990204
+20-05-11 01:09:52, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-09-52_31.pth
+20-05-11 01:09:52, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-09-52_31.pth
+20-05-11 01:09:58, INFO: PSNR: 24.64473023530907 - SSIM: 0.8033789995346396 - SR_PROB: 0.25495426120630366 - HR_PROB: 0.30497046324851407
+20-05-11 01:10:19, INFO: EPOCH: 32 - D_loss: 0.9994689458211263 - sr_prob: 0.28844446420669556 - hr_prob: 0.2889755283991496 - G_loss: 0.008397944271564484
+20-05-11 01:10:19, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-10-19_32.pth
+20-05-11 01:10:19, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-10-19_32.pth
+20-05-11 01:10:25, INFO: PSNR: 24.796655529891638 - SSIM: 0.8041396667159947 - SR_PROB: 0.34294421557684196 - HR_PROB: 0.33706720257756706
+20-05-11 01:10:45, INFO: EPOCH: 33 - D_loss: 1.003457343419393 - sr_prob: 0.31466851409276325 - hr_prob: 0.31121117766698203 - G_loss: 0.008341577835381031
+20-05-11 01:10:45, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-10-45_33.pth
+20-05-11 01:10:46, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-10-45_33.pth
+20-05-11 01:10:52, INFO: PSNR: 25.327265269582508 - SSIM: 0.8050834869776397 - SR_PROB: 0.34964085472616574 - HR_PROB: 0.35830563660337816
+20-05-11 01:11:12, INFO: EPOCH: 34 - D_loss: 1.0013649667104085 - sr_prob: 0.3237211035092672 - hr_prob: 0.32235613417625425 - G_loss: 0.008035804145038128
+20-05-11 01:11:12, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-11-12_34.pth
+20-05-11 01:11:12, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-11-12_34.pth
+20-05-11 01:11:19, INFO: PSNR: 25.290541793994297 - SSIM: 0.8063563898171562 - SR_PROB: 0.4234943449119467 - HR_PROB: 0.41908489039760793
+20-05-11 01:11:39, INFO: EPOCH: 35 - D_loss: 1.0009256846110026 - sr_prob: 0.32675152134895324 - hr_prob: 0.32582583355903627 - G_loss: 0.008024074137210846
+20-05-11 01:11:39, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-11-39_35.pth
+20-05-11 01:11:39, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-11-39_35.pth
+20-05-11 01:11:46, INFO: PSNR: 25.38883358212469 - SSIM: 0.8068725087177583 - SR_PROB: 0.5151188338730696 - HR_PROB: 0.49725358667420977
+20-05-11 01:12:06, INFO: EPOCH: 36 - D_loss: 1.004405310312907 - sr_prob: 0.31570158584912617 - hr_prob: 0.3112962745030721 - G_loss: 0.008213911205530167
+20-05-11 01:12:06, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-12-06_36.pth
+20-05-11 01:12:06, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-12-06_36.pth
+20-05-11 01:12:13, INFO: PSNR: 25.41733070472328 - SSIM: 0.8063806181613937 - SR_PROB: 0.4685071947391898 - HR_PROB: 0.4515019663528747
+20-05-11 01:12:33, INFO: EPOCH: 37 - D_loss: 1.0015298951466878 - sr_prob: 0.29001057068506875 - hr_prob: 0.2884806740283966 - G_loss: 0.00793580710887909
+20-05-11 01:12:33, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-12-33_37.pth
+20-05-11 01:12:33, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-12-33_37.pth
+20-05-11 01:12:40, INFO: PSNR: 25.161179401701826 - SSIM: 0.8083693583892152 - SR_PROB: 0.4000136741678282 - HR_PROB: 0.43778902787332963
+20-05-11 01:13:00, INFO: EPOCH: 38 - D_loss: 1.0018223927815755 - sr_prob: 0.2931850949128469 - hr_prob: 0.29136269704500833 - G_loss: 0.007949081249535084
+20-05-11 01:13:00, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-13-00_38.pth
+20-05-11 01:13:00, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-13-00_38.pth
+20-05-11 01:13:07, INFO: PSNR: 25.573708424575056 - SSIM: 0.8071839330432777 - SR_PROB: 0.3942945813572 - HR_PROB: 0.37780175811921196
+20-05-11 01:13:27, INFO: EPOCH: 39 - D_loss: 1.0029771556854248 - sr_prob: 0.3233173435529073 - hr_prob: 0.32034019192059837 - G_loss: 0.007982213981449604
+20-05-11 01:13:27, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-13-27_39.pth
+20-05-11 01:13:27, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-13-27_39.pth
+20-05-11 01:13:33, INFO: PSNR: 25.153139554595917 - SSIM: 0.8064107878891779 - SR_PROB: 0.4358653922274269 - HR_PROB: 0.39570213765596896
+20-05-11 01:13:53, INFO: EPOCH: 40 - D_loss: 1.0030986976623535 - sr_prob: 0.32049049067497254 - hr_prob: 0.31739179356892905 - G_loss: 0.008136698976159096
+20-05-11 01:13:53, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-13-53_40.pth
+20-05-11 01:13:53, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-13-53_40.pth
+20-05-11 01:14:00, INFO: PSNR: 23.839584068021196 - SSIM: 0.805280381173585 - SR_PROB: 0.30084691899684685 - HR_PROB: 0.40102559357451467
+20-05-11 01:14:20, INFO: EPOCH: 41 - D_loss: 1.0002257258097331 - sr_prob: 0.2983151749769847 - hr_prob: 0.2980894434452057 - G_loss: 0.008348596282303333
+20-05-11 01:14:20, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-14-20_41.pth
+20-05-11 01:14:20, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-14-20_41.pth
+20-05-11 01:14:27, INFO: PSNR: 25.55832597431584 - SSIM: 0.8065983947819021 - SR_PROB: 0.35183022215405885 - HR_PROB: 0.3693482728983243
+20-05-11 01:14:47, INFO: EPOCH: 42 - D_loss: 1.0021511777242025 - sr_prob: 0.273880531390508 - hr_prob: 0.2717293546994527 - G_loss: 0.008014453575015068
+20-05-11 01:14:47, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-14-47_42.pth
+20-05-11 01:14:47, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-14-47_42.pth
+20-05-11 01:14:54, INFO: PSNR: 25.22415564871214 - SSIM: 0.8061594776195155 - SR_PROB: 0.3738062860540427 - HR_PROB: 0.3696187755559188
+20-05-11 01:15:14, INFO: EPOCH: 43 - D_loss: 1.0029158166249592 - sr_prob: 0.24034687940279642 - hr_prob: 0.23743106603622435 - G_loss: 0.008043069392442703
+20-05-11 01:15:14, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-15-14_43.pth
+20-05-11 01:15:14, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-15-14_43.pth
+20-05-11 01:15:21, INFO: PSNR: 25.61625572605722 - SSIM: 0.8062455937028216 - SR_PROB: 0.19803014516189202 - HR_PROB: 0.13575158657296577
+20-05-11 01:15:41, INFO: EPOCH: 44 - D_loss: 1.0008457819620769 - sr_prob: 0.4390141285260518 - hr_prob: 0.4381683481534322 - G_loss: 0.0077698915265500546
+20-05-11 01:15:41, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-15-41_44.pth
+20-05-11 01:15:41, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-15-41_44.pth
+20-05-11 01:15:48, INFO: PSNR: 25.068211250441777 - SSIM: 0.8075911373524874 - SR_PROB: 0.39773270421519485 - HR_PROB: 0.4297128044372684
+20-05-11 01:16:08, INFO: EPOCH: 45 - D_loss: 1.002155706246694 - sr_prob: 0.5465278585751852 - hr_prob: 0.5443721586863199 - G_loss: 0.007792483549565077
+20-05-11 01:16:08, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-16-08_45.pth
+20-05-11 01:16:08, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-16-08_45.pth
+20-05-11 01:16:15, INFO: PSNR: 25.58624068601585 - SSIM: 0.8081778517230453 - SR_PROB: 0.2801597395059755 - HR_PROB: 0.32678148749826247
+20-05-11 01:16:35, INFO: EPOCH: 46 - D_loss: 1.0016225395202636 - sr_prob: 0.6058457949956259 - hr_prob: 0.6042232607205709 - G_loss: 0.007428241427987814
+20-05-11 01:16:35, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-16-35_46.pth
+20-05-11 01:16:35, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-16-35_46.pth
+20-05-11 01:16:41, INFO: PSNR: 25.306445019763434 - SSIM: 0.8063268152040572 - SR_PROB: 0.4804156418538931 - HR_PROB: 0.43308354073043676
+20-05-11 01:17:01, INFO: EPOCH: 47 - D_loss: 1.000862760702769 - sr_prob: 0.607208209514618 - hr_prob: 0.6063454488118489 - G_loss: 0.0076923668384552
+20-05-11 01:17:02, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-17-01_47.pth
+20-05-11 01:17:02, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-17-01_47.pth
+20-05-11 01:17:08, INFO: PSNR: 25.46301537718301 - SSIM: 0.8065224849191935 - SR_PROB: 0.44973772002833784 - HR_PROB: 0.47824588166400145
+20-05-11 01:17:28, INFO: EPOCH: 48 - D_loss: 1.0027600084940593 - sr_prob: 0.6569815721511841 - hr_prob: 0.6542215649286905 - G_loss: 0.007540825288742781
+20-05-11 01:17:28, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-17-28_48.pth
+20-05-11 01:17:28, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-17-28_48.pth
+20-05-11 01:17:35, INFO: PSNR: 25.606542156967215 - SSIM: 0.8063943540674768 - SR_PROB: 0.24378111221996399 - HR_PROB: 0.2296644640439927
+20-05-11 01:17:55, INFO: EPOCH: 49 - D_loss: 1.003539260228475 - sr_prob: 0.6155998311042785 - hr_prob: 0.6120605773925781 - G_loss: 0.007468835916370153
+20-05-11 01:17:55, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-17-55_49.pth
+20-05-11 01:17:55, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-17-55_49.pth
+20-05-11 01:18:02, INFO: PSNR: 24.68567244342991 - SSIM: 0.8051048769334757 - SR_PROB: 0.6361685414897761 - HR_PROB: 0.5708471051092486
+20-05-11 01:18:22, INFO: EPOCH: 50 - D_loss: 1.0018673718770346 - sr_prob: 0.5975859955151875 - hr_prob: 0.5957186298370362 - G_loss: 0.007652720902115107
+20-05-11 01:18:22, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_01-18-22_50.pth
+20-05-11 01:18:22, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_01-18-22_50.pth
+20-05-11 01:18:29, INFO: PSNR: 24.94017912250035 - SSIM: 0.8039103914369998 - SR_PROB: 0.49748201793138014 - HR_PROB: 0.5299996750388946
+20-05-11 01:18:29, INFO: Completed
+
+20-05-11 02:40:12, INFO: 
+
+================ SRGAN - TRAINING =================
+
+
+20-05-11 02:40:12, INFO: [('crop_size', 88), ('models_dir', '/content/gdrive/My Drive/MOUNT/models'), ('num_epochs', 50), ('train_file', '/content/gdrive/My Drive/MOUNT/dataset/VOC-2012-train.pkl'), ('upscale_factor', 4), ('valid_file', '/content/gdrive/My Drive/MOUNT/dataset/VOC-2012-valid_4.pkl')]
+20-05-11 02:40:15, INFO: generator parameters: 734219
+20-05-11 02:40:15, INFO: discriminator parameters: 5215425
+20-05-11 02:40:15, INFO: Generator(
+  (block1): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(9, 9), stride=(1, 1), padding=(4, 4))
+    (1): PReLU(num_parameters=1)
+  )
+  (residual_blocks): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (2): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (3): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (4): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (block3): Sequential(
+    (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block4): Sequential(
+    (0): UpsampleBLock(
+      (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (pixel_shuffle): PixelShuffle(upscale_factor=2)
+      (prelu): PReLU(num_parameters=1)
+    )
+    (1): UpsampleBLock(
+      (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (pixel_shuffle): PixelShuffle(upscale_factor=2)
+      (prelu): PReLU(num_parameters=1)
+    )
+    (2): Conv2d(64, 3, kernel_size=(9, 9), stride=(1, 1), padding=(4, 4))
+  )
+)
+20-05-11 02:40:15, INFO: Discriminator(
+  (net): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): LeakyReLU(negative_slope=0.2)
+    (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (3): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): LeakyReLU(negative_slope=0.2)
+    (5): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (6): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): LeakyReLU(negative_slope=0.2)
+    (8): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (9): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): LeakyReLU(negative_slope=0.2)
+    (11): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (12): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (13): LeakyReLU(negative_slope=0.2)
+    (14): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (15): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (16): LeakyReLU(negative_slope=0.2)
+    (17): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (18): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (19): LeakyReLU(negative_slope=0.2)
+    (20): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (21): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (22): LeakyReLU(negative_slope=0.2)
+    (23): AdaptiveAvgPool2d(output_size=1)
+  )
+  (classifier): Sequential(
+    (0): Linear(in_features=512, out_features=1024, bias=True)
+    (1): LeakyReLU(negative_slope=0.2)
+    (2): Linear(in_features=1024, out_features=1, bias=True)
+  )
+)
+20-05-11 02:40:39, INFO: EPOCH: 1 - D_loss: 0.7539989334742229 - sr_prob: 0.2861434362332026 - hr_prob: 0.5321445072491964 - G_loss: 0.02635859325528145
+20-05-11 02:40:39, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-40-39_1.pth
+20-05-11 02:40:39, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-40-39_1.pth
+20-05-11 02:40:46, INFO: PSNR: 18.606407664687154 - SSIM: 0.661599646065376 - SR_PROB: 0.6220896657525463 - HR_PROB: 0.5837800107683875
+20-05-11 02:41:06, INFO: EPOCH: 2 - D_loss: 0.6201884489059448 - sr_prob: 0.37020508031050364 - hr_prob: 0.7500166306495667 - G_loss: 0.01574445143342018
+20-05-11 02:41:06, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-41-06_2.pth
+20-05-11 02:41:06, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-41-06_2.pth
+20-05-11 02:41:13, INFO: PSNR: 20.64533884623134 - SSIM: 0.7001765210858366 - SR_PROB: 0.8057807946395577 - HR_PROB: 0.7569731192785164
+20-05-11 02:41:33, INFO: EPOCH: 3 - D_loss: 0.8387961947123209 - sr_prob: 0.7088940065701802 - hr_prob: 0.8700978118578593 - G_loss: 0.014426121488213539
+20-05-11 02:41:33, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-41-33_3.pth
+20-05-11 02:41:33, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-41-33_3.pth
+20-05-11 02:41:39, INFO: PSNR: 23.13163445751945 - SSIM: 0.7285261440797953 - SR_PROB: 0.26225262326091003 - HR_PROB: 0.20113263519444444
+20-05-11 02:42:00, INFO: EPOCH: 4 - D_loss: 0.9251589851379395 - sr_prob: 0.6573474297523498 - hr_prob: 0.7321884546279908 - G_loss: 0.012625624425709248
+20-05-11 02:42:00, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-42-00_4.pth
+20-05-11 02:42:00, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-42-00_4.pth
+20-05-11 02:42:06, INFO: PSNR: 22.171340408661504 - SSIM: 0.7298443368294854 - SR_PROB: 0.5139240761606233 - HR_PROB: 0.33329631626301415
+20-05-11 02:42:26, INFO: EPOCH: 5 - D_loss: 1.0145128943125408 - sr_prob: 0.5421628062725067 - hr_prob: 0.5276499152183532 - G_loss: 0.011872664093971252
+20-05-11 02:42:26, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-42-26_5.pth
+20-05-11 02:42:27, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-42-26_5.pth
+20-05-11 02:42:33, INFO: PSNR: 24.32823203156529 - SSIM: 0.7658610439041602 - SR_PROB: 0.08076692306049135 - HR_PROB: 0.0563807460953391
+20-05-11 02:42:53, INFO: EPOCH: 6 - D_loss: 1.001267678419749 - sr_prob: 0.05145050285667336 - hr_prob: 0.05018281628443704 - G_loss: 0.011479479260742664
+20-05-11 02:42:53, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-42-53_6.pth
+20-05-11 02:42:53, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-42-53_6.pth
+20-05-11 02:43:00, INFO: PSNR: 22.778120903529597 - SSIM: 0.7462575409941689 - SR_PROB: 1.5556534966894366e-06 - HR_PROB: 7.260215464640427e-06
+20-05-11 02:43:20, INFO: EPOCH: 7 - D_loss: 1.0000029492378235 - sr_prob: 0.0001226190304538856 - hr_prob: 0.00011967523000203074 - G_loss: 0.010914796032011509
+20-05-11 02:43:20, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-43-20_7.pth
+20-05-11 02:43:20, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-43-20_7.pth
+20-05-11 02:43:27, INFO: PSNR: 24.275009062988975 - SSIM: 0.7791917024647647 - SR_PROB: 1.4720617313788913e-05 - HR_PROB: 7.0362884832872625e-06
+20-05-11 02:43:47, INFO: EPOCH: 8 - D_loss: 1.0000078242619832 - sr_prob: 0.00012205363169778138 - hr_prob: 0.0001142305190830181 - G_loss: 0.010911349207162857
+20-05-11 02:43:47, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-43-47_8.pth
+20-05-11 02:43:47, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-43-47_8.pth
+20-05-11 02:43:53, INFO: PSNR: 23.396032632175228 - SSIM: 0.7747183136283714 - SR_PROB: 1.6830011068400075e-06 - HR_PROB: 6.3034284190885416e-06
+20-05-11 02:44:13, INFO: EPOCH: 9 - D_loss: 1.0000133644739786 - sr_prob: 0.00011661044294790676 - hr_prob: 0.00010325182130327449 - G_loss: 0.010463828220963478
+20-05-11 02:44:13, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-44-13_9.pth
+20-05-11 02:44:14, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-44-13_9.pth
+20-05-11 02:44:20, INFO: PSNR: 23.505302000661928 - SSIM: 0.7838456447004534 - SR_PROB: 8.657737464594612e-06 - HR_PROB: 4.82107995475733e-06
+20-05-11 02:44:40, INFO: EPOCH: 10 - D_loss: 0.9999971764882406 - sr_prob: 0.00010709198880552625 - hr_prob: 0.00010991191590437666 - G_loss: 0.010276592336595058
+20-05-11 02:44:40, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-44-40_10.pth
+20-05-11 02:44:40, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-44-40_10.pth
+20-05-11 02:44:46, INFO: PSNR: 23.883014778629914 - SSIM: 0.79055459430442 - SR_PROB: 8.499897969409857e-06 - HR_PROB: 4.903962929421815e-06
+20-05-11 02:45:07, INFO: EPOCH: 11 - D_loss: 1.0000050883293152 - sr_prob: 0.00010349187166624082 - hr_prob: 9.840494293409089e-05 - G_loss: 0.009882621467113495
+20-05-11 02:45:07, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-45-07_11.pth
+20-05-11 02:45:07, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-45-07_11.pth
+20-05-11 02:45:13, INFO: PSNR: 24.8810420570443 - SSIM: 0.7904514920431309 - SR_PROB: 4.36347726838848e-06 - HR_PROB: 5.295231833207522e-06
+20-05-11 02:45:33, INFO: EPOCH: 12 - D_loss: 1.0000034786860148 - sr_prob: 0.00010343098078737966 - hr_prob: 9.995489073723244e-05 - G_loss: 0.009957090020179749
+20-05-11 02:45:33, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-45-33_12.pth
+20-05-11 02:45:33, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-45-33_12.pth
+20-05-11 02:45:39, INFO: PSNR: 24.00655964378235 - SSIM: 0.7940679691813399 - SR_PROB: 2.763769944192855e-07 - HR_PROB: 3.678199864428891e-06
+20-05-11 02:46:00, INFO: EPOCH: 13 - D_loss: 1.0000027480125426 - sr_prob: 8.933139605990921e-05 - hr_prob: 8.657591924808609e-05 - G_loss: 0.010020671412348747
+20-05-11 02:46:00, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-46-00_13.pth
+20-05-11 02:46:00, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-46-00_13.pth
+20-05-11 02:46:06, INFO: PSNR: 24.48376155244893 - SSIM: 0.7961827904666472 - SR_PROB: 4.039334934943643e-06 - HR_PROB: 5.039808188759146e-06
+20-05-11 02:46:26, INFO: EPOCH: 14 - D_loss: 1.0000030652681986 - sr_prob: 9.466827286329741e-05 - hr_prob: 9.160180909869571e-05 - G_loss: 0.00944454874843359
+20-05-11 02:46:26, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-46-26_14.pth
+20-05-11 02:46:26, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-46-26_14.pth
+20-05-11 02:46:33, INFO: PSNR: 24.674873066878593 - SSIM: 0.7992584738589424 - SR_PROB: 5.740585796416201e-06 - HR_PROB: 4.551345335741526e-06
+20-05-11 02:46:53, INFO: EPOCH: 15 - D_loss: 0.9999976342519125 - sr_prob: 9.145055658882483e-05 - hr_prob: 9.382419387111441e-05 - G_loss: 0.009555626660585403
+20-05-11 02:46:53, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-46-53_15.pth
+20-05-11 02:46:53, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-46-53_15.pth
+20-05-11 02:47:00, INFO: PSNR: 24.308333974376072 - SSIM: 0.7965111617292981 - SR_PROB: 6.200690758770964e-06 - HR_PROB: 4.35312293042595e-06
+20-05-11 02:47:20, INFO: EPOCH: 16 - D_loss: 1.000000541051229 - sr_prob: 9.79933884809725e-05 - hr_prob: 9.745499843847937e-05 - G_loss: 0.00934277568012476
+20-05-11 02:47:20, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-47-20_16.pth
+20-05-11 02:47:20, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-47-20_16.pth
+20-05-11 02:47:26, INFO: PSNR: 24.774681137606237 - SSIM: 0.7980520292288189 - SR_PROB: 4.6590825330161665e-06 - HR_PROB: 3.353155366755332e-06
+20-05-11 02:47:46, INFO: EPOCH: 17 - D_loss: 0.9999989765485128 - sr_prob: 8.077669232928505e-05 - hr_prob: 8.17919485659028e-05 - G_loss: 0.009186673909425735
+20-05-11 02:47:46, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-47-46_17.pth
+20-05-11 02:47:46, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-47-46_17.pth
+20-05-11 02:47:53, INFO: PSNR: 25.284573226572416 - SSIM: 0.7983312741242617 - SR_PROB: 3.8726772945318065e-06 - HR_PROB: 3.957511640704025e-06
+20-05-11 02:48:13, INFO: EPOCH: 18 - D_loss: 0.9999984560012818 - sr_prob: 8.090012718457728e-05 - hr_prob: 8.244362710199008e-05 - G_loss: 0.009261795319616795
+20-05-11 02:48:13, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-48-13_18.pth
+20-05-11 02:48:13, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-48-13_18.pth
+20-05-11 02:48:19, INFO: PSNR: 24.87611771539974 - SSIM: 0.8004592221193367 - SR_PROB: 4.7888749359041325e-06 - HR_PROB: 5.391249112135767e-06
+20-05-11 02:48:40, INFO: EPOCH: 19 - D_loss: 1.000001446723938 - sr_prob: 7.908511360680374e-05 - hr_prob: 7.764081995507391e-05 - G_loss: 0.009305770508944988
+20-05-11 02:48:40, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-48-40_19.pth
+20-05-11 02:48:40, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-48-40_19.pth
+20-05-11 02:48:46, INFO: PSNR: 24.247031676052405 - SSIM: 0.7999615377455938 - SR_PROB: 4.6454670645519536e-06 - HR_PROB: 2.8807898714744907e-06
+20-05-11 02:49:06, INFO: EPOCH: 20 - D_loss: 0.9999979340235392 - sr_prob: 8.422724440849075e-05 - hr_prob: 8.629338792525231e-05 - G_loss: 0.00960971973836422
+20-05-11 02:49:06, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-49-06_20.pth
+20-05-11 02:49:06, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-49-06_20.pth
+20-05-11 02:49:13, INFO: PSNR: 23.736141060578813 - SSIM: 0.7917628702708067 - SR_PROB: 8.871818415360186e-07 - HR_PROB: 3.7015753098090884e-06
+20-05-11 02:49:33, INFO: EPOCH: 21 - D_loss: 1.0000005957285563 - sr_prob: 9.577447220605488e-05 - hr_prob: 9.517166883839915e-05 - G_loss: 0.009196223691105843
+20-05-11 02:49:33, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-49-33_21.pth
+20-05-11 02:49:33, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-49-33_21.pth
+20-05-11 02:49:39, INFO: PSNR: 25.34387568693778 - SSIM: 0.8007581863011195 - SR_PROB: 6.446239158141047e-06 - HR_PROB: 4.466171196977382e-06
+20-05-11 02:49:59, INFO: EPOCH: 22 - D_loss: 1.000002301534017 - sr_prob: 0.00010145219925713415 - hr_prob: 9.914354362990708e-05 - G_loss: 0.008911252953112125
+20-05-11 02:49:59, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-49-59_22.pth
+20-05-11 02:49:59, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-49-59_22.pth
+20-05-11 02:50:06, INFO: PSNR: 24.903803372621038 - SSIM: 0.8046663311913202 - SR_PROB: 2.7135363999807582e-06 - HR_PROB: 4.2247982436477696e-06
+20-05-11 02:50:26, INFO: EPOCH: 23 - D_loss: 0.9999994576772054 - sr_prob: 8.98318796729048e-05 - hr_prob: 9.037516609532758e-05 - G_loss: 0.008983273059129715
+20-05-11 02:50:26, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-50-26_23.pth
+20-05-11 02:50:26, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-50-26_23.pth
+20-05-11 02:50:32, INFO: PSNR: 24.983021638890897 - SSIM: 0.8021654342141986 - SR_PROB: 5.365173591431845e-06 - HR_PROB: 4.5298556180512906e-06
+20-05-11 02:50:52, INFO: EPOCH: 24 - D_loss: 1.000002731959025 - sr_prob: 8.288326906040311e-05 - hr_prob: 8.01511041354388e-05 - G_loss: 0.008849674835801125
+20-05-11 02:50:52, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-50-52_24.pth
+20-05-11 02:50:52, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-50-52_24.pth
+20-05-11 02:50:59, INFO: PSNR: 25.171927951175526 - SSIM: 0.804354501779966 - SR_PROB: 3.487223654998448e-06 - HR_PROB: 3.437062182985025e-06
+20-05-11 02:51:19, INFO: EPOCH: 25 - D_loss: 1.0000001287460327 - sr_prob: 8.756120958908771e-05 - hr_prob: 8.743955869188842e-05 - G_loss: 0.00869797170162201
+20-05-11 02:51:19, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-51-19_25.pth
+20-05-11 02:51:19, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-51-19_25.pth
+20-05-11 02:51:25, INFO: PSNR: 25.15354371658691 - SSIM: 0.8034170267654237 - SR_PROB: 4.262355103405983e-06 - HR_PROB: 4.00695333397159e-06
+20-05-11 02:51:45, INFO: EPOCH: 26 - D_loss: 1.000002347946167 - sr_prob: 8.823036978719755e-05 - hr_prob: 8.588290239761894e-05 - G_loss: 0.008891066536307335
+20-05-11 02:51:45, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-51-45_26.pth
+20-05-11 02:51:45, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-51-45_26.pth
+20-05-11 02:51:52, INFO: PSNR: 25.05794105825019 - SSIM: 0.7997795722339022 - SR_PROB: 4.222221585417987e-06 - HR_PROB: 4.635011344727985e-06
+20-05-11 02:52:12, INFO: EPOCH: 27 - D_loss: 1.0000004892349244 - sr_prob: 8.68131434932972e-05 - hr_prob: 8.631797538449367e-05 - G_loss: 0.008667899295687675
+20-05-11 02:52:12, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-52-12_27.pth
+20-05-11 02:52:12, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-52-12_27.pth
+20-05-11 02:52:18, INFO: PSNR: 25.291028049011082 - SSIM: 0.8062362582972531 - SR_PROB: 3.82958459154663e-06 - HR_PROB: 5.562146452590377e-06
+20-05-11 02:52:38, INFO: EPOCH: 28 - D_loss: 0.9999956363042196 - sr_prob: 8.61682014268202e-05 - hr_prob: 9.05238104945359e-05 - G_loss: 0.008779382333159447
+20-05-11 02:52:38, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-52-38_28.pth
+20-05-11 02:52:38, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-52-38_28.pth
+20-05-11 02:52:45, INFO: PSNR: 25.5622259005389 - SSIM: 0.8053452645608408 - SR_PROB: 5.806186938682006e-06 - HR_PROB: 4.579382951704027e-06
+20-05-11 02:53:05, INFO: EPOCH: 29 - D_loss: 0.9999992518424988 - sr_prob: 9.222298325039446e-05 - hr_prob: 9.29664548408861e-05 - G_loss: 0.00868431106209755
+20-05-11 02:53:05, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-53-05_29.pth
+20-05-11 02:53:05, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-53-05_29.pth
+20-05-11 02:53:11, INFO: PSNR: 25.491921120471776 - SSIM: 0.8039919451846557 - SR_PROB: 4.148408386327964e-06 - HR_PROB: 4.397223956972807e-06
+20-05-11 02:53:32, INFO: EPOCH: 30 - D_loss: 0.9999997715950012 - sr_prob: 9.782354283379391e-05 - hr_prob: 9.804762638911295e-05 - G_loss: 0.008484287187457085
+20-05-11 02:53:32, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-53-32_30.pth
+20-05-11 02:53:32, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-53-32_30.pth
+20-05-11 02:53:38, INFO: PSNR: 25.32665350269677 - SSIM: 0.8052908944062004 - SR_PROB: 5.687036608940994e-06 - HR_PROB: 6.2759377178605955e-06
+20-05-11 02:53:58, INFO: EPOCH: 31 - D_loss: 0.999996246655782 - sr_prob: 9.507423480196546e-05 - hr_prob: 9.882687154458836e-05 - G_loss: 0.00842380989342928
+20-05-11 02:53:58, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-53-58_31.pth
+20-05-11 02:53:58, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-53-58_31.pth
+20-05-11 02:54:05, INFO: PSNR: 24.001132747895568 - SSIM: 0.8007012004591653 - SR_PROB: 9.637150840044837e-06 - HR_PROB: 5.268042504772136e-06
+20-05-11 02:54:25, INFO: EPOCH: 32 - D_loss: 0.9999983865420023 - sr_prob: 0.00010385039067477919 - hr_prob: 0.00010546835500281304 - G_loss: 0.008699438534677029
+20-05-11 02:54:25, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-54-25_32.pth
+20-05-11 02:54:25, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-54-25_32.pth
+20-05-11 02:54:31, INFO: PSNR: 25.24146662534107 - SSIM: 0.8021665141312372 - SR_PROB: 6.9084222661702205e-06 - HR_PROB: 6.227826511630398e-06
+20-05-11 02:54:51, INFO: EPOCH: 33 - D_loss: 1.0000001087188721 - sr_prob: 0.00010220889223273844 - hr_prob: 0.00010209862934425473 - G_loss: 0.008637003600597382
+20-05-11 02:54:51, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-54-51_33.pth
+20-05-11 02:54:51, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-54-51_33.pth
+20-05-11 02:54:58, INFO: PSNR: 25.454233121493434 - SSIM: 0.8029441351549105 - SR_PROB: 3.4571235786137017e-06 - HR_PROB: 4.591470145440658e-06
+20-05-11 02:55:18, INFO: EPOCH: 34 - D_loss: 0.9999984590212504 - sr_prob: 9.983921636982511e-05 - hr_prob: 0.00010138524777721614 - G_loss: 0.008394458331167698
+20-05-11 02:55:18, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-55-18_34.pth
+20-05-11 02:55:18, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-55-18_34.pth
+20-05-11 02:55:24, INFO: PSNR: 24.35665714995508 - SSIM: 0.8042866438799926 - SR_PROB: 3.7129148115877486e-06 - HR_PROB: 5.005809408609765e-06
+20-05-11 02:55:44, INFO: EPOCH: 35 - D_loss: 1.0000031976699828 - sr_prob: 0.00012430999129234502 - hr_prob: 0.00012110817804932594 - G_loss: 0.008706488646566868
+20-05-11 02:55:44, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-55-44_35.pth
+20-05-11 02:55:44, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-55-44_35.pth
+20-05-11 02:55:51, INFO: PSNR: 24.917525510934812 - SSIM: 0.8046397911923058 - SR_PROB: 7.615880816436477e-06 - HR_PROB: 4.207718065897407e-06
+20-05-11 02:56:11, INFO: EPOCH: 36 - D_loss: 0.9999964895248413 - sr_prob: 0.00010948721160336087 - hr_prob: 0.00011300366851113115 - G_loss: 0.00848399568349123
+20-05-11 02:56:11, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-56-11_36.pth
+20-05-11 02:56:11, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-56-11_36.pth
+20-05-11 02:56:17, INFO: PSNR: 24.821067975045583 - SSIM: 0.8067440418087922 - SR_PROB: 3.2589788810315782e-06 - HR_PROB: 3.6361088744072725e-06
+20-05-11 02:56:37, INFO: EPOCH: 37 - D_loss: 1.0000006612141927 - sr_prob: 0.00010485065121126051 - hr_prob: 0.00010418823731985563 - G_loss: 0.008563369512557983
+20-05-11 02:56:37, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-56-37_37.pth
+20-05-11 02:56:37, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-56-37_37.pth
+20-05-11 02:56:44, INFO: PSNR: 25.342370884189986 - SSIM: 0.8082974367056953 - SR_PROB: 5.109316756964987e-06 - HR_PROB: 5.620766274593629e-06
+20-05-11 02:57:04, INFO: EPOCH: 38 - D_loss: 1.0000004296302796 - sr_prob: 0.0001251735034553955 - hr_prob: 0.00012474967314240833 - G_loss: 0.008525669574737549
+20-05-11 02:57:04, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-57-04_38.pth
+20-05-11 02:57:04, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-57-04_38.pth
+20-05-11 02:57:10, INFO: PSNR: 25.57947433194311 - SSIM: 0.807118314121533 - SR_PROB: 5.996617894545636e-06 - HR_PROB: 5.3732321804290755e-06
+20-05-11 02:57:31, INFO: EPOCH: 39 - D_loss: 1.0000029671986899 - sr_prob: 9.86677633288006e-05 - hr_prob: 9.570980170974507e-05 - G_loss: 0.008814487606287003
+20-05-11 02:57:31, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-57-31_39.pth
+20-05-11 02:57:31, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-57-31_39.pth
+20-05-11 02:57:37, INFO: PSNR: 24.319228153364904 - SSIM: 0.8022442354583046 - SR_PROB: 6.5532954456638145e-06 - HR_PROB: 3.893530926426848e-06
+20-05-11 02:57:57, INFO: EPOCH: 40 - D_loss: 0.9999991505940755 - sr_prob: 0.00010503430910951768 - hr_prob: 0.00010587624280015006 - G_loss: 0.008442537859082222
+20-05-11 02:57:57, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-57-57_40.pth
+20-05-11 02:57:57, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-57-57_40.pth
+20-05-11 02:58:04, INFO: PSNR: 25.290459980821964 - SSIM: 0.8070269339421388 - SR_PROB: 3.929495132166471e-06 - HR_PROB: 4.855767641368857e-06
+20-05-11 02:58:24, INFO: EPOCH: 41 - D_loss: 1.0000004212061564 - sr_prob: 0.00011823285880382173 - hr_prob: 0.00011781162299060573 - G_loss: 0.008269916288554668
+20-05-11 02:58:24, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-58-24_41.pth
+20-05-11 02:58:24, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-58-24_41.pth
+20-05-11 02:58:30, INFO: PSNR: 24.795475810795292 - SSIM: 0.807594945559212 - SR_PROB: 5.552058821634493e-06 - HR_PROB: 5.039977668779369e-06
+20-05-11 02:58:50, INFO: EPOCH: 42 - D_loss: 0.9999983711242676 - sr_prob: 9.142124291975051e-05 - hr_prob: 9.304710636691501e-05 - G_loss: 0.008336372673511505
+20-05-11 02:58:50, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-58-50_42.pth
+20-05-11 02:58:50, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-58-50_42.pth
+20-05-11 02:58:57, INFO: PSNR: 25.307707212666156 - SSIM: 0.8034404812675661 - SR_PROB: 6.371923351145266e-06 - HR_PROB: 4.7151004045640165e-06
+20-05-11 02:59:17, INFO: EPOCH: 43 - D_loss: 1.000000725110372 - sr_prob: 9.728345480592301e-05 - hr_prob: 9.655236761318519e-05 - G_loss: 0.008420243859291077
+20-05-11 02:59:17, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-59-17_43.pth
+20-05-11 02:59:17, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-59-17_43.pth
+20-05-11 02:59:23, INFO: PSNR: 23.872306064421515 - SSIM: 0.8033903368632067 - SR_PROB: 7.500548343848083e-06 - HR_PROB: 5.457818826544514e-06
+20-05-11 02:59:43, INFO: EPOCH: 44 - D_loss: 0.9999981861114502 - sr_prob: 0.00011252587081010764 - hr_prob: 0.00011434418878828485 - G_loss: 0.008366251364350319
+20-05-11 02:59:43, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_02-59-43_44.pth
+20-05-11 02:59:43, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_02-59-43_44.pth
+20-05-11 02:59:50, INFO: PSNR: 25.009007902607273 - SSIM: 0.8081825961772716 - SR_PROB: 8.871982415991314e-06 - HR_PROB: 7.676264599075071e-06
+20-05-11 03:00:10, INFO: EPOCH: 45 - D_loss: 0.9999976104100545 - sr_prob: 0.0001175666586883987 - hr_prob: 0.00011995542918642362 - G_loss: 0.008361762389540672
+20-05-11 03:00:10, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_03-00-10_45.pth
+20-05-11 03:00:10, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_03-00-10_45.pth
+20-05-11 03:00:16, INFO: PSNR: 24.725580831682514 - SSIM: 0.8072010321804299 - SR_PROB: 6.262759102817523e-06 - HR_PROB: 7.1139201976007065e-06
+20-05-11 03:00:36, INFO: EPOCH: 46 - D_loss: 0.9999995807011922 - sr_prob: 0.00013042718283638047 - hr_prob: 0.00013084532984066754 - G_loss: 0.00832519680261612
+20-05-11 03:00:36, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_03-00-36_46.pth
+20-05-11 03:00:37, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_03-00-36_46.pth
+20-05-11 03:00:43, INFO: PSNR: 25.55189764687684 - SSIM: 0.8078622135229915 - SR_PROB: 7.796376624501598e-06 - HR_PROB: 6.739485272238314e-06
+20-05-11 03:01:03, INFO: EPOCH: 47 - D_loss: 0.9999988292058309 - sr_prob: 0.00011660361980708937 - hr_prob: 0.00011778052531493207 - G_loss: 0.00857582688331604
+20-05-11 03:01:03, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_03-01-03_47.pth
+20-05-11 03:01:03, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_03-01-03_47.pth
+20-05-11 03:01:09, INFO: PSNR: 25.108844372668276 - SSIM: 0.8080607714452394 - SR_PROB: 7.883408003021424e-06 - HR_PROB: 6.033330242780781e-06
+20-05-11 03:01:29, INFO: EPOCH: 48 - D_loss: 0.9999998003641765 - sr_prob: 0.0001386055132218947 - hr_prob: 0.0001388042348359401 - G_loss: 0.008003884926438332
+20-05-11 03:01:29, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_03-01-29_48.pth
+20-05-11 03:01:29, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_03-01-29_48.pth
+20-05-11 03:01:36, INFO: PSNR: 25.355348098553847 - SSIM: 0.8092429921208901 - SR_PROB: 5.945318336127224e-06 - HR_PROB: 7.99199891325626e-06
+20-05-11 03:01:56, INFO: EPOCH: 49 - D_loss: 1.000000688234965 - sr_prob: 0.0001314213621468904 - hr_prob: 0.00013073516788426786 - G_loss: 0.00833724346011877
+20-05-11 03:01:56, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_03-01-56_49.pth
+20-05-11 03:01:56, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_03-01-56_49.pth
+20-05-11 03:02:02, INFO: PSNR: 25.06067821878632 - SSIM: 0.807530382557838 - SR_PROB: 6.967355216276516e-06 - HR_PROB: 7.543866290964814e-06
+20-05-11 03:02:23, INFO: EPOCH: 50 - D_loss: 0.9999991979598999 - sr_prob: 0.00012619451716697466 - hr_prob: 0.0001269937475444749 - G_loss: 0.00826580636203289
+20-05-11 03:02:23, INFO: /content/gdrive/My Drive/MOUNT/models/G_checkpoint_20-05-11_03-02-23_50.pth
+20-05-11 03:02:23, INFO: /content/gdrive/My Drive/MOUNT/models/D_checkpoint_20-05-11_03-02-23_50.pth
+20-05-11 03:02:29, INFO: PSNR: 25.614828564831704 - SSIM: 0.8094367412102698 - SR_PROB: 7.775519566542214e-06 - HR_PROB: 7.5310818074160545e-06
+20-05-11 03:02:29, INFO: Completed

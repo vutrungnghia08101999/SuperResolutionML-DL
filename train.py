@@ -27,7 +27,7 @@ logging.getLogger().addHandler(console)
 parser = argparse.ArgumentParser()
 parser.add_argument('--crop_size', type=int, default=88)
 parser.add_argument('--upscale_factor', type=int, default=4,  choices=[2, 4, 8])
-parser.add_argument('--num_epochs', type=int, default=100)
+parser.add_argument('--num_epochs', type=int, default=50)
 parser.add_argument('--train_file', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning/train-toy.pkl')
 parser.add_argument('--valid_file', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning/valid-toy_4.pkl')
 # parser.add_argument('--train_file', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning/VOC-2012-train.pkl')
@@ -53,8 +53,8 @@ logging.info(discriminator)
 generator_criterion = GeneratorLoss()
 
 if torch.cuda.is_available():
-    netG.cuda()
-    netD.cuda()
+    generator.cuda()
+    discriminator.cuda()
     generator_criterion.cuda()
 
 optimizerG = optim.Adam(generator.parameters())
@@ -104,7 +104,7 @@ for epoch in range(1, args.num_epochs + 1):
         
         optimizerG.step()
 
-    logging.info(f'D_loss: {avg_d_loss.avg} - sr_prob: {avg_sr_prob.avg} - hr_prob: {avg_hr_prob.avg} - G_loss: {avg_g_loss.avg}')
+    logging.info(f'EPOCH: {epoch} - D_loss: {avg_d_loss.avg} - sr_prob: {avg_sr_prob.avg} - hr_prob: {avg_hr_prob.avg} - G_loss: {avg_g_loss.avg}')
     x = datetime.datetime.now()
     time = x.strftime("%y-%m-%d_%H-%M-%S")
     checkpoint_G = os.path.join(args.models_dir, f'G_checkpoint_{time}_{epoch}.pth')
