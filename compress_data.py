@@ -8,7 +8,8 @@ from torchvision.transforms import Compose, RandomCrop, ToTensor, ToPILImage, Ce
 from dataset import calculate_valid_crop_size, train_hr_transform, train_lr_transform, display_transform
 
 
-ROOT = '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning'
+# ROOT = '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/hyperparameter-tuning'
+ROOT = '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset'
 # ************** COMPRESS TRAIN ******************
 
 def load_data(dataset_dir: str):
@@ -21,7 +22,8 @@ def load_data(dataset_dir: str):
         img.close()
     return images_storage
 
-for TRAIN in ['VOC-2012-train', 'train-toy']:
+# for TRAIN in ['VOC-2012-train', 'train-toy']:
+for TRAIN in ['VOC-2012-train']:
     images_storage = load_data(dataset_dir=os.path.join(ROOT, TRAIN))
 
     COMPRESS_PATH = os.path.join(ROOT, f'{TRAIN}.pkl')
@@ -31,7 +33,8 @@ for TRAIN in ['VOC-2012-train', 'train-toy']:
 # ************** COMPRESS VALID ****************
 upscale_factor = 4
 
-for VALID in ['VOC-2012-valid', 'valid-toy']:
+# for VALID in ['VOC-2012-valid', 'valid-toy']:
+for VALID in ['VOC-2012-valid']:
     valid_storages = []
     files = list(os.listdir(os.path.join(ROOT, VALID)))
     for filename in tqdm(files):
