@@ -12,23 +12,23 @@ from dataset import calculate_valid_crop_size, train_hr_transform, train_lr_tran
 ROOT = '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset'
 # ************** COMPRESS TRAIN ******************
 
-def load_data(dataset_dir: str):
-    images_storage = []
-    files = os.listdir(dataset_dir)
-    print(f'Loading {len(files)} images from {dataset_dir}')
-    for filename in tqdm(files):
-        img = Image.open(os.path.join(dataset_dir, filename))
-        images_storage.append(np.array(img))
-        img.close()
-    return images_storage
+# def load_data(dataset_dir: str):
+#     images_storage = []
+#     files = os.listdir(dataset_dir)
+#     print(f'Loading {len(files)} images from {dataset_dir}')
+#     for filename in tqdm(files):
+#         img = Image.open(os.path.join(dataset_dir, filename))
+#         images_storage.append(np.array(img))
+#         img.close()
+#     return images_storage
 
-# for TRAIN in ['VOC-2012-train', 'train-toy']:
-for TRAIN in ['VOC-2012-train']:
-    images_storage = load_data(dataset_dir=os.path.join(ROOT, TRAIN))
+# # for TRAIN in ['VOC-2012-train', 'train-toy']:
+# for TRAIN in ['VOC-2012-train']:
+#     images_storage = load_data(dataset_dir=os.path.join(ROOT, TRAIN))
 
-    COMPRESS_PATH = os.path.join(ROOT, f'{TRAIN}.pkl')
-    with open(COMPRESS_PATH, 'wb') as f:
-        pickle.dump(images_storage, f)
+#     COMPRESS_PATH = os.path.join(ROOT, f'{TRAIN}.pkl')
+#     with open(COMPRESS_PATH, 'wb') as f:
+#         pickle.dump(images_storage, f)
 
 # ************** COMPRESS VALID ****************
 upscale_factor = 4
