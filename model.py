@@ -18,6 +18,8 @@ class SRResNet(nn.Module):
             ResidualBlock(n_channels),
             ResidualBlock(n_channels),
             ResidualBlock(n_channels),
+            ResidualBlock(n_channels),
+            ResidualBlock(n_channels),
         )
 
         self.block3 = nn.Sequential(
