@@ -1,31 +1,21 @@
-# SRGAN
-### Train
-```
-python train.py
+SRResNet
+===
 
-optional arguments:
---crop_size                   training images crop size [default value is 88]
---upscale_factor              super resolution upscale factor [default value is 4](choices:[2, 4, 8])
---num_epochs                  train epoch number [default value is 100]
+Train
+```bash
+python train.py --train_file '/content/gdrive/My Drive/MOUNT/dataset/VOC-2012-train.pkl'\
+                --valid_file '/content/gdrive/My Drive/MOUNT/dataset/VOC-2012-valid_4.pkl' \
+                --models_dir '/content/gdrive/My Drive/MOUNT/models'
 ```
-
-### Test Benchmark Datasets
+Test
+```bash
+python test.py --model_path '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-12_05-08-09_100.pth' \
+               --test_folder '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/BSDS100/SRF_4' \
+               --output '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/testing-world-champion/ESPCN/X4'
 ```
-python test_benchmark.py
-
-optional arguments:
---upscale_factor              super resolution upscale factor [default value is 4]
---model_name                  generator model epoch name [default value is netG_epoch_4_100.pth]
-```
-The output super resolution images are on `benchmark_results` directory.
-
-### Test Single Image
-```
-python inference.py
-
-optional arguments:
---upscale_factor              super resolution upscale factor [default value is 4]
---test_mode                   using GPU or CPU [default value is 'GPU'](choices:['GPU', 'CPU'])
---image_name                  test low resolution image name
---model_name                  generator model epoch name [default value is netG_epoch_4_100.pth]
+Inference
+```bash
+python inference.py --model_path '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-12_05-08-09_100.pth' \
+                    --output './' \
+                    --image_name 'tmp.png'
 ```

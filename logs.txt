@@ -346,3 +346,26 @@
 20-05-12 05:08:09, INFO: /content/gdrive/My Drive/MOUNT/models/checkpoint_20-05-12_05-08-09_100.pth
 20-05-12 05:08:19, INFO: Val_loss: 0.004688211251050234 - PSNR: 23.967453590266977 - SSIM: 0.7854070498524056
 20-05-12 05:08:19, INFO: Completed
+20-05-13 21-29-29, INFO: 
+
+================ ESPCN - TESTING =================
+
+
+20-05-13 21-29-29, INFO: [('model_path', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-12_05-08-09_100.pth'), ('output', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/testing-world-champion/ESPCN/X4'), ('test_folder', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/BSDS100/SRF_4')]
+20-05-13 21-29-29, INFO: ESPCN(
+  (first_part): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(64, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+  )
+  (last_part): Sequential(
+    (0): Conv2d(32, 48, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): PixelShuffle(upscale_factor=2)
+    (2): PixelShuffle(upscale_factor=2)
+  )
+)
+20-05-13 21-29-50, INFO: PSNR: 24.503472044659247 - SSIM: 0.7858830929977242
+20-05-13 21-29-50, INFO: Completed
+
+
