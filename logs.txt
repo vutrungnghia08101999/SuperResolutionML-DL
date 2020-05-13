@@ -382,3 +382,87 @@
 20-05-12 17:31:34, INFO: Completed
 
 
+20-05-13 21-04-37, INFO: 
+
+================ SRResNet - TESTING =================
+
+
+20-05-13 21-04-37, INFO: [('model_path', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-12_17-31-07_100.pth'), ('output', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/testing-world-champion/SRResNet/X4'), ('test_folder', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/BSDS100/SRF_4')]
+20-05-13 21-04-37, INFO: SRResNet(
+  (block1): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(9, 9), stride=(1, 1), padding=(4, 4))
+    (1): PReLU(num_parameters=1)
+  )
+  (residual_blocks): Sequential(
+    (0): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (1): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (2): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (3): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (4): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (5): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (6): ResidualBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (prelu): PReLU(num_parameters=1)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (block3): Sequential(
+    (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block4): Sequential(
+    (0): UpsampleBLock(
+      (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (pixel_shuffle): PixelShuffle(upscale_factor=2)
+      (prelu): PReLU(num_parameters=1)
+    )
+    (1): UpsampleBLock(
+      (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (pixel_shuffle): PixelShuffle(upscale_factor=2)
+      (prelu): PReLU(num_parameters=1)
+    )
+    (2): Conv2d(64, 3, kernel_size=(9, 9), stride=(1, 1), padding=(4, 4))
+  )
+)
+20-05-13 21-05-28, INFO: PSNR: 27.01686551976322 - SSIM: 0.8303702378768126
+20-05-13 21-05-28, INFO: Completed
+
+
