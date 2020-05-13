@@ -13,3 +13,9 @@ python test.py --model_path '/media/vutrungnghia/New Volume/MachineLearningAndDa
                --test_folder '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/BSDS100/SRF_4' \
                --output '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/testing-world-champion/SRGAN/X4'
 ```
+Inference
+```bash
+python inference.py --model_path '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/G_checkpoint_20-05-13_08-03-25_100.pth' \
+                    --output './' \
+                    --image_name 'tmp.png'
+```
