@@ -1,10 +1,10 @@
-20-05-01 16:51:31, INFO: [('num_workers', 1), ('scale', 3), ('seed', 123), ('test_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/test/BSDS100.h5'), ('valid_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14.h5'), ('weights_file', None)]
-20-05-01 16:51:31, INFO: No.valid images: 14
-20-05-01 16:51:31, INFO: No.test images: 100
-20-05-01 16:51:32, INFO: [91mvalid psnr: 27.899564743041992 - valid ssim: 0.8107435253776722[0m
-20-05-01 16:51:34, INFO: [91mtest psnr: 27.664133071899414 - test ssim: 0.7736971768588803[0m
-20-05-01 17:05:50, INFO: [('num_workers', 1), ('scale', 3), ('seed', 123), ('test_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/test/BSDS100.h5'), ('valid_file', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14.h5'), ('weights_file', None)]
-20-05-01 17:05:50, INFO: No.valid images: 14
-20-05-01 17:05:50, INFO: No.test images: 100
-20-05-01 17:05:50, INFO: [91mvalid psnr: 27.899564743041992 - valid ssim: 0.8107435253776722[0m
-20-05-01 17:05:52, INFO: [91mtest psnr: 27.664133071899414 - test ssim: 0.7736971768588803[0m
+20-05-17 08-33-15, INFO: 
+
+================ BICUBIC - TESTING =================
+
+
+20-05-17 08-33-15, INFO: [('output', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/testing-world-champion/BICUBIC/X4'), ('test_folder', '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/BSDS100/SRF_4')]
+20-05-17 08-33-30, INFO: PSNR: 25.680089988277008 - SSIM: 0.7872033178468228
+20-05-17 08-33-30, INFO: Completed
+
+
