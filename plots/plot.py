@@ -15,24 +15,13 @@ def plot_graph(index, param, values, mapper):
             for example: PSNR['with BN'] = array of 50 float values corresponding to 50 epochs.
     :return:
     """
-    assert index in ['PSNR', 'SSIM', 'D_loss', 'G_loss', ['sr_prob', 'hr_prob'], ['SR_PROB', 'HR_PROB']]
+    assert index in ['PSNR', 'SSIM', 'D_loss', 'G_loss', ['sr_prob', 'SR_PROB'], ['hr_prob', 'HR_PROB']]
     assert param in ['D_first_kernel_size', 'n_blocks', 'classifier', 'BN']
 
-    # if index in ['PSNR', 'SSIM', 'sr_prob', 'SR_PROB', 'hr_prob', 'HR_PROB']:
     if index in ['PSNR', 'SSIM']:
         fig = plt.figure(figsize=(12, 5))
         chart = fig.add_subplot()
         chart.set_xlabel("Epochs")
-        # if index == 'sr_prob':
-        #     ylabel = 'Train SR probability'
-        # elif index == 'SR_PROB':
-        #     ylabel = 'Validate SR probability'
-        # elif index == 'hr_prob':
-        #     ylabel = 'Train HR probability'
-        # elif index  == 'HR_PROB':
-        #     ylabel = 'Validate HR probability'
-        # else: ylabel = index
-
         chart.set_ylabel(index)
         idx = 0
 
@@ -47,50 +36,31 @@ def plot_graph(index, param, values, mapper):
         chart.legend()
         fig.savefig("{0}{1}_{2}.pdf".format(path, param, index))
         plt.close(fig)
-
     elif index in ['G_loss', 'D_loss']:
-
-        if index == 'G_loss':
-            ylabel = 'Generator loss'
-        else:
-            ylabel = 'Discriminator loss'
+        fig = plt.figure(figsize=(12, 5))
+        chart = fig.add_subplot()
+        chart.set_xlabel("Epochs")
+        chart.set_ylabel(index)
 
         for i in values:
-            fig = plt.figure(figsize=(12, 5))
-            chart = fig.add_subplot()
-            chart.set_xlabel("Epochs")
-            chart.set_ylabel(ylabel)
             chart.plot(x, mapper[i], color='b')
             fig.savefig("{0}{1}_{2}_{3}.pdf".format(path, index, param, i))
             plt.close(fig)
 
     else:
+        prob = mapper[index[0]]
+        PROB = mapper[index[1]]
+        idx = 0
         for i in values:
             fig = plt.figure(figsize=(12, 5))
             chart = fig.add_subplot()
             chart.set_xlabel("Epochs")
-            chart.set_ylabel("Probability")
-            sr = mapper[index[0]]
-            hr = mapper[index[1]]
-            chart.plot(x, sr[i], color='b', label="SR")
-            chart.plot(x, hr[i], color='r', label="HR")
+            chart.set_ylabel("{} Prob".format("SR" if index == ['sr_prob', 'SR_PROB'] else "HR"))
+            chart.plot(x, prob[i], color='b', label='Training')
+            chart.plot(x, PROB[i], color='r', label='Validate')
             chart.legend()
-            fig.savefig("{0}{1}_{2}_{3}.pdf".format(path, "Train_Prob" if index == ['sr_prob', 'hr_prob'] else "Validate_Prob", param, i))
+            fig.savefig("{0}{1}_{2}_{3}.pdf".format(path, "SR_PROB" if index == ['sr_prob', 'SR_PROB'] else "HR_PROB", param, i))
             plt.close(fig)
-    # else:
-    #     prob = mapper[index[0]]
-    #     PROB = mapper[index[1]]
-    #     idx = 0
-    #     for i in values:
-    #         fig = plt.figure(figsize=(12, 5))
-    #         chart = fig.add_subplot()
-    #         chart.set_xlabel("Epochs")
-    #         chart.set_ylabel("{} Prob".format("SR" if index == ['sr_prob', 'SR_PROB'] else "HR"))
-    #         chart.plot(x, prob[i], color='b', label='Training')
-    #         chart.plot(x, PROB[i], color='r', label='Validate')
-    #         chart.legend()
-    #         fig.savefig("{0}{1}_{2}_{3}.pdf".format(path, "SR_PROB" if index == ['sr_prob', 'SR_PROB'] else "HR_PROB", param, i))
-    #         plt.close(fig)
 
 def plot(param):
     """
@@ -142,23 +112,20 @@ def plot(param):
 
         idx += 1
 
-    indices = ['PSNR', 'SSIM', 'D_loss', 'G_loss', ['sr_prob', 'hr_prob'], ['SR_PROB', 'HR_PROB']]
+    indices = ['PSNR', 'SSIM', 'D_loss', 'G_loss', ['sr_prob', 'SR_PROB'], ['hr_prob', 'HR_PROB']]
     for index in indices:
-
-        if index == 'PSNR': mapper = PSNR
-        elif index == 'SSIM': mapper = SSIM
-        elif index == 'G_loss': mapper = G_loss
-        elif index == 'D_loss': mapper = D_loss
+        if index in ['PSNR', 'SSIM', 'D_loss', 'G_loss']:
+            if index == 'PSNR': mapper = PSNR
+            elif index == 'SSIM': mapper = SSIM
+            elif index == 'G_loss': mapper = G_loss
+            else: mapper = D_loss
         else:
-            if index == ['sr_prob', 'hr_prob']:
-                mapper = {'sr_prob': sr_prob, 'hr_prob': hr_prob}
+            if index == ['sr_prob', 'SR_PROB']:
+                mapper = {'sr_prob': sr_prob, 'SR_PROB': SR_PROB}
             else:
-                mapper = {'SR_PROB': SR_PROB, 'HR_PROB': HR_PROB}
+                mapper = {'hr_prob': hr_prob, 'HR_PROB': HR_PROB}
         plot_graph(index, param, values, mapper=mapper)
 
 params = ['D_first_kernel_size', 'n_blocks', 'classifier', 'BN']
 for param in params:
     plot(param)
-
-
-
