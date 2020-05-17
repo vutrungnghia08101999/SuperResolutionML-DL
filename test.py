@@ -24,7 +24,7 @@ console.setLevel(logging.INFO)
 logging.getLogger().addHandler(console)
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--model_path', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-12_05-08-09_100.pth')
+parser.add_argument('--model_path', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models/checkpoint_20-05-17_07-50-00_100.pth')
 parser.add_argument('--test_folder', default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/BSDS100/SRF_4')
 parser.add_argument('--output', type=str, default='/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/testing-world-champion/ESPCN/X4')
 args = parser.parse_args()
