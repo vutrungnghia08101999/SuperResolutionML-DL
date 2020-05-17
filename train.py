@@ -71,7 +71,7 @@ for epoch in range(1, args.num_epochs + 1):
     logging.info(f'EPOCH {epoch} - Loss: {train_losses.avg}')
     x = datetime.datetime.now()
     time = x.strftime("%y-%m-%d_%H-%M-%S")
-    model_checkpoint = os.path.join(args.models_dir, f'checkpoint_{time}_{epoch}.pth')
+    # model_checkpoint = os.path.join(args.models_dir, f'checkpoint_{time}_{epoch}.pth')
     torch.save({'state_dict': model.state_dict()}, model_checkpoint)
     logging.info(model_checkpoint)
 
@@ -87,6 +87,7 @@ for epoch in range(1, args.num_epochs + 1):
 
         with torch.no_grad():
             sr = model(lr)
+            sr = torch.clamp(sr, 0.0, 1.0)
         
         loss = criterion(sr, hr)
         valid_losses.update(loss)
