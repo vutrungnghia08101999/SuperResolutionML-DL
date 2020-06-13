@@ -1,0 +1,8 @@
+.vscode/
+__pycache__/
+dataset/
+experiments/
+logs/
+models/
+pretrained-models/
+tunning-and-full-training/

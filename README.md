@@ -1,35 +1,45 @@
-Data processing
+Data Preprocessing
 ===
-Download dataset: https://drive.google.com/drive/folders/116ZLlLSrS2OLrsczYRv5nDpV9lL2cE0w?usp=sharing
+Download data and pretrained models at: https://husteduvn-my.sharepoint.com/:f:/g/personal/nghia_vt173284_sis_hust_edu_vn/EozFDBAS77dJmsbGvRvDswIB5O0P6ucF5OcU9U10jN8NvQ?e=XHVAb9
 
-Create train dataset
+Generate train and test dataset:
+- Save data at "dataset" folder
+- Save models at "pretrained-models" folder
+- Create "logs" folder
 ```bash
-python prepare.py --images-dir '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train/t91' \
-                  --scale 2
+python generate_data.py
 ```
+- Only generate scale 4 dataset for test dataset
+- Simply compress images in train folder to pkl files to load faster in colab
 
-Create valid dataset
-```bash
-python prepare.py --images-dir '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14' \
-                  --eval \
-                  --scale 2
-```
-Create test dataset
-```bash
-python prepare.py --images-dir '/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/test/BSDS100' \
-                  --eval \
-                  --scale 2
-```
-Train and Evaluate
+Training
 ===
-```bash
-python train.py --train-dir "/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/train/t91" \
-                --eval-dir "/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/dataset/valid/Set14" \
-                --outputs-dir "/media/vutrungnghia/New Volume/MachineLearningAndDataMining/SuperResolution/models" \
-                --lr 1e-3 \
-                --batch-size 16 \
-                --num-epochs 200 \
-                --num-workers 8 \
-                --seed 123 \
-                --scale 2 --model 'ESPCN' --loss 'mse'
+Train ESPCN
+```
+python train_ESPCN.py --num_epochs 10
+python train_ESPCN.py --weights pretrained-models/ESPCN.py --num_epochs 10
+```
+Train SRResNet
+```
+python train_SRResNet.py --num_epochs 1
+python train_SRResNet.py --weights pretrained-models/SRResNet.py --num_epochs 1
+```
+Train SRGAN
+```
+python train_SRGAN.py --num_epochs 1
+python train_SRGAN.py --weights pretrained-models/SRResNet.py --num_epochs 1
+```
+Testing
+===
+Test ESPCN
+```
+python test --model ESPCN --weights pretrained-models/ESPCN.pth
+```
+Test SRResNet
+```
+python test --model SRResNet --weights pretrained-models/SRResNet.pth
+```
+Test SRGAN
+```
+python test --model SRGAN --weights pretrained-models/SRGAN.pth
 ```

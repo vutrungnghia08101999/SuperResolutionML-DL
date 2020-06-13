@@ -1,23 +1,22 @@
 import argparse
 import logging
-import copy
 import os
+import time
+import datetime
 
-import torch
-from torch import nn
 import torch.optim as optim
-import torch.backends.cudnn as cudnn
-from torch.utils.data.dataloader import DataLoader
+import torch.utils.data
+from torch.utils.data import DataLoader
 from tqdm import tqdm
-import torchvision
+from torchvision.transforms import ToPILImage, ToTensor
 
-from models import SRCNN, ESPCN, Generator, Discriminator
-from datasets import TrainDataset, EvalDataset, SRCNNTrainDataset, SRCNNEvalDataset
-from utils import AverageMeter, calc_psnr, calc_ssim
-from losses import MSELoss, get_features
+from dataset import display_transform, TrainDatasetFromCompressFile, ValDatasetFromCompressFile
+from GeneratorLoss import GeneratorLoss
+from models import Generator, Discriminator
+from utils import AverageMeter, calculate_psnr_y_channel, calculate_ssim_y_channel
 
-logging.basicConfig(filename='logs.txt',
-                    filemode='a',
+logging.basicConfig(filename='logs/train_SRGAN.txt',
+                    filemode='w',
                     format='%(asctime)s, %(levelname)s: %(message)s',
                     datefmt='%y-%m-%d %H:%M:%S',
                     level=logging.INFO)
@@ -25,141 +24,148 @@ console = logging.StreamHandler()
 console.setLevel(logging.INFO)
 logging.getLogger().addHandler(console)
 
-logging.info('\n\n=========== TRAIN AND EVALUATE ============\n\n')
-
 parser = argparse.ArgumentParser()
-parser.add_argument('--generator-weights', type=str, required=True)
-parser.add_argument('--train-dir', type=str, required=True)
-parser.add_argument('--eval-dir', type=str, required=True)
-parser.add_argument('--outputs-dir', type=str, required=True)
-parser.add_argument('--scale', type=int, default=2)
-parser.add_argument('--lr', type=float, default=1e-3)
-parser.add_argument('--batch-size', type=int, default=16)
-parser.add_argument('--num-epochs', type=int, default=200)
-parser.add_argument('--num-workers', type=int, default=4)
-parser.add_argument('--seed', type=int, default=123)
+parser.add_argument('--crop_size', type=int, default=88)
+parser.add_argument('--upscale_factor', type=int, default=4)
+parser.add_argument('--num_epochs', type=int, default=50)
+parser.add_argument('--train_file', type=str, default='dataset/train/VOC-2012-train.pkl')
+parser.add_argument('--valid_file', type=str, default='dataset/train/VOC-2012-valid_4.pkl')
+parser.add_argument('--models_dir', type=str, default='models/SRGAN')
+parser.add_argument('--weights_G', type=str, default='')
+parser.add_argument('--weights_D', type=str, default='')
+parser.add_argument('--images', type=str, default='experiments/SRGAN/train')
 args = parser.parse_args()
-args.train_file = args.train_dir + f'_x{args.scale}.h5'
-args.eval_file = args.eval_dir + f'_x{args.scale}.h5'
 
-for k, v in args._get_kwargs():
-    logging.info(f'{k}: {v}')
 
-# ************* Set up environment ***************
-device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-torch.manual_seed(args.seed)
-OUTPUT = os.path.join(args.outputs_dir, 'SRGAN', f'x{args.scale}')
-os.makedirs(OUTPUT, exist_ok=True)
-logging.info(f'OUTPUT: {OUTPUT}')
+logging.info('\n\n================ SRGAN - TRAINING =================\n\n')
+logging.info(args._get_kwargs())
 
-# *************** train and evaluate ******************
-def train(train_dataset,
-          train_dataloader,
-          generator,
-          discriminator,
-          device: torch.device) -> None:
+os.makedirs(args.models_dir,exist_ok=True)
+os.makedirs(args.images, exist_ok=True)
+
+train_set = TrainDatasetFromCompressFile(args.train_file, args.crop_size, args.upscale_factor)
+val_set = ValDatasetFromCompressFile(args.valid_file)
+train_loader = DataLoader(dataset=train_set, num_workers=4, batch_size=64, shuffle=True)
+val_loader = DataLoader(dataset=val_set, num_workers=4, batch_size=1, shuffle=False)
+
+generator = Generator()
+logging.info(f'generator parameters: {sum(param.numel() for param in generator.parameters())}')
+discriminator = Discriminator()
+logging.info(f'discriminator parameters: {sum(param.numel() for param in discriminator.parameters())}')
+logging.info(generator)
+logging.info(discriminator)
+
+if args.weights_G:
+    if not torch.cuda.is_available():
+        checkpoint = torch.load(args.weights_G, map_location=torch.device('cpu'))
+    else:
+        checkpoint = torch.load(args.weights_G)
+    generator.load_state_dict(checkpoint['state_dict'])
+    logging.info(f'Loading model at: {args.weights}')
+
+if args.weights_D:
+    if not torch.cuda.is_available():
+        checkpoint = torch.load(args.weights_D, map_location=torch.device('cpu'))
+    else:
+        checkpoint = torch.load(args.weights_D)
+    discriminator.load_state_dict(checkpoint['state_dict'])
+    logging.info(f'Loading model at: {args.weights}')
+
+generator_criterion = GeneratorLoss()
+
+if torch.cuda.is_available():
+    generator.cuda()
+    discriminator.cuda()
+    generator_criterion.cuda()
+
+optimizerG = optim.Adam(generator.parameters())
+optimizerD = optim.Adam(discriminator.parameters())
+
+for epoch in range(1, args.num_epochs + 1):
     generator.train()
     discriminator.train()
-    epoch_D_losses = AverageMeter()
-    epoch_G_losses = AverageMeter()
-    for data in tqdm(train_dataloader):
-        lr, hr = data  # batch_size x 1 x 17 x 17 and batch_size x 1 x 34 x 34, in range (0, 1) for x2
 
-        lr = lr.to(device)
-        hr = hr.to(device)
+    avg_d_loss = AverageMeter()
+    avg_hr_prob = AverageMeter()
+    avg_sr_prob = AverageMeter()
+    avg_g_loss = AverageMeter()
+    for lrs, hrs in tqdm(train_loader):
+        batch_size = lrs.shape[0]
 
-        # train discrimintor
-        sr = generator(lr)  # batch_size x 1 x 34 x 34
+        ############################
+        # (1) Update D network: maximize D(x)-1-D(G(z))
+        ###########################
+        if torch.cuda.is_available():
+            lrs = lrs.cuda()
+            hrs = hrs.cuda()
+        srs = generator(lrs)
 
-        sr_probs_target = torch.rand(sr.shape[0], 1)*0.3 + 1e-4
-        hr_probs_target = torch.rand(sr.shape[0], 1)*0.3 + 0.7 - 1e-4
+        discriminator.zero_grad()
+        hr_prob = discriminator(hrs).mean()
+        sr_prob = discriminator(srs).mean()
+        d_loss = 1 - hr_prob + sr_prob
+
+        avg_d_loss.update(d_loss.item(), batch_size)
+        avg_hr_prob.update(hr_prob.item(), batch_size)
+        avg_sr_prob.update(sr_prob.item(), batch_size)
+
+        d_loss.backward()
+        optimizerD.step()
+
+        ############################
+        # (2) Update G network: minimize 1-D(G(z)) + Perception Loss + Image Loss + TV Loss
+        ###########################
+        generator.zero_grad()
+        srs = generator(lrs)
+        sr_prob = discriminator(srs).mean()
+        g_loss = generator_criterion(sr_prob, srs, hrs)
+        avg_g_loss.update(g_loss, batch_size)
         
-        discriminator_loss = adversarial_loss(discriminator(sr), sr_probs_target) + adversarial_loss(discriminator(hr), hr_probs_target)
-        epoch_D_losses.update(discriminator_loss.item(), lr.shape[0])
+        g_loss.backward()
+        
+        optimizerG.step()
 
-        optim_discriminator.zero_grad()
-        discriminator_loss.backward()
-        optim_discriminator.step()
+    logging.info(f'EPOCH: {epoch} - D_loss: {avg_d_loss.avg} - sr_prob: {avg_sr_prob.avg} - hr_prob: {avg_hr_prob.avg} - G_loss: {avg_g_loss.avg}')
+    x = datetime.datetime.now()
+    time = x.strftime("%y-%m-%d_%H-%M-%S")
+    checkpoint_G = os.path.join(args.models_dir, f'G_checkpoint_{time}_{epoch}.pth')
+    torch.save({'state_dict': generator.state_dict()}, checkpoint_G)
+    logging.info(checkpoint_G)
 
-        # train generator
-        sr = generator(lr)  # batch_size x 1 x 34 x 34
+    checkpoint_D = os.path.join(args.models_dir, f'D_checkpoint_{time}_{epoch}.pth')
+    torch.save({'state_dict': discriminator.state_dict()}, checkpoint_D)
+    logging.info(checkpoint_D)
 
-        sr_features = get_features(vgg=vgg19,imgs=sr, vgg_depth=11)
-        hr_features = get_features(vgg=vgg19,imgs=hr, vgg_depth=11)
-        l1 = content_loss(sr, hr) + 0.006 * content_loss(sr_features, hr_features)
-
-        ones = torch.ones(sr.shape[0]).view(sr.shape[0], 1) * 1.0
-        l2 = adversarial_loss(discriminator(sr), ones)
-        generator_loss = l1 + 0.001 * l2
-        epoch_G_losses.update(generator_loss.item(), lr.shape[0])
-
-        optim_generator.zero_grad()
-        generator_loss.backward()
-        optim_generator.step()
-
-    logging.info(f'discriminator_loss: {epoch_D_losses.avg} - generator_loss: {epoch_G_losses.avg}')
-    # logging.info(f'Average sr: {sr_probs.mean().item()}')
-    # logging.info(f'Average hr: {hr_probs.mean().item()}')
-
-    torch.save({'state_dict': discriminator.state_dict()}, os.path.join(OUTPUT, f'epoch_D_{epoch}.pth'))
-    torch.save({'state_dict': generator.state_dict()}, os.path.join(OUTPUT, f'epoch_G_{epoch}.pth'))
-
-
-def eval(eval_dataloader, generator, device: torch.device) -> None:
     generator.eval()
-    epoch_psnr = AverageMeter()
-    epoch_ssim = AverageMeter()
+    discriminator.eval()
 
-    for data in eval_dataloader:
-        lr, hr = data
-
-        lr = lr.to(device)
-        hr = hr.to(device)
+    avg_psnr = AverageMeter()
+    avg_ssim = AverageMeter()
+    avg_sr_prob = AverageMeter()
+    avg_hr_prob = AverageMeter()
+    for image_id, (lr, hr_bicubic, hr) in tqdm(enumerate(val_loader)):
+        assert lr.shape[0] == 1
+        if torch.cuda.is_available():
+            lr = lr.cuda()
+            hr = hr.cuda()
 
         with torch.no_grad():
-            sr = generator(lr).clamp(0.0, 1.0)
-
-        epoch_psnr.update(calc_psnr(sr, hr), len(lr))
-        epoch_ssim.update(calc_ssim(sr.cpu(), hr.cpu()), len(lr))
-
-    logging.info(f'\33[91meval psnr: {epoch_psnr.avg} - eval ssim: {epoch_ssim.avg}\33[0m')
-
-
-# ************* Initilize generator and discriminator, create optimizer and loss ************
-generator = Generator(args.scale)
-discriminator = Discriminator()
-optim_generator = optim.Adam(generator.parameters(),
-                             lr=args.lr,
-                             betas=(0.99, 0.999))
-
-optim_discriminator = optim.Adam(discriminator.parameters(),
-                                 lr=args.lr,
-                                 betas=(0.99, 0.999))
-content_loss = MSELoss
-adversarial_loss = nn.BCELoss()
-vgg19 = torchvision.models.vgg19(pretrained=True)
-for i in range(len(vgg19.features)):
-    vgg19.features[i].requires_grad_(False)
-
-# ************ create dataset and dataloader *************
-train_dataset = TrainDataset(args.train_file)
-eval_dataset = EvalDataset(args.eval_file)
-logging.info(f'No.train patches: {len(train_dataset)}')
-logging.info(f'No.eval images: {len(eval_dataset)}')
-
-train_dataloader = DataLoader(dataset=train_dataset,
-                              batch_size=args.batch_size,
-                              shuffle=True,
-                              num_workers=args.num_workers,
-                              pin_memory=True)
-eval_dataloader = DataLoader(dataset=eval_dataset, batch_size=1)
-
-for epoch in range(args.num_epochs):
-    train(train_dataset=train_dataset,
-          train_dataloader=train_dataloader,
-          generator=generator,
-          discriminator=discriminator,
-          device=device)
-    eval(eval_dataloader=eval_dataloader, generator=generator, device=device)    
-
+            sr = generator(lr)
+            sr_prob = discriminator(sr)
+            hr_prob = discriminator(hr)
+        
+        sr_img = ToPILImage()(sr.cpu().squeeze())
+        hr_img = ToPILImage()(hr.cpu().squeeze())
+        if image_id == 0:
+            s = torch.cat((ToTensor()(sr_img), ToTensor()(hr_img)), dim=2)
+            s = ToPILImage()(s)
+            s.save(f'{args.images}/{epoch}.png')
+        psnr = calculate_psnr_y_channel(sr_img, hr_img)
+        ssim = calculate_ssim_y_channel(sr_img, hr_img)
+        
+        avg_psnr.update(psnr)
+        avg_ssim.update(ssim)
+        avg_sr_prob.update(sr_prob.item())
+        avg_hr_prob.update(hr_prob.item())
+    logging.info(f'PSNR: {avg_psnr.avg} - SSIM: {avg_ssim.avg} - SR_PROB: {avg_sr_prob.avg} - HR_PROB: {avg_hr_prob.avg}')
 logging.info('Completed\n\n')
