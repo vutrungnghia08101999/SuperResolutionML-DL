@@ -6,3 +6,4 @@ logs/
 models/
 pretrained-models/
 tunning-and-full-training/
+cut_test_image.py
