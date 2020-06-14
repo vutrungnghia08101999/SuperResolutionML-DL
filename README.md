@@ -1,3 +1,10 @@
+Setup environment
+===
+```
+conda env create -f env.yml
+```
+- For running on colab: simply upload this repos to colab and run
+
 Data Preprocessing
 ===
 Download data and pretrained models at: https://husteduvn-my.sharepoint.com/:f:/g/personal/nghia_vt173284_sis_hust_edu_vn/EozFDBAS77dJmsbGvRvDswIB5O0P6ucF5OcU9U10jN8NvQ?e=XHVAb9
