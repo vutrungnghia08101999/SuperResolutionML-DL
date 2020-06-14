@@ -31,11 +31,16 @@ Output includes:
 - images at experiments folder
 
 Train ESPCN
+- From scratch
 ```
 python train_ESPCN.py --num_epochs 10
+```
+- From pretrained model
+```
 python train_ESPCN.py --weights pretrained-models/ESPCN.pth --num_epochs 10
 ```
 Train SRResNet
+
 ```
 python train_SRResNet.py --num_epochs 1
 python train_SRResNet.py --weights pretrained-models/SRResNet.pth --num_epochs 1
@@ -69,8 +74,18 @@ python test_BICUBIC.py
 ```
 Inference
 ===
+ESPCN
 ```
 python inference.py --input input.jpg --weights pretrained-models/ESPCN.pth --model ESPCN
+```
+SRResNet
+```
 python inference.py --input input.jpg --weights pretrained-models/SRResNet.pth --model SRResNet
+```
+SRGAN
+```
 python inference.py --input input.jpg --weights pretrained-models/SRGAN_G.pth --model SRGAN
 ```
+Hyperparameters - Model Architecture
+===
+Change model architecture at: models.py
