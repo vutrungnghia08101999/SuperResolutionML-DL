@@ -2,6 +2,7 @@ Setup environment
 ===
 ```
 conda env create -f env.yml
+conda activate env_36
 ```
 - For running on colab: simply upload this repos to colab and run
 
@@ -39,7 +40,7 @@ python train_SRResNet.py --weights pretrained-models/SRResNet.py --num_epochs 1
 Train SRGAN
 ```
 python train_SRGAN.py --num_epochs 1
-python train_SRGAN.py --weights pretrained-models/SRResNet.py --num_epochs 1
+python train_SRGAN.py --weights_G pretrained-models/SRGAN_G.pth --weights_D pretrained-models/SRGAN_D.pth --num_epochs 1
 ```
 Testing
 ===
@@ -49,13 +50,20 @@ Output includes:
 
 Test ESPCN
 ```
-python test --model ESPCN --weights pretrained-models/ESPCN.pth
+python test.py --model ESPCN --weights pretrained-models/ESPCN.pth
 ```
 Test SRResNet
 ```
-python test --model SRResNet --weights pretrained-models/SRResNet.pth
+python test.py --model SRResNet --weights pretrained-models/SRResNet.pth
 ```
 Test SRGAN
 ```
-python test --model SRGAN --weights pretrained-models/SRGAN.pth
+python test.py --model SRGAN --weights pretrained-models/SRGAN_G.pth
+```
+Inference
+===
+```
+python inference.py --input input.jpg --weights pretrained-models/ESPCN.pth --model ESPCN
+python inference.py --input input.jpg --weights pretrained-models/SRResNet.pth --model SRResNet
+python inference.py --input input.jpg --weights pretrained-models/SRGAN_G.pth --model SRGAN
 ```

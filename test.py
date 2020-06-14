@@ -30,7 +30,7 @@ console = logging.StreamHandler()
 console.setLevel(logging.INFO)
 logging.getLogger().addHandler(console)
 
-logging.info('\n\n================ ESPCN - TESTING =================\n\n')
+logging.info(f'\n\n================ {args.model.upper()} TESTING =================\n\n')
 logging.info(args._get_kwargs())
 
 images_output = f'experiments/{args.model}/test'

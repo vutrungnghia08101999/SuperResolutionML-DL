@@ -61,7 +61,7 @@ if args.weights_G:
     else:
         checkpoint = torch.load(args.weights_G)
     generator.load_state_dict(checkpoint['state_dict'])
-    logging.info(f'Loading model at: {args.weights}')
+    logging.info(f'Loading model at: {args.weights_G}')
 
 if args.weights_D:
     if not torch.cuda.is_available():
@@ -69,7 +69,7 @@ if args.weights_D:
     else:
         checkpoint = torch.load(args.weights_D)
     discriminator.load_state_dict(checkpoint['state_dict'])
-    logging.info(f'Loading model at: {args.weights}')
+    logging.info(f'Loading model at: {args.weights_D}')
 
 generator_criterion = GeneratorLoss()
 
