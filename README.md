@@ -14,6 +14,11 @@ python generate_data.py
 
 Training
 ===
+Output includes:
+- logs file at logs folder
+- model checkpoint at models folder
+- images at experiments folder
+
 Train ESPCN
 ```
 python train_ESPCN.py --num_epochs 10
@@ -31,6 +36,10 @@ python train_SRGAN.py --weights pretrained-models/SRResNet.py --num_epochs 1
 ```
 Testing
 ===
+Output includes:
+- logs file at logs folder
+- image at experiment folder
+
 Test ESPCN
 ```
 python test --model ESPCN --weights pretrained-models/ESPCN.pth
