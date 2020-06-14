@@ -10,10 +10,13 @@ Data Preprocessing
 ===
 Download data and pretrained models at: https://husteduvn-my.sharepoint.com/:f:/g/personal/nghia_vt173284_sis_hust_edu_vn/EozFDBAS77dJmsbGvRvDswIB5O0P6ucF5OcU9U10jN8NvQ?e=XHVAb9
 
+Save data at "dataset" folder
+
+Save models at "pretrained-models" folder
+
+Create "logs" folder
+
 Generate train and test dataset:
-- Save data at "dataset" folder
-- Save models at "pretrained-models" folder
-- Create "logs" folder
 ```bash
 python generate_data.py
 ```
