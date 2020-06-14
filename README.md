@@ -33,12 +33,12 @@ Output includes:
 Train ESPCN
 ```
 python train_ESPCN.py --num_epochs 10
-python train_ESPCN.py --weights pretrained-models/ESPCN.py --num_epochs 10
+python train_ESPCN.py --weights pretrained-models/ESPCN.pth --num_epochs 10
 ```
 Train SRResNet
 ```
 python train_SRResNet.py --num_epochs 1
-python train_SRResNet.py --weights pretrained-models/SRResNet.py --num_epochs 1
+python train_SRResNet.py --weights pretrained-models/SRResNet.pth --num_epochs 1
 ```
 Train SRGAN
 ```
