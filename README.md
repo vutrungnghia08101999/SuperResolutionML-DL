@@ -63,6 +63,10 @@ Test SRGAN
 ```
 python test.py --model SRGAN --weights pretrained-models/SRGAN_G.pth
 ```
+Test BICUBIC
+```
+python test_BICUBIC.py
+```
 Inference
 ===
 ```
