@@ -90,7 +90,7 @@ Hyperparameters - Model Architecture
 ===
 Change model architecture at: models.py
 
-Experiment Result
+Empirical Results
 ===
 ![alt text](images/result.png)
 ![alt text](images/1.png)
